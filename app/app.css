@@ -1,15 +1,316 @@
+/* Font imports — loaded via <link> in root.tsx for correct ordering */
 @import "tailwindcss";
 
+/* ── Theme tokens ─────────────────────────────────── */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Font families */
+  --font-sans: "Geist", "Arial", sans-serif;
+  --font-mono: "Geist Mono", "Courier New", monospace;
+  --font-serif: "Source Serif 4", "Georgia", serif;
+
+  /* Font-weight scale (fine-tuned for optical calibration) */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 190;
+  --font-weight-light: 280;
+  --font-weight-normal: 380;
+  --font-weight-medium: 490;
+  --font-weight-semibold: 540;
+  --font-weight-bold: 680;
+  --font-weight-extrabold: 780;
+  --font-weight-black: 900;
+
+  /* EAG palette */
+  --color-eag-black: #0a0a0a;
+  --color-eag-dark: #141414;
+  --color-eag-gray-900: #1a1a1a;
+  --color-eag-gray-800: #222222;
+  --color-eag-gray-700: #333333;
+  --color-eag-gray-600: #555555;
+  --color-eag-gray-500: #777777;
+  --color-eag-gray-400: #999999;
+  --color-eag-gray-300: #bbbbbb;
+  --color-eag-white: #ffffff;
+  --color-eag-teal: #14b8a6;
+  --color-eag-teal-dark: #0d9488;
+
+  /* Functional palette */
+  --color-success-600: #16a34a;
+  --color-error-600: #dc2626;
+  --color-error-100: #fef2f2;
+  --color-error-800: #991b1b;
+  --color-warning-500: #f97316;
+  --color-warning-100: #fff3e0;
+  --color-warning-800: #9a3412;
+  --color-surface-50: #f5f6fa;
+  --color-surface-100: #eef0f6;
+  --color-border-200: #e2e5ef;
+
+  /* Marquee animation */
+  --animate-marquee: marquee 30s linear infinite;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+/* ── Base layer: global rendering optimisation ────── */
+@layer base {
+  html {
+    font-synthesis: none;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
+    font-optical-sizing: auto;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply font-sans text-a3 bg-white dark:bg-gray-950;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Nav link hover underline */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-eag-teal);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Dark/light section theming */
+  [data-theme="light"] {
+    --section-bg: #ffffff;
+    --section-text: #1a1a1a;
+    --section-text-muted: #555555;
+    --section-text-subtle: #777777;
+    --section-border: #e2e5ef;
+    --section-card-bg: #f5f6fa;
+    --section-card-border: #e2e5ef;
+  }
+
+  [data-theme="dark"] {
+    --section-bg: #0a0a0a;
+    --section-text: #ffffff;
+    --section-text-muted: #999999;
+    --section-text-subtle: #777777;
+    --section-border: #222222;
+    --section-card-bg: #1a1a1a;
+    --section-card-border: #222222;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    @apply font-mono;
+    font-variant-ligatures: none;
+    font-feature-settings: "calt" 0;
+  }
+
+  strong,
+  b {
+    @apply font-semibold;
+  }
+}
+
+/* ── Hide scrollbar utility ──────────────────────── */
+
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Scroll-reveal animation ─────────────────────── */
+
+@utility reveal-base {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@utility reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+@utility reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+@utility reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+@utility reveal-delay-4 {
+  transition-delay: 0.4s;
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPE SCALE — A-series (body), B-series (heading),
+   C-series (display / hero)
+   ══════════════════════════════════════════════════════ */
+
+/* ── A-series: Body and Reading Text ─────────────── */
+
+@utility text-a1 {
+  font-size: clamp(1.1875rem, 2vw, 1.3125rem);
+  line-height: 1.62;
+  letter-spacing: 0.01em;
+  font-weight: 415;
+}
+
+@utility text-a2 {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+@utility text-a3 {
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-weight: 395;
+}
+
+@utility text-a4 {
+  font-size: 0.875rem;
+  line-height: 1.54;
+  letter-spacing: 0.01em;
+  font-weight: 405;
+}
+
+@utility text-a5 {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  font-weight: 415;
+}
+
+@utility text-a6 {
+  font-size: 0.625rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  font-weight: 434;
+}
+
+/* ── B-series: Headings and Titles ───────────────── */
+
+@utility text-b1 {
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  font-weight: 640;
+}
+
+@utility text-b2 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+}
+
+@utility text-b3 {
+  font-size: clamp(1.5rem, 3.5vw, 1.75rem);
+  line-height: 1.22;
+  letter-spacing: 0.004em;
+  font-weight: 660;
+}
+
+@utility text-b4 {
+  font-size: clamp(1.3125rem, 3.2vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: 0.004em;
+  font-weight: 670;
+}
+
+@utility text-b5 {
+  font-size: clamp(1.1875rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-weight: 680;
+}
+
+@utility text-b6 {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  letter-spacing: 0.024em;
+  font-weight: 690;
+}
+
+/* ── C-series: Display and Hero Text ─────────────── */
+
+@utility text-c1 {
+  font-size: 15rem;
+  line-height: 1;
+  letter-spacing: 0em;
+  font-weight: 680;
+}
+
+@utility text-c2 {
+  font-size: clamp(5rem, 10vw, 10rem);
+  line-height: 1;
+  letter-spacing: -0.07em;
+  font-weight: 680;
+}
+
+@utility text-c3 {
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  font-weight: 680;
+}
+
+@utility text-c4 {
+  font-size: clamp(4rem, 8vw, 6rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 680;
+}
+
+@utility text-c5 {
+  font-size: clamp(3.5rem, 7vw, 4.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 680;
+}
+
+@utility text-c6 {
+  font-size: clamp(3rem, 6vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 680;
 }

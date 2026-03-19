@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "governance": {
+    "root": "governance",
+    "authority": "governance/authority-order.md",
+    "sourceOfTruth": "governance/source-of-truth-map.md",
+    "definitionOfDone": "governance/definition-of-done.md",
+    "engineeringGovernance": "governance/engineering-governance.md"
+  },
+  "documentation": {
+    "index": "docs/INDEX.md",
+    "roots": [
+      "docs/principles",
+      "docs/design-system",
+      "docs/interaction",
+      "docs/components",
+      "docs/content",
+      "docs/ai",
+      "docs/patterns",
+      "docs/workflows"
+    ]
+  },
+  "runtime": {
+    "settings": ".claude/settings.json",
+    "hooksRoot": ".claude/hooks",
+    "agentsRoot": ".claude/agents",
+    "skillsRoot": ".claude/skills"
+  },
+  "validation": {
+    "scriptsRoot": "scripts",
+    "evalsRoot": "evals"
+  },
+  "productUi": {
+    "routeRoots": [""],
+    "componentRoots": [""]
+  }
+}

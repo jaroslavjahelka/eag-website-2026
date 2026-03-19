@@ -1,87 +1,59 @@
-# Welcome to React Router!
+# Professional UI Builder — Stable Core System
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This repository is a production-oriented operating layer for AI-assisted UI work.
+It is designed to make Claude Code behave like a disciplined product team: read the system, locate the real source of truth, choose the right workflow, implement the smallest safe change, and run review gates before completion.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Design goals
 
-## Features
+- one canonical governance layer
+- explicit authority order
+- runtime adapters separated from policy
+- machine-readable repository map for path discovery
+- repeatable validation checks
+- production-first UI execution
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Repository structure
 
-## Getting Started
+- [governance/](governance/) — canonical policy, authority, completion criteria, operating rules, source-of-truth mapping
+- [docs/](docs/) — domain knowledge for principles, design system, interaction, components, content, AI rules, patterns, and workflows
+- [.claude/agents/](.claude/agents/) — specialist review and planning adapters
+- [.claude/skills/](.claude/skills/) — reusable execution sequences
+- [.claude/hooks/](.claude/hooks/) — runtime enforcement and validation hooks
+- [.claude/settings.json](.claude/settings.json) — Claude Code permissions and hook wiring
+- [scripts/](scripts/) — local validation harness
+- [evals/](evals/) — golden tasks, rubrics, and reports
+- [repository-map.json](repository-map.json) — machine-readable registry of important paths
 
-### Installation
+## What was rebuilt
 
-Install the dependencies:
+- moved governance into a single canonical root: [governance/](governance/)
+- moved runtime hooks into a real hook layer: [.claude/hooks/](.claude/hooks/)
+- removed broken hook wiring between settings and filesystem
+- replaced placeholder source-of-truth guidance with a machine-readable map
+- added runtime integrity checks for hook commands and registry paths
+- restored missing references such as [docs/workflows/references/technical-stack.md](docs/workflows/references/technical-stack.md)
+- fixed broken internal references in workflows and agents
+- removed archive noise such as `.DS_Store`
 
-```bash
-npm install
-```
+## Local validation
 
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+Run the full validation harness from the repository root:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+bash scripts/run-all-checks.sh
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Run the evaluation harness:
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```bash
+bash scripts/run-golden-tasks.sh
 ```
 
-## Styling
+## Operating model
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+1. Start with [CLAUDE.md](CLAUDE.md).
+2. Resolve authority through [governance/authority-order.md](governance/authority-order.md).
+3. Locate paths through [governance/source-of-truth-map.md](governance/source-of-truth-map.md) and [repository-map.json](repository-map.json).
+4. Read the relevant workflow in [docs/workflows/](docs/workflows/).
+5. Use agents and skills only as execution adapters.
+6. Validate before completion.
