@@ -11,4 +11,26 @@ export default defineConfig({
   resolve: {
     dedupe: ["react", "react-dom"],
   },
+  ssr: {
+    // Bundle these browser-centric deps into the server build so Vercel
+    // serverless functions don't need them in node_modules at runtime.
+    noExternal: [
+      "gsap",
+      "@gsap/react",
+      "globe.gl",
+      "three",
+      "@phosphor-icons/react",
+      "react-aria-components",
+      /^@react-aria\//,
+      /^@react-stately\//,
+      /^@react-types\//,
+      "client-only",
+      "react-aria",
+      "clsx",
+      /^@swc\/helpers/,
+      /^@dnd-kit\//,
+      "tailwind-merge",
+      "tailwind-variants",
+    ],
+  },
 });

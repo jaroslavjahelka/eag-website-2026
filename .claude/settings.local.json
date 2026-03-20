@@ -62,7 +62,11 @@
       "Bash(curl -s -X POST https://api.eag.group/graphql -H \"Content-Type: application/json\" -d '{\"\"\"\"query\"\"\"\":\"\"\"\"{ posts\\(first: 100, where: {categoryId: 10}\\) { nodes { databaseId title date featuredImage { node { sourceUrl } } info { link } } } }\"\"\"\"}')",
       "Bash(npx react-router:*)",
       "Bash(npx tsc:*)",
-      "WebFetch(domain:www.powerhouse-company.com)"
+      "WebFetch(domain:www.powerhouse-company.com)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"import\\(''@phosphor-icons/react''\\).then\\(\\(\\) => console.log\\(''OK''\\)\\).catch\\(e => console.error\\(''FAIL:'', e.message\\)\\)\")",
+      "Bash(node -e \"import\\(''lenis''\\).then\\(\\(\\) => console.log\\(''OK''\\)\\).catch\\(e => console.error\\(''FAIL:'', e.message\\)\\)\")",
+      "Bash(cat \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js\")"
     ]
   }
 }

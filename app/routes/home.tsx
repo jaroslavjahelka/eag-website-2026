@@ -5,7 +5,11 @@ import type { Route } from "./+types/home";
 import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
-import { HeroSection } from "~/components/globe-hero/hero-section";
+import { Suspense, lazy } from "react";
+
+const HeroSection = lazy(() =>
+  import("~/components/globe-hero/hero-section").then((m) => ({ default: m.HeroSection })),
+);
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
