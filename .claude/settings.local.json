@@ -66,7 +66,11 @@
       "Bash(npm run:*)",
       "Bash(node -e \"import\\(''@phosphor-icons/react''\\).then\\(\\(\\) => console.log\\(''OK''\\)\\).catch\\(e => console.error\\(''FAIL:'', e.message\\)\\)\")",
       "Bash(node -e \"import\\(''lenis''\\).then\\(\\(\\) => console.log\\(''OK''\\)\\).catch\\(e => console.error\\(''FAIL:'', e.message\\)\\)\")",
-      "Bash(cat \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js\")"
+      "Bash(cat \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(pkill -f 'react-router dev')",
+      "Bash(pkill -f vite)",
+      "Bash(kill -9 21296)"
     ]
   }
 }

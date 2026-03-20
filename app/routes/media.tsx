@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import type { Route } from "./+types/media";
@@ -126,8 +126,13 @@ const ARTICLES_PER_PAGE = 9;
 export default function MediaPage({ loaderData }: Route.ComponentProps) {
   const [searchParams] = useSearchParams();
   const tabParam = searchParams.get("tab");
-  const initialTab = tabKeys.includes(tabParam as TabKey) ? (tabParam as TabKey) : "news";
-  const [activeTab, setActiveTab] = useState<TabKey>(initialTab);
+  const tabFromUrl = tabKeys.includes(tabParam as TabKey) ? (tabParam as TabKey) : "news";
+  const [activeTab, setActiveTab] = useState<TabKey>(tabFromUrl);
+
+  // Sync tab state when URL search params change (e.g. nav click)
+  useEffect(() => {
+    setActiveTab(tabFromUrl);
+  }, [tabFromUrl]);
 
   return (
     <>

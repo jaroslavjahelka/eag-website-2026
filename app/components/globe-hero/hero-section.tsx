@@ -101,13 +101,8 @@ export function HeroSection() {
         className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-6 lg:px-10"
       >
         <div className="max-w-4xl pb-[140px] pt-32 lg:pb-[220px] lg:pt-40">
-          <h1 className="text-b2 lg:text-c6">
-            <span data-hero-line className="block text-[var(--section-text-muted)]">
-              {t("home.hero.text1")}
-            </span>
-            <span data-hero-line className="block text-white">
-              {t("home.hero.text2")}
-            </span>
+          <h1 data-hero-line className="text-b2 text-white lg:text-c6">
+            {t("home.hero.text1")} {t("home.hero.text2")}
           </h1>
 
           <p
