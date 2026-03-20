@@ -17,6 +17,9 @@ export function ContactSection() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const subject = encodeURIComponent(`Contact from ${name}`);
+    const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:info@eag.group?subject=${subject}&body=${body}`;
   }
 
   return (

@@ -35,7 +35,28 @@
       "Bash(gh auth:*)",
       "Bash(git --version)",
       "Bash(ssh -T git@github.com)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm install:*)",
+      "Bash(xargs kill:*)",
+      "Bash(gh api:*)",
+      "Bash(curl --version)",
+      "Bash(mkdir -p /tmp/robin-changes)",
+      "Bash(unzip -o \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Downloads/eag-website-2026.zip\" -d /tmp/robin-changes)",
+      "Bash(cp -r /tmp/robin-changes/eag-website-2026/app/components/globe-hero app/components/)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/hooks/use-reduced-motion.ts app/hooks/)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/assets/logo-carvago.svg app/assets/)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/assets/map-europe.jpg app/assets/)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/components/europe-map.tsx app/components/)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/public/assets/ne_110m_admin_0_countries.geojson public/assets/)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/i18n.tsx app/i18n.tsx)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/routes/home.tsx app/routes/home.tsx)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/app/routes/story.tsx app/routes/story.tsx)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/package.json package.json)",
+      "Bash(cp /tmp/robin-changes/eag-website-2026/package-lock.json package-lock.json)",
+      "Bash(pkill -f \"react-router dev\")",
+      "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/app/components/horizontal-scroll.tsx\")",
+      "WebFetch(domain:api.eag.group)"
     ]
   }
 }

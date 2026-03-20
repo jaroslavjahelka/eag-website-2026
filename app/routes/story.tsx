@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import type { Route } from "./+types/story";
 import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
@@ -5,11 +6,15 @@ import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
+const HorizontalScroll = lazy(() =>
+  import("~/components/horizontal-scroll").then((m) => ({ default: m.HorizontalScroll })),
+);
+
 /* ── Meta ──────────────────────────────────────────── */
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Our Story — EAG" },
+    { title: "Our Story \u2014 EAG" },
     {
       name: "description",
       content:
@@ -22,204 +27,231 @@ export function meta({}: Route.MetaArgs) {
 
 interface TimelineEntry {
   year: number;
-  title: string;
-  description: string;
+  titleKey: string;
+  descKey: string;
   logo: string;
+  image: string;
 }
 
 const timeline: TimelineEntry[] = [
   {
     year: 2025,
-    title: "Acquisition of Dotzilla",
-    description: "The EAG group successfully acquired Dotzilla.",
+    titleKey: "timeline.2025.dotzilla.title",
+    descKey: "timeline.2025.dotzilla.desc",
     logo: "/assets/logos-color/dotzilla-color.svg",
+    image: "/assets/news/eag-germany.jpg",
   },
   {
     year: 2025,
-    title: "Acquisition of CarObserver",
-    description: "The EAG group successfully acquired CarObserver.",
+    titleKey: "timeline.2025.carobserver.title",
+    descKey: "timeline.2025.carobserver.desc",
     logo: "/assets/logos-color/carobserver-color.svg",
+    image: "/assets/news/svoren-kratochvil.jpg",
   },
   {
     year: 2024,
-    title: "Acquisition of Autrado",
-    description: "The EAG group successfully acquired Autrado.",
+    titleKey: "timeline.2024.autrado.title",
+    descKey: "timeline.2024.autrado.desc",
     logo: "/assets/logos-color/autrado-color.svg",
+    image: "/assets/news/kratochvil-interview.jpg",
   },
   {
     year: 2024,
-    title: "Acquisition of Instamotion",
-    description: "The EAG group successfully acquired Instamotion.",
+    titleKey: "timeline.2024.instamotion.title",
+    descKey: "timeline.2024.instamotion.desc",
     logo: "/assets/logos-color/instamotion-color.svg",
+    image: "/assets/towedcars-light.jpg",
   },
   {
     year: 2024,
-    title: "Acquisition of JBR",
-    description: "The EAG group successfully acquired JBR.",
+    titleKey: "timeline.2024.jbr.title",
+    descKey: "timeline.2024.jbr.desc",
     logo: "/assets/logos-color/jbr-color.svg",
+    image: "/assets/techyard-light.jpg",
   },
   {
     year: 2022,
-    title: "Acquisition of SoftVig",
-    description: "The EAG SE successfully acquired SoftVig.",
+    titleKey: "timeline.2022.softvig.title",
+    descKey: "timeline.2022.softvig.desc",
     logo: "/assets/logos-color/softvig-color.svg",
+    image: "/assets/news/svoren-kratochvil.jpg",
   },
   {
     year: 2022,
-    title: "Acquisition of Fastback srl.",
-    description:
-      "The EAG SE successfully acquired online B2B trading platform Fastback srl.",
+    titleKey: "timeline.2022.fastback.title",
+    descKey: "timeline.2022.fastback.desc",
     logo: "/assets/logos-color/fastback-color.svg",
+    image: "/assets/news/eag-germany.jpg",
   },
   {
     year: 2021,
-    title: "Acquisition of Cebia",
-    description:
-      "The EAG group successfully acquired company Cebia, spol. s r.o.",
+    titleKey: "timeline.2021.cebia.title",
+    descKey: "timeline.2021.cebia.desc",
     logo: "/assets/logos-color/cebia-color.svg",
+    image: "/assets/towedcars-light.jpg",
   },
   {
     year: 2020,
-    title: "The beginning of Carvago B2C",
-    description:
-      "The launch of Carvago.com for end consumers. 900 000 vehicles on offer from 30 000 partners.",
+    titleKey: "timeline.2020.carvago.title",
+    descKey: "timeline.2020.carvago.desc",
     logo: "/assets/logos-color/carvago-color.svg",
+    image: "/assets/news/kratochvil-interview.jpg",
   },
   {
     year: 2020,
-    title: "Investment into CarAudit",
-    description:
-      "The CarAudit mobile app is created with the aim of completely digitalizing vehicle purchasing and management.",
+    titleKey: "timeline.2020.caraudit.title",
+    descKey: "timeline.2020.caraudit.desc",
     logo: "/assets/logos-color/caraudit-color.svg",
+    image: "/assets/techyard-light.jpg",
   },
   {
     year: 2019,
-    title: "Beta of CarsData",
-    description:
-      "Partners receive the advanced analytics tool CarsData for testing.",
+    titleKey: "timeline.2019.carsdata.title",
+    descKey: "timeline.2019.carsdata.desc",
     logo: "/assets/logos-color/carsdata-color.svg",
+    image: "/assets/news/svoren-kratochvil.jpg",
   },
   {
     year: 2019,
-    title: "The start of Carvago B2B",
-    description:
-      "The launch of Carvago.com, the first European Marketplace for online B2B vehicle sales.",
+    titleKey: "timeline.2019.carvago.title",
+    descKey: "timeline.2019.carvago.desc",
     logo: "/assets/logos-color/carvago-color.svg",
+    image: "/assets/news/eag-germany.jpg",
   },
   {
     year: 2019,
-    title: "Acquisition of AutoSoft",
-    description:
-      "The EAG group successfully acquired company AUTOSOFT Company s.r.o.",
+    titleKey: "timeline.2019.autosoft.title",
+    descKey: "timeline.2019.autosoft.desc",
     logo: "/assets/logos-color/autosoft-color.svg",
+    image: "/assets/towedcars-light.jpg",
   },
   {
     year: 2019,
-    title: "Acquisition of TEAS",
-    description:
-      "The EAG group successfully acquired the company TEAS spol. s r.o.",
+    titleKey: "timeline.2019.teas.title",
+    descKey: "timeline.2019.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/techyard-light.jpg",
   },
   {
     year: 2019,
-    title: "Portiva enters",
-    description:
-      "The company Portiva becomes the primary shareholder of EAG.",
+    titleKey: "timeline.2019.portiva.title",
+    descKey: "timeline.2019.portiva.desc",
     logo: "/assets/logos-color/eag-color.svg",
+    image: "/assets/news/kratochvil-interview.jpg",
   },
   {
     year: 2018,
-    title: "The founding of the EAG holding",
-    description:
-      "The EAG holding is founded with the goal of creating a complex ecosystem of services for the automotive segment.",
+    titleKey: "timeline.2018.eag.title",
+    descKey: "timeline.2018.eag.desc",
     logo: "/assets/logos-color/eag-color.svg",
+    image: "/assets/techyard-light.jpg",
   },
   {
     year: 2012,
-    title: "The most used DMS",
-    description:
-      "TEAS has reached more than 1000 installations in the Czech Republic and Slovakia and is the most used system in the automotive sector. Its solution is used by 32 car manufacturers and the 4 largest servicing networks.",
+    titleKey: "timeline.2012.teas.title",
+    descKey: "timeline.2012.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/svoren-kratochvil.jpg",
   },
   {
     year: 2010,
-    title: "TEAS replaces the competing DMS",
-    description:
-      "TEAS partners up with Ford, Kia, Toyota, Fiat, Alfa Romeo, Subaru, Škoda, Volkswagen, Nissan and other car manufacturers.",
+    titleKey: "timeline.2010.teas.title",
+    descKey: "timeline.2010.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/eag-germany.jpg",
   },
   {
     year: 2006,
-    title: "Elit implements TEAS",
-    description:
-      "TEAS is chosen as the main system for the ELIT network of car repair shops.",
+    titleKey: "timeline.2006.elit.title",
+    descKey: "timeline.2006.elit.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/towedcars-light.jpg",
   },
   {
     year: 2005,
-    title: "Autosoft celebrates its 500th client",
-    description:
-      "Autosoft has more than 500 installations in the Czech Republic and becomes the most used software for used car dealerships.",
+    titleKey: "timeline.2005.autosoft.title",
+    descKey: "timeline.2005.autosoft.desc",
     logo: "/assets/logos-color/autosoft-color.svg",
+    image: "/assets/techyard-light.jpg",
   },
   {
     year: 2004,
-    title: "New Caris system",
-    description:
-      "TEAS launches Caris — a unique DMS which integrates the functionality of all existing systems into one solution.",
+    titleKey: "timeline.2004.caris.title",
+    descKey: "timeline.2004.caris.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/kratochvil-interview.jpg",
   },
   {
     year: 2002,
-    title: "Partnership with Mercedes-Benz",
-    description:
-      "TEAS begins to cooperate with Daimler AG in developing a DMS for Mercedes, Chrysler and Jeep.",
+    titleKey: "timeline.2002.mercedes.title",
+    descKey: "timeline.2002.mercedes.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/svoren-kratochvil.jpg",
   },
   {
     year: 2001,
-    title: "Partnership with Hyundai",
-    description:
-      "TEAS is certified by Hyundai and becomes the dealership system for the Czech Republic.",
+    titleKey: "timeline.2001.hyundai.title",
+    descKey: "timeline.2001.hyundai.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/eag-germany.jpg",
   },
   {
     year: 2000,
-    title: "Partnership with Renault",
-    description:
-      "TEAS is certified by Renault and delivers its system to more than 25 dealerships.",
+    titleKey: "timeline.2000.renault.title",
+    descKey: "timeline.2000.renault.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/towedcars-light.jpg",
   },
   {
     year: 1998,
-    title: "Vehicle inspection system",
-    description:
-      "The first system for the management of vehicle inspection and emissions testing centers is created together with Bosch.",
+    titleKey: "timeline.1998.bosch.title",
+    descKey: "timeline.1998.bosch.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/techyard-light.jpg",
   },
   {
     year: 1997,
-    title: "First official certification",
-    description:
-      "TEAS becomes the first certified system for Mazda dealerships and importers and a certified system of Citroën.",
+    titleKey: "timeline.1997.mazda.title",
+    descKey: "timeline.1997.mazda.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/kratochvil-interview.jpg",
   },
   {
     year: 1993,
-    title: "Founding of TEAS",
-    description:
-      "TEAS launches its first complex solution for new car dealerships in the Czech Republic.",
+    titleKey: "timeline.1993.teas.title",
+    descKey: "timeline.1993.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
+    image: "/assets/news/svoren-kratochvil.jpg",
   },
   {
     year: 1991,
-    title: "Founding of AutoSoft",
-    description:
-      "AutoSoft becomes the first software tool for dealership management in the Czech Republic.",
+    titleKey: "timeline.1991.autosoft.title",
+    descKey: "timeline.1991.autosoft.desc",
     logo: "/assets/logos-color/autosoft-color.svg",
+    image: "/assets/news/eag-germany.jpg",
   },
 ];
 
+/* ── Enrich with alternating position ────────────── */
+
+interface EnrichedEntry extends TimelineEntry {
+  position: "top" | "bottom";
+  isFirstOfYear: boolean;
+  id: string;
+}
+
+function enrichTimeline(entries: TimelineEntry[]): EnrichedEntry[] {
+  let lastYear = -1;
+  let toggle = false;
+  return entries.map((entry) => {
+    const isFirstOfYear = entry.year !== lastYear;
+    if (isFirstOfYear) toggle = !toggle;
+    lastYear = entry.year;
+    return { ...entry, position: toggle ? "top" : "bottom", isFirstOfYear, id: `${entry.year}-${entry.titleKey}` };
+  });
+}
+
+const enrichedTimeline = enrichTimeline(timeline);
 
 /* ── Page ──────────────────────────────────────────── */
 
@@ -251,7 +283,6 @@ function HeroSection() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
-        {/* Heading + description — 2-col like media */}
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <h1 className="text-b1 text-[var(--section-text)] lg:text-c6">
             {t("story.title1")} {t("story.title2")}
@@ -265,138 +296,123 @@ function HeroSection() {
   );
 }
 
-/* ── Timeline ─────────────────────────────────────── */
+/* ── Timeline (horizontal scroll) ────────────────── */
 
 function TimelineSection() {
   const { t } = useI18n();
   const revealRef = useScrollReveal();
 
   return (
-    <section data-theme="light" className="bg-white py-20 lg:py-32">
-      <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        {/* Section heading */}
-        <h2 className="mb-16 text-center text-b3 text-eag-black lg:mb-24 lg:text-b1">
+    <section data-theme="light" className="bg-white">
+      {/* Section heading */}
+      <div className="mx-auto w-full max-w-7xl px-6 pt-20 lg:px-10 lg:pt-32">
+        <span className="text-a3 font-medium uppercase tracking-wider text-eag-teal">
           {t("story.journey")}
-        </h2>
-
-        {/* Timeline */}
-        <div ref={revealRef} className="relative">
-          {/* Central line — mobile */}
-          <div className="absolute left-4 top-0 block h-full w-px bg-gray-200 lg:hidden" />
-          {/* Central line — desktop */}
-          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gray-200 lg:block" />
-
-          <div className="space-y-16 lg:space-y-0">
-            {timeline.map((entry, i) => (
-              <TimelineCard
-                key={`${entry.year}-${entry.title}`}
-                entry={entry}
-                index={i}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── Timeline card ────────────────────────────────── */
-
-function TimelineCard({
-  entry,
-  index,
-}: {
-  entry: TimelineEntry;
-  index: number;
-}) {
-  const isLeft = index % 2 === 0;
-
-  /* Shared card inner content */
-  const cardContent = (
-    <>
-      <img
-        src={entry.logo}
-        alt=""
-        className="mb-4 h-7 w-auto object-contain lg:h-8"
-      />
-      <h3 className="mb-2 text-b5 text-eag-black lg:text-b4">{entry.title}</h3>
-      <p className="text-a4 text-gray-500">{entry.description}</p>
-    </>
-  );
-
-  return (
-    <>
-      {/* ── Mobile layout ── */}
-      <div data-reveal className="relative pl-12 lg:hidden">
-        {/* Dot */}
-        <div className="absolute left-4 top-8 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-eag-teal bg-white" />
-
-        {/* Year */}
-        <span className="mb-3 block text-b3 font-bold text-eag-teal">
-          {entry.year}
         </span>
-
-        {/* Card */}
-        <div className="rounded-lg border-t-[3px] border-eag-teal bg-white p-5 shadow-[0_16px_32px_rgba(0,0,0,0.08)]">
-          {cardContent}
-        </div>
+        <h2 className="mt-4 max-w-3xl text-b3 text-eag-black md:text-b1 lg:mt-6 lg:text-c6">
+          {t("story.journeySubtitle")}
+        </h2>
       </div>
 
-      {/* ── Desktop layout ── */}
-      <div
-        data-reveal
-        className="relative hidden lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-start lg:gap-12 lg:py-8"
-      >
-        {/* Dot on center line */}
-        <div className="absolute left-1/2 top-[3.25rem] z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-eag-teal bg-white transition-shadow hover:shadow-[0_0_0_4px_rgba(45,150,140,0.2)]" />
-
-        {isLeft ? (
-          <>
-            {/* Left column — year + card */}
-            <div className="flex flex-col items-end">
-              {/* Large year */}
-              <span className="mb-2 text-c3 font-bold leading-none text-eag-black/10">
+      {/* Mobile — full-width cards */}
+      <div ref={revealRef} className="space-y-4 px-6 pt-8 pb-20 md:hidden">
+        {enrichedTimeline.map((entry) => (
+          <div key={entry.id} data-reveal>
+            {entry.isFirstOfYear && (
+              <span className="mb-2 mt-4 block text-b3 font-bold tabular-nums text-gray-200">
                 {entry.year}
               </span>
-              {/* Card with right-pointing arrow — border on timeline side */}
-              <div className="relative w-full max-w-md rounded-lg border-r-[3px] border-eag-teal bg-white p-8 shadow-[0_16px_32px_rgba(0,0,0,0.08)]">
-                {/* Arrow pointer — teal */}
-                <div className="absolute top-6 -right-[9px] h-0 w-0 border-y-[8px] border-l-[9px] border-y-transparent border-l-eag-teal" />
-                {cardContent}
+            )}
+            <div className="overflow-hidden rounded-xl bg-gray-50">
+              <div className="aspect-[16/10] overflow-hidden">
+                <img src={entry.image} alt="" className="h-full w-full object-cover" />
+              </div>
+              <div className="p-4">
+                <div className="mb-2 flex items-center gap-2">
+                  <img src={entry.logo} alt="" className="h-5 w-auto object-contain" />
+                  <span className="ml-auto text-a5 font-medium tabular-nums text-gray-300">{entry.year}</span>
+                </div>
+                <h3 className="mb-1 text-b6 text-eag-black">{t(entry.titleKey)}</h3>
+                <p className="text-a4 leading-relaxed text-gray-500">{t(entry.descKey)}</p>
               </div>
             </div>
-
-            {/* Center spacer */}
-            <div className="w-px" />
-
-            {/* Right column — empty */}
-            <div />
-          </>
-        ) : (
-          <>
-            {/* Left column — empty */}
-            <div />
-
-            {/* Center spacer */}
-            <div className="w-px" />
-
-            {/* Right column — year + card */}
-            <div className="flex flex-col items-start">
-              {/* Large year */}
-              <span className="mb-2 text-c3 font-bold leading-none text-eag-black/10">
-                {entry.year}
-              </span>
-              {/* Card with left-pointing arrow — border on timeline side */}
-              <div className="relative w-full max-w-md rounded-lg border-l-[3px] border-eag-teal bg-white p-8 shadow-[0_16px_32px_rgba(0,0,0,0.08)]">
-                {/* Arrow pointer — teal */}
-                <div className="absolute top-6 -left-[12px] h-0 w-0 border-y-[8px] border-r-[9px] border-y-transparent border-r-eag-teal" />
-                {cardContent}
-              </div>
-            </div>
-          </>
-        )}
+          </div>
+        ))}
       </div>
-    </>
+
+      {/* Desktop — horizontal scroll timeline */}
+      <div className="hidden md:block">
+        <Suspense fallback={null}>
+          <HorizontalScroll className="h-svh">
+            {/* Left spacer — aligned to site grid */}
+            <div className="h-full shrink-0" style={{ width: "max(1.5rem, calc((100vw - 80rem) / 2 + 2.5rem))" }} />
+
+            {enrichedTimeline.map((entry) => {
+              const isTop = entry.position === "top";
+
+              return (
+                <div
+                  key={entry.id}
+                  className="relative flex h-full w-[480px] shrink-0 flex-col items-stretch justify-center px-[60px]"
+                >
+                  {/* Year label — in the empty half, opposite the card */}
+                  {entry.isFirstOfYear && (
+                    <span
+                      className={`pointer-events-none absolute left-1/2 -translate-x-1/2 select-none text-c4 font-bold tabular-nums text-gray-100 lg:text-c3 ${
+                        isTop
+                          ? "bottom-[35%]"
+                          : "top-[35%]"
+                      }`}
+                    >
+                      {entry.year}
+                    </span>
+                  )}
+
+                  {/* Card */}
+                  <div
+                    className="flex flex-col"
+                    style={{
+                      transform: isTop ? "translateY(calc(-50% - 4px))" : "translateY(calc(50% + 4px))",
+                    }}
+                  >
+                    <div className="overflow-hidden rounded-xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100">
+                      <div className="aspect-[16/10] overflow-hidden">
+                        <img
+                          src={entry.image}
+                          alt=""
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                      <div className="p-4 lg:p-5">
+                        <div className="mb-2 flex items-center gap-2">
+                          <img
+                            src={entry.logo}
+                            alt=""
+                            className="h-5 w-auto object-contain"
+                          />
+                          <span className="ml-auto text-a5 font-medium tabular-nums text-gray-300">{entry.year}</span>
+                        </div>
+                        <h3 className="mb-1 text-b6 text-eag-black">
+                          {t(entry.titleKey)}
+                        </h3>
+                        <p className="line-clamp-2 text-a4 leading-relaxed text-gray-500">
+                          {t(entry.descKey)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Right spacer — aligned to site grid */}
+            <div className="h-full shrink-0" style={{ width: "max(1.5rem, calc((100vw - 80rem) / 2 + 2.5rem))" }} />
+          </HorizontalScroll>
+        </Suspense>
+      </div>
+
+      {/* Bottom spacing */}
+      <div className="h-20 lg:h-32" />
+    </section>
   );
 }

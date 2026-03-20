@@ -271,7 +271,7 @@ function ProjectCard({ project }: { project: Project }) {
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+      className="group block overflow-hidden rounded-2xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100"
     >
       <div className="grid lg:grid-cols-2">
         {/* Image */}
