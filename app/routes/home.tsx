@@ -5,6 +5,7 @@ import type { Route } from "./+types/home";
 import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
+import { HeroSection } from "~/components/globe-hero/hero-section";
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
@@ -87,38 +88,6 @@ export default function HomePage() {
       </main>
       <AppFooter />
     </div>
-  );
-}
-
-/* ── Hero ──────────────────────────────────────────── */
-
-function HeroSection() {
-  const { t } = useI18n();
-  return (
-    <section
-      id="hero"
-      data-theme="dark"
-      className="relative flex flex-col overflow-hidden bg-[var(--section-bg)]"
-    >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/assets/hero-bg.jpg"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80"
-      >
-        <source src="/assets/hero-bg.mp4" type="video/mp4" />
-      </video>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/40 via-black/15 to-transparent" />
-
-      <div className="relative mx-auto w-full max-w-7xl px-6 pt-32 pb-[220px] lg:px-10 lg:pt-40 lg:pb-[400px]">
-        <h1 className="max-w-3xl text-b1 lg:text-c6">
-          <span className="text-[var(--section-text-muted)]">{t("home.hero.text1")}</span>{" "}
-          <span className="text-white">{t("home.hero.text2")}</span>
-        </h1>
-      </div>
-    </section>
   );
 }
 

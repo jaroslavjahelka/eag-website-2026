@@ -59,6 +59,9 @@ const translations: Record<Lang, Record<string, string>> = {
     "home.hero.text1": "We are an international investment group focused on",
     "home.hero.text2":
       "the digital transformation of the automotive market.",
+    "home.hero.subtitle":
+      "Building the connected automotive ecosystem across Europe.",
+    "home.hero.cta": "Explore our projects",
 
     /* Home — Mission */
     "home.mission.title": "Our mission",
@@ -181,6 +184,9 @@ const translations: Record<Lang, Record<string, string>> = {
       "Jsme mezinárodní investiční skupina zaměřená na",
     "home.hero.text2":
       "digitální transformaci automobilového trhu.",
+    "home.hero.subtitle":
+      "Budujeme propojený automobilový ekosystém napříč Evropou.",
+    "home.hero.cta": "Prozkoumejte naše projekty",
 
     /* Home — Mission */
     "home.mission.title": "Naše mise",
