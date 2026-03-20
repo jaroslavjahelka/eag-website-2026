@@ -56,7 +56,13 @@
       "Bash(cp /tmp/robin-changes/eag-website-2026/package-lock.json package-lock.json)",
       "Bash(pkill -f \"react-router dev\")",
       "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/app/components/horizontal-scroll.tsx\")",
-      "WebFetch(domain:api.eag.group)"
+      "WebFetch(domain:api.eag.group)",
+      "Bash(curl -s -X POST https://api.eag.group/graphql -H \"Content-Type: application/json\" -d '{\"\"\"\"query\"\"\"\":\"\"\"\"{ posts\\(first: 100, where: {categoryId: 10}\\) { nodes { id databaseId title date featuredImage { node { sourceUrl } } info { link } } } }\"\"\"\"}')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -X POST https://api.eag.group/graphql -H \"Content-Type: application/json\" -d '{\"\"\"\"query\"\"\"\":\"\"\"\"{ posts\\(first: 100, where: {categoryId: 10}\\) { nodes { databaseId title date featuredImage { node { sourceUrl } } info { link } } } }\"\"\"\"}')",
+      "Bash(npx react-router:*)",
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:www.powerhouse-company.com)"
     ]
   }
 }

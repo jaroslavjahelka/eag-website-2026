@@ -194,8 +194,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "media.tab.shareholders": "For Shareholders",
     "media.readArticle": "Read article",
     "media.placeholder.press": "Press releases coming soon.",
-    "media.placeholder.downloads": "Downloads coming soon.",
-    "media.placeholder.shareholders": "Shareholder information coming soon.",
+    "media.downloads.policies": "EAG Policies",
+    "media.shareholders.documents": "Documents for shareholders",
 
     /* Projects page */
     "projects.label": "Projects",
@@ -377,8 +377,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "media.tab.shareholders": "Pro akcionáře",
     "media.readArticle": "Číst článek",
     "media.placeholder.press": "Tiskové zprávy budou brzy k dispozici.",
-    "media.placeholder.downloads": "Soubory ke stažení budou brzy k dispozici.",
-    "media.placeholder.shareholders": "Informace pro akcionáře budou brzy k dispozici.",
+    "media.downloads.policies": "Politiky EAG",
+    "media.shareholders.documents": "Dokumenty pro akcionáře",
 
     /* Projects page */
     "projects.label": "Projekty",

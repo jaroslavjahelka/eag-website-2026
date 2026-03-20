@@ -275,7 +275,7 @@ function ProjectCard({ project }: { project: Project }) {
     >
       <div className="grid lg:grid-cols-2">
         {/* Image */}
-        <div className="aspect-video overflow-hidden lg:aspect-auto lg:h-full">
+        <div className="aspect-video max-h-[500px] overflow-hidden lg:aspect-auto lg:h-full">
           <img
             src={project.image}
             alt={project.name}
@@ -306,7 +306,7 @@ function ProjectCard({ project }: { project: Project }) {
                 <p className="text-b3 text-eag-black lg:text-b2">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-a5 text-gray-400">{stat.label}</p>
+                <p className="mt-1 text-a5 text-gray-500">{stat.label}</p>
               </div>
             ))}
           </div>
