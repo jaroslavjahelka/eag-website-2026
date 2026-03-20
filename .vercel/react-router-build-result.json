@@ -1,0 +1,165 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "routes/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/story": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/team": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/media": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/projects": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "app/root.tsx",
+        "path": "",
+        "config": {}
+      },
+      "routes/home": {
+        "id": "routes/home",
+        "parentId": "root",
+        "file": "app/routes/home.tsx",
+        "index": true,
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/story": {
+        "id": "routes/story",
+        "parentId": "root",
+        "file": "app/routes/story.tsx",
+        "path": "story",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/team": {
+        "id": "routes/team",
+        "parentId": "root",
+        "file": "app/routes/team.tsx",
+        "path": "team",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/media": {
+        "id": "routes/media",
+        "parentId": "root",
+        "file": "app/routes/media.tsx",
+        "path": "media",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/projects": {
+        "id": "routes/projects",
+        "parentId": "root",
+        "file": "app/routes/projects.tsx",
+        "path": "projects",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "/Users/jaroslav/Dropbox/My Mac (Jaroslav-MacBook-Pro.local)/Desktop/Project 01/app",
+    "basename": "/",
+    "buildDirectory": "/Users/jaroslav/Dropbox/My Mac (Jaroslav-MacBook-Pro.local)/Desktop/Project 01/build",
+    "future": {
+      "unstable_optimizeDeps": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_trailingSlashAwareDataRequests": false,
+      "v8_middleware": false,
+      "v8_splitRouteModules": false,
+      "v8_viteEnvironmentApi": false
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "root.tsx",
+        "path": ""
+      },
+      "routes/home": {
+        "id": "routes/home",
+        "parentId": "root",
+        "file": "routes/home.tsx",
+        "index": true
+      },
+      "routes/story": {
+        "id": "routes/story",
+        "parentId": "root",
+        "file": "routes/story.tsx",
+        "path": "story"
+      },
+      "routes/team": {
+        "id": "routes/team",
+        "parentId": "root",
+        "file": "routes/team.tsx",
+        "path": "team"
+      },
+      "routes/media": {
+        "id": "routes/media",
+        "parentId": "root",
+        "file": "routes/media.tsx",
+        "path": "media"
+      },
+      "routes/projects": {
+        "id": "routes/projects",
+        "parentId": "root",
+        "file": "routes/projects.tsx",
+        "path": "projects"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true,
+    "allowedActionOrigins": false,
+    "unstable_routeConfig": [
+      {
+        "id": "root",
+        "path": "",
+        "file": "root.tsx",
+        "children": [
+          {
+            "file": "routes/home.tsx",
+            "index": true
+          },
+          {
+            "file": "routes/story.tsx",
+            "path": "story"
+          },
+          {
+            "file": "routes/team.tsx",
+            "path": "team"
+          },
+          {
+            "file": "routes/media.tsx",
+            "path": "media"
+          },
+          {
+            "file": "routes/projects.tsx",
+            "path": "projects"
+          }
+        ]
+      }
+    ]
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}
