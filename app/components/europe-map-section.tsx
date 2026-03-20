@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 
 /**
  * Fullscreen dark pinned section — SVG Europe map with GSAP letter reveal.
@@ -75,6 +75,72 @@ const VIEW_BOTTOM = mercatorY(34);
 const VIEW_W = VIEW_RIGHT - VIEW_LEFT;
 const VIEW_H = VIEW_BOTTOM - VIEW_TOP;
 
+/* ── Pre-split text lines into words+chars for React rendering ── */
+const LINE1 = "12+ European markets.";
+const LINE2 = "One connected platform.";
+
+function splitToWords(text: string) {
+  return text.split(" ").map((word) => ({
+    word,
+    chars: word.split(""),
+  }));
+}
+
+const LINE1_WORDS = splitToWords(LINE1);
+const LINE2_WORDS = splitToWords(LINE2);
+
+/* ── CharLine: renders pre-split characters as spans (no DOM mutation) ── */
+
+function CharLine({
+  words,
+  className,
+  charRefsCallback,
+}: {
+  words: { word: string; chars: string[] }[];
+  className: string;
+  charRefsCallback: (els: HTMLSpanElement[]) => void;
+}) {
+  const collectedRefs = useRef<HTMLSpanElement[]>([]);
+  const registered = useRef(false);
+
+  const charRef = useCallback((el: HTMLSpanElement | null) => {
+    if (el && !collectedRefs.current.includes(el)) {
+      collectedRefs.current.push(el);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!registered.current && collectedRefs.current.length > 0) {
+      registered.current = true;
+      charRefsCallback(collectedRefs.current);
+    }
+  });
+
+  return (
+    <h2 className={className} aria-label={words.map((w) => w.word).join(" ")}>
+      {words.map((w, wi) => (
+        <span
+          key={wi}
+          className="inline-flex shrink-0 whitespace-nowrap"
+        >
+          {w.chars.map((ch, ci) => (
+            <span
+              key={ci}
+              ref={charRef}
+              className="inline-block opacity-0 translate-y-[30px]"
+            >
+              {ch}
+            </span>
+          ))}
+          {wi < words.length - 1 && (
+            <span className="inline-block w-[0.25em]">{"\u00A0"}</span>
+          )}
+        </span>
+      ))}
+    </h2>
+  );
+}
+
 /* ── Component ── */
 
 interface CountryPath {
@@ -85,9 +151,9 @@ interface CountryPath {
 
 export function EuropeMapSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const line1Ref = useRef<HTMLHeadingElement>(null);
-  const line2Ref = useRef<HTMLHeadingElement>(null);
   const [countries, setCountries] = useState<CountryPath[]>([]);
+  const chars1Ref = useRef<HTMLSpanElement[]>([]);
+  const chars2Ref = useRef<HTMLSpanElement[]>([]);
 
   /* Load GeoJSON on mount */
   useEffect(() => {
@@ -113,11 +179,14 @@ export function EuropeMapSection() {
   }, []);
 
   /* GSAP: pin section, reveal chars on scrub */
+  const gsapReady = useRef(false);
   useEffect(() => {
+    if (gsapReady.current) return;
     const section = sectionRef.current;
-    const h1 = line1Ref.current;
-    const h2 = line2Ref.current;
-    if (!section || !h1 || !h2) return;
+    const chars1 = chars1Ref.current;
+    const chars2 = chars2Ref.current;
+    if (!section || chars1.length === 0 || chars2.length === 0) return;
+    gsapReady.current = true;
 
     let ctx: ReturnType<typeof import("gsap")["gsap"]["context"]> | null = null;
 
@@ -127,82 +196,38 @@ export function EuropeMapSection() {
         const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
         gsap.registerPlugin(ScrollTrigger);
 
-        /* Wrap each character in a span, grouped by word for proper line-breaking */
-        function splitChars(el: HTMLElement): HTMLSpanElement[] {
-          const text = el.textContent ?? "";
-          el.textContent = "";
-          el.style.display = "flex";
-          el.style.flexWrap = "wrap";
-          const chars: HTMLSpanElement[] = [];
-          const words = text.split(" ");
-
-          words.forEach((word, wi) => {
-            // Word wrapper — keeps letters together
-            const wordWrap = document.createElement("span");
-            wordWrap.style.display = "inline-flex";
-            wordWrap.style.whiteSpace = "nowrap";
-
-            for (const ch of word) {
-              const span = document.createElement("span");
-              span.textContent = ch;
-              span.style.display = "inline-block";
-              span.style.opacity = "0";
-              span.style.transform = "translateY(40px)";
-              wordWrap.appendChild(span);
-              chars.push(span);
-            }
-
-            el.appendChild(wordWrap);
-
-            // Add a space between words (not after last word)
-            if (wi < words.length - 1) {
-              const space = document.createElement("span");
-              space.innerHTML = "&nbsp;";
-              space.style.display = "inline-block";
-              space.style.width = "0.3em";
-              el.appendChild(space);
-            }
-          });
-
-          return chars;
-        }
-
         ctx = gsap.context(() => {
-          const chars1 = splitChars(h1);
-          const chars2 = splitChars(h2);
-
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: "+=400%",
+              end: "+=200%",
               pin: true,
-              scrub: 0.8,
+              scrub: 0.4,
             },
           });
 
-          /* Pause before text appears — just the map visible */
-          tl.to({}, { duration: 0.6 });
+          /* Stagger chars in — fast reveal, minimal pre-delay */
+          tl.to({}, { duration: 0.15 });
 
-          /* Stagger chars in — faster reveal */
           tl.to(chars1, {
             opacity: 1,
             y: 0,
             stagger: 0.02,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power2.out",
-          }, 0.6);
+          }, 0.15);
 
           tl.to(chars2, {
             opacity: 1,
             y: 0,
             stagger: 0.02,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power2.out",
-          }, 1.0);
+          }, 0.45);
 
-          /* Hold fully visible — generous pause after */
-          tl.to({}, { duration: 1.2 });
+          /* Hold fully visible */
+          tl.to({}, { duration: 0.6 });
         }, section);
       },
     );
@@ -210,7 +235,7 @@ export function EuropeMapSection() {
     return () => {
       ctx?.revert();
     };
-  }, [countries]); // re-run after countries load so DOM is ready
+  }); // runs every render until gsapReady flips
 
   return (
     <section
@@ -283,21 +308,19 @@ export function EuropeMapSection() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-[#0a0a0a]/80" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]/60" />
 
-      {/* Text */}
+      {/* Text — pre-split into spans for GSAP animation (no DOM mutation) */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-5xl">
-          <h2
-            ref={line1Ref}
-            className="text-b1 font-bold leading-[1.1] text-white lg:text-c5"
-          >
-            12+ European markets.
-          </h2>
-          <h2
-            ref={line2Ref}
-            className="mt-2 text-b1 font-bold leading-[1.1] text-white/40 lg:text-c5"
-          >
-            One connected platform.
-          </h2>
+          <CharLine
+            words={LINE1_WORDS}
+            className="flex flex-wrap text-b1 font-bold leading-[1.1] text-white lg:text-c5"
+            charRefsCallback={(els) => { chars1Ref.current = els; }}
+          />
+          <CharLine
+            words={LINE2_WORDS}
+            className="mt-2 flex flex-wrap text-b1 font-bold leading-[1.1] text-white/40 lg:text-c5"
+            charRefsCallback={(els) => { chars2Ref.current = els; }}
+          />
         </div>
       </div>
     </section>

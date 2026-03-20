@@ -78,7 +78,21 @@
       "Bash(find \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets\" -type f \\\\\\( -name \"*.jpg\" -o -name \"*.png\" -o -name \"*.webp\" \\\\\\))",
       "Bash(ls -lh \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/news\")",
       "Read(//Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/{s+=$1} END {printf \"\"\"\"\"\"\"\"%.1f MB\\\\n\"\"\"\"\"\"\"\", s/1024/**)",
-      "Bash(find public/assets -type f -name \"*.webp\" -exec stat -f \"%z\" {} +)"
+      "Bash(find public/assets -type f -name \"*.webp\" -exec stat -f \"%z\" {} +)",
+      "Bash(lsof -ti:5173)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}, size: %{size_download}\" http://localhost:5173/)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/app/components/optimized-image.tsx\")",
+      "Bash(curl -s --max-time 8 http://localhost:5173/projects)",
+      "Bash(npm uninstall:*)",
+      "Bash(curl -s --max-time 10 http://localhost:5173/)",
+      "Bash(npx vite:*)",
+      "Bash(kill %1)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 10 http://localhost:5173/media)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://localhost:5173/media)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/media)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/)"
     ]
   }
 }

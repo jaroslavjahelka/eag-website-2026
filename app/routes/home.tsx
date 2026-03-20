@@ -33,19 +33,19 @@ export function meta({}: Route.MetaArgs) {
 /* ── Data ──────────────────────────────────────────── */
 
 const companies = [
-  { name: "Carvago", key: "company.carvago", logo: "/assets/logos/carvago.svg" },
-  { name: "Omnetic", key: "company.omnetic", logo: "/assets/logos/omnetic.svg" },
-  { name: "Cebia", key: "company.cebia", logo: "/assets/logos/cebia.svg" },
-  { name: "Fastback", key: "company.fastback", logo: "/assets/logos/fastback.svg" },
-  { name: "Softvig", key: "company.softvig", logo: "/assets/logos/softvig.svg" },
-  { name: "Teas", key: "company.teas", logo: "/assets/logos/teas.svg" },
-  { name: "Carsdata", key: "company.carsdata", logo: "/assets/logos/carsdata.svg" },
-  { name: "Caraudit", key: "company.caraudit", logo: "/assets/logos/caraudit.svg" },
-  { name: "Jbr", key: "company.jbr", logo: "/assets/logos/jbr.svg" },
-  { name: "Instamotion", key: "company.instamotion", logo: "/assets/logos/instamotion.svg" },
-  { name: "Autrado", key: "company.autrado", logo: "/assets/logos/autrado.svg" },
-  { name: "Carobserver", key: "company.carobserver", logo: "/assets/logos/carobserver.svg" },
-  { name: "Dotzilla", key: "company.dotzilla", logo: "/assets/logos/dotzilla.svg" },
+  { name: "Carvago", key: "company.carvago", logo: "/assets/logos/carvago.svg", slug: "carvago" },
+  { name: "Omnetic", key: "company.omnetic", logo: "/assets/logos/omnetic.svg", slug: "omnetic" },
+  { name: "Cebia", key: "company.cebia", logo: "/assets/logos/cebia.svg", slug: "cebia" },
+  { name: "Fastback", key: "company.fastback", logo: "/assets/logos/fastback.svg", slug: "fastback" },
+  { name: "Softvig", key: "company.softvig", logo: "/assets/logos/softvig.svg", slug: "softvig" },
+  { name: "Teas", key: "company.teas", logo: "/assets/logos/teas.svg", slug: "teas" },
+  { name: "Carsdata", key: "company.carsdata", logo: "/assets/logos/carsdata.svg", slug: "carsdata" },
+  { name: "Caraudit", key: "company.caraudit", logo: "/assets/logos/caraudit.svg", slug: "caraudit" },
+  { name: "Jbr", key: "company.jbr", logo: "/assets/logos/jbr.svg", slug: "jbr" },
+  { name: "Instamotion", key: "company.instamotion", logo: "/assets/logos/instamotion.svg", slug: "instamotion" },
+  { name: "Autrado", key: "company.autrado", logo: "/assets/logos/autrado.svg", slug: "autrado" },
+  { name: "Carobserver", key: "company.carobserver", logo: "/assets/logos/carobserver.svg", slug: "carobserver" },
+  { name: "Dotzilla", key: "company.dotzilla", logo: "/assets/logos/dotzilla.svg", slug: "dotzilla" },
 ];
 
 const stats = [
@@ -84,7 +84,9 @@ export default function HomePage() {
     <div ref={revealRef} className="flex min-h-svh flex-col">
       <AppHeader />
       <main className="flex-1">
-        <HeroSection />
+        <Suspense fallback={null}>
+          <HeroSection />
+        </Suspense>
         <LogoMarquee />
         <MissionSection />
         <Suspense fallback={null}>
@@ -274,16 +276,17 @@ function InvestmentsSection() {
         {/* Company cards */}
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {companies.map((company, i) => (
-            <div
+            <Link
               key={company.name}
+              to={`/projects#${company.slug}`}
               data-reveal
-              className={`group flex flex-col items-start gap-4 rounded-xl bg-white p-6 transition-all duration-300 hover:shadow-lg hover:shadow-black/5 ${
+              className={`group flex flex-col items-start gap-4 rounded-xl bg-white p-6 no-underline transition-all duration-300 hover:shadow-lg hover:shadow-black/5 ${
                 i < 4 ? "reveal-delay-1" : i < 8 ? "reveal-delay-2" : "reveal-delay-3"
               }`}
             >
               <img src={company.logo} alt={company.name} className="h-7 w-auto object-contain" />
               <p className="text-a4 text-[var(--section-text-subtle)]">{t(company.key)}</p>
-            </div>
+            </Link>
           ))}
         </div>
 

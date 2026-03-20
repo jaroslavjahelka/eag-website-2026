@@ -173,7 +173,7 @@ export function AppHeader() {
 
       {/* Mobile nav — fullscreen glassmorphism overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[60] flex flex-col overflow-hidden lg:hidden" style={{ height: "100vh" }}>
+        <div className="fixed inset-0 z-[60] flex h-dvh flex-col overflow-hidden lg:hidden">
           {/* Dark glass background */}
           <div className="absolute inset-0 bg-eag-black/90 backdrop-blur-md" style={{ WebkitBackdropFilter: "blur(12px)" }} />
           {/* Close button area — aligned with hamburger */}
@@ -209,7 +209,7 @@ export function AppHeader() {
           </div>
 
           {/* Bottom section — lang switch + CTA */}
-          <div className="relative flex items-center justify-between px-6 pb-14">
+          <div className="relative flex items-center justify-between px-6 pb-10" style={{ paddingBottom: "max(2.5rem, env(safe-area-inset-bottom, 2.5rem))" }}>
             <div className="flex items-center gap-3 text-a3">
               <button
                 type="button"

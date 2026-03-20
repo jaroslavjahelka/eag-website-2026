@@ -16,10 +16,12 @@ export function OptimizedImage({
   priority = false,
   ...rest
 }: OptimizedImageProps) {
+  const isLocalImage = /\.(jpg|jpeg|png)$/i.test(src) && !src.startsWith("http");
   const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
-  const isImage = /\.(jpg|jpeg|png)$/i.test(src);
 
-  if (!isImage) {
+  /* External images (e.g. WordPress uploads) — no WebP alternative exists,
+     so skip the <picture> wrapper to avoid ORB / 404 failures */
+  if (!isLocalImage) {
     return (
       <img
         src={src}

@@ -269,10 +269,11 @@ function ProjectCard({ project }: { project: Project }) {
   const { t } = useI18n();
   return (
     <a
+      id={project.name.toLowerCase().replace(/\s+/g, "")}
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block overflow-hidden rounded-2xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100"
+      className="group block scroll-mt-24 overflow-hidden rounded-2xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100"
     >
       <div className="grid lg:grid-cols-2">
         {/* Image */}
