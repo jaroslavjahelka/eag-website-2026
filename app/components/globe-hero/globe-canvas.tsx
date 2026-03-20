@@ -48,7 +48,7 @@ export default function GlobeCanvas({ className, reducedMotion, onError }: Globe
         );
 
         // Countries where EAG has presence (highlight points)
-        const eagCountries = new Set(["CZ", "DE", "AT", "NL", "HU", "RO", "HR", "ES"]);
+        const eagCountries = new Set(["CZ", "SK", "PL", "HU", "DE", "AT", "NL", "BE", "IT", "FR", "ES", "RO"]);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const isEagCountry = (f: any) => eagCountries.has(f.properties.ISO_A2);
 

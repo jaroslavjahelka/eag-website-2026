@@ -85,11 +85,14 @@ export function HeroSection() {
 
       {/* Static fallback when WebGL fails */}
       {webglFailed && (
-        <img
-          src="/assets/hero-bg.jpg"
-          alt=""
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
-        />
+        <picture>
+          <source srcSet="/assets/hero-bg.webp" type="image/webp" />
+          <img
+            src="/assets/hero-bg.jpg"
+            alt=""
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
+          />
+        </picture>
       )}
 
       {/* Gradient overlays for text readability */}

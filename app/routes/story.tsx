@@ -5,6 +5,7 @@ import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
+import { OptimizedImage } from "~/components/optimized-image";
 
 const HorizontalScroll = lazy(() =>
   import("~/components/horizontal-scroll").then((m) => ({ default: m.HorizontalScroll })),
@@ -275,7 +276,7 @@ function HeroSection() {
   const { t } = useI18n();
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
-      <img
+      <OptimizedImage
         src="/assets/towedcars-light.jpg"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
@@ -325,7 +326,7 @@ function TimelineSection() {
             )}
             <div className="overflow-hidden rounded-xl bg-gray-50">
               <div className="aspect-[16/10] overflow-hidden">
-                <img src={entry.image} alt="" className="h-full w-full object-cover" />
+                <OptimizedImage src={entry.image} alt="" className="h-full w-full object-cover" />
               </div>
               <div className="p-4">
                 <div className="mb-2 flex items-center gap-2">
@@ -377,7 +378,7 @@ function TimelineSection() {
                   >
                     <div className="overflow-hidden rounded-xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100">
                       <div className="aspect-[16/10] overflow-hidden">
-                        <img
+                        <OptimizedImage
                           src={entry.image}
                           alt=""
                           className="h-full w-full object-cover"

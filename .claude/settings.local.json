@@ -70,7 +70,15 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
       "Bash(pkill -f 'react-router dev')",
       "Bash(pkill -f vite)",
-      "Bash(kill -9 21296)"
+      "Bash(kill -9 21296)",
+      "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/ne_110m_admin_0_countries.geojson\")",
+      "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/projects/\")",
+      "Bash(find \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/app\" -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" \\\\\\))",
+      "Bash(find \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets\" -type f -name \"*.jpg\" -o -name \"*.png\")",
+      "Bash(find \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets\" -type f \\\\\\( -name \"*.jpg\" -o -name \"*.png\" -o -name \"*.webp\" \\\\\\))",
+      "Bash(ls -lh \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/news\")",
+      "Read(//Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/{s+=$1} END {printf \"\"\"\"\"\"\"\"%.1f MB\\\\n\"\"\"\"\"\"\"\", s/1024/**)",
+      "Bash(find public/assets -type f -name \"*.webp\" -exec stat -f \"%z\" {} +)"
     ]
   }
 }

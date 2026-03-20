@@ -6,6 +6,7 @@ import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
+import { OptimizedImage } from "~/components/optimized-image";
 
 /* ── Meta ──────────────────────────────────────────── */
 
@@ -157,7 +158,7 @@ function HeroSection() {
   const { t } = useI18n();
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
-      <img
+      <OptimizedImage
         src="/assets/towedcars-light.jpg"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
@@ -268,7 +269,7 @@ function ArticleCard({ article }: { article: Article }) {
       className="group flex flex-col rounded-xl bg-gray-50 transition-all duration-300 hover:bg-gray-100"
     >
       <div className="aspect-[16/10] overflow-hidden rounded-t-xl">
-        <img
+        <OptimizedImage
           src={article.image}
           alt=""
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

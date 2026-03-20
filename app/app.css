@@ -138,6 +138,13 @@
   }
 }
 
+/* ── Content-visibility for off-screen sections ──── */
+
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* ── Hide scrollbar utility ──────────────────────── */
 
 @utility scrollbar-none {

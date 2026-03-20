@@ -5,10 +5,14 @@ import type { Route } from "./+types/home";
 import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
+import { OptimizedImage } from "~/components/optimized-image";
 import { Suspense, lazy } from "react";
 
 const HeroSection = lazy(() =>
   import("~/components/globe-hero/hero-section").then((m) => ({ default: m.HeroSection })),
+);
+const EuropeMapSection = lazy(() =>
+  import("~/components/europe-map-section").then((m) => ({ default: m.EuropeMapSection })),
 );
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
@@ -46,7 +50,7 @@ const companies = [
 
 const stats = [
   { value: "13", label: "Portfolio companies" },
-  { value: "9", label: "European markets" },
+  { value: "12+", label: "European markets" },
   { value: "5,700+", label: "Clients across platforms" },
   { value: "30M+", label: "Vehicles verified" },
 ];
@@ -83,7 +87,9 @@ export default function HomePage() {
         <HeroSection />
         <LogoMarquee />
         <MissionSection />
-        <StrategyImageSection />
+        <Suspense fallback={null}>
+          <EuropeMapSection />
+        </Suspense>
         <StrategySection />
         <InvestmentsSection />
         <NewsSection />
@@ -129,7 +135,7 @@ function LogoMarquee() {
         <div className="flex-1 backdrop-blur-3xl bg-black/60" />
       </div>
 
-      <div className="animate-marquee flex h-full items-center whitespace-nowrap">
+      <div className="animate-marquee flex h-full items-center whitespace-nowrap" style={{ willChange: "transform", contain: "layout style" }}>
         {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
           <img
             key={`${logo.name}-${i}`}
@@ -199,34 +205,12 @@ function MissionSection() {
 
           {/* Image */}
           <div data-reveal className="overflow-hidden rounded-2xl reveal-delay-2">
-            <img
-              src="/assets/towedcars-light.jpg"
+            <OptimizedImage
+              src="/assets/projects/carvago.jpg"
               alt=""
               className="aspect-[4/3] w-full object-cover"
             />
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── Strategy full-width image ─────────────────────── */
-
-function StrategyImageSection() {
-  return (
-    <section data-theme="dark" className="relative overflow-hidden">
-      <img
-        src="/assets/map-light.jpg"
-        alt=""
-        className="h-72 w-full object-cover lg:h-[28rem]"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-      <div className="absolute inset-0 flex items-center">
-        <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-          <p className="max-w-md text-b2 text-white lg:text-b1">
-            9 European markets. One connected platform.
-          </p>
         </div>
       </div>
     </section>
@@ -238,13 +222,13 @@ function StrategyImageSection() {
 function StrategySection() {
   const { t } = useI18n();
   return (
-    <section id="strategy" data-theme="light" className="bg-[var(--section-bg)] py-28 lg:py-40">
+    <section id="strategy" data-theme="light" className="cv-auto bg-[var(--section-bg)] py-28 lg:py-40">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Image */}
           <div data-reveal className="order-2 overflow-hidden rounded-2xl lg:order-1">
-            <img
-              src="/assets/techyard-light.jpg"
+            <OptimizedImage
+              src="/assets/projects/cebia.jpg"
               alt=""
               className="aspect-[4/3] w-full object-cover"
             />
@@ -273,7 +257,7 @@ function StrategySection() {
 function InvestmentsSection() {
   const { t } = useI18n();
   return (
-    <section id="investments" data-theme="light" className="bg-gray-50 py-28 lg:py-40">
+    <section id="investments" data-theme="light" className="cv-auto bg-gray-50 py-28 lg:py-40">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="mb-16 max-w-2xl">
           <p data-reveal className="mb-4 text-a4 font-medium uppercase tracking-widest text-eag-teal">
@@ -322,7 +306,7 @@ function InvestmentsSection() {
 function NewsSection() {
   const { t } = useI18n();
   return (
-    <section data-theme="light" className="bg-[var(--section-bg)] py-28 lg:py-40">
+    <section data-theme="light" className="cv-auto bg-[var(--section-bg)] py-28 lg:py-40">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="mb-14 flex items-end justify-between">
           <div>
@@ -352,7 +336,7 @@ function NewsSection() {
               className="group flex flex-col overflow-hidden rounded-2xl bg-gray-50 transition-all duration-300 hover:bg-gray-100 reveal-delay-1"
             >
               <div className="aspect-[16/10] overflow-hidden">
-                <img src={article.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <OptimizedImage src={article.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="mb-3 flex items-center gap-3">
@@ -381,9 +365,9 @@ function TeamSection() {
     <section
       id="team"
       data-theme="dark"
-      className="relative overflow-hidden bg-[var(--section-bg)] py-28 lg:py-40"
+      className="cv-auto relative overflow-hidden bg-[var(--section-bg)] py-28 lg:py-40"
     >
-      <img src="/assets/team-dark.jpg" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50" />
+      <OptimizedImage src="/assets/team-dark.jpg" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">

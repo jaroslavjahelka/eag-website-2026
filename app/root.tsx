@@ -17,17 +17,10 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
+  /* Primary font — narrowed to actually used weights */
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap",
   },
 ];
 
@@ -39,6 +32,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {/* Deferred secondary fonts — loaded after first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              requestIdleCallback?requestIdleCallback(l):setTimeout(l,100);
+              function l(){
+                ["https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap",
+                 "https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;500;600&display=swap"
+                ].forEach(function(h){var k=document.createElement("link");k.rel="stylesheet";k.href=h;document.head.appendChild(k)})
+              }
+            `,
+          }}
+        />
       </head>
       <body>
         {children}

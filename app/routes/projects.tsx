@@ -4,6 +4,7 @@ import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
+import { OptimizedImage } from "~/components/optimized-image";
 
 /* ── Meta ──────────────────────────────────────────── */
 
@@ -224,7 +225,7 @@ function HeroSection() {
   const { t } = useI18n();
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
-      <img
+      <OptimizedImage
         src="/assets/techyard-light.jpg"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
@@ -276,7 +277,7 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="grid lg:grid-cols-2">
         {/* Image */}
         <div className="aspect-video max-h-[500px] overflow-hidden lg:aspect-auto lg:h-full">
-          <img
+          <OptimizedImage
             src={project.image}
             alt={project.name}
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

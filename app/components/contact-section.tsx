@@ -8,6 +8,7 @@ import {
   Button as AriaButton,
 } from "react-aria-components";
 import { useI18n } from "~/i18n";
+import { OptimizedImage } from "~/components/optimized-image";
 
 export function ContactSection() {
   const [name, setName] = useState("");
@@ -29,7 +30,7 @@ export function ContactSection() {
       className="relative overflow-hidden bg-[var(--section-bg)]"
     >
       {/* Background image */}
-      <img
+      <OptimizedImage
         src="/assets/office-dark.jpg"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"

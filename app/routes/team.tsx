@@ -3,6 +3,7 @@ import { AppHeader } from "~/components/app-header";
 import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
+import { OptimizedImage } from "~/components/optimized-image";
 
 /* ── Meta ──────────────────────────────────────────── */
 
@@ -94,7 +95,7 @@ export default function TeamPage() {
       <main>
         {/* ── Dark hero header ── */}
         <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
-          <img
+          <OptimizedImage
             src="/assets/towedcars-light.jpg"
             alt=""
             className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
@@ -121,7 +122,7 @@ export default function TeamPage() {
                 <div key={member.name} className="group text-center">
                   {/* Photo */}
                   <div className="mx-auto mb-4 aspect-[3/4] w-full max-w-[180px] overflow-hidden rounded-lg bg-gray-100">
-                    <img
+                    <OptimizedImage
                       src={member.photo}
                       alt={member.name}
                       className="h-full w-full object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
@@ -152,7 +153,7 @@ export default function TeamPage() {
               <div className="col-start-2 row-start-1 row-span-2 flex flex-col gap-4 lg:-mt-16 lg:gap-6">
                 <div className="overflow-hidden rounded-xl">
                   <div className="aspect-[100/96]">
-                    <img
+                    <OptimizedImage
                       src="/assets/team/colleagues-3.jpg"
                       alt="Our colleagues"
                       className="h-full w-full object-cover"
@@ -161,7 +162,7 @@ export default function TeamPage() {
                 </div>
                 <div className="overflow-hidden rounded-xl">
                   <div className="aspect-[100/59]">
-                    <img
+                    <OptimizedImage
                       src="/assets/team/colleagues-4.jpg"
                       alt="Our colleagues"
                       className="h-full w-full object-cover"
@@ -174,7 +175,7 @@ export default function TeamPage() {
               <div className="col-start-1 row-start-1 row-span-2 flex flex-col gap-4 lg:mt-16 lg:gap-6">
                 <div className="overflow-hidden rounded-xl">
                   <div className="aspect-square">
-                    <img
+                    <OptimizedImage
                       src="/assets/team/colleagues-1.jpg"
                       alt="Our colleagues"
                       className="h-full w-full object-cover"
@@ -183,7 +184,7 @@ export default function TeamPage() {
                 </div>
                 <div className="overflow-hidden rounded-xl">
                   <div className="aspect-[100/129]">
-                    <img
+                    <OptimizedImage
                       src="/assets/team/colleagues-2.jpg"
                       alt="Our colleagues"
                       className="h-full w-full object-cover"

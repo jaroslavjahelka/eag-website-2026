@@ -66,23 +66,23 @@ const translations: Record<Lang, Record<string, string>> = {
     /* Home — Mission */
     "home.mission.title": "Our mission",
     "home.mission.lead":
-      "We want to be the leader in digital technology in the automotive segment. We want to lead the disruption of the way vehicles are sold and managed.",
+      "Leading digital transformation of the automotive market across Europe.",
     "home.mission.body":
-      "We build and invest in growth companies from the automotive segment from across Europe. We look for established companies which are leaders of their fields. We are interested in projects with a strong technological background or which are on the verge of disrupting the market.",
+      "We build and invest in growth companies that are leaders of their fields — with strong technology foundations and the ambition to reshape how vehicles are sold and managed.",
 
     /* Home — Strategy */
     "home.strategy.label": "Our Strategy",
     "home.strategy.title":
-      "Our primary goal is to monetize the vehicle in its whole life cycle. We bring effectiveness and create entirely new income streams.",
+      "Monetizing the vehicle across its entire life cycle — from first sale to final service.",
     "home.strategy.body":
-      "We use advanced data analytics to bring a new point of view of vehicle sales and management. We know that we are on the verge of a massive change and the winner will be the one who is able to establish new technologies and sales channels.",
+      "We use advanced data analytics and new sales channels to reshape how vehicles are sold and managed. The market is changing — and we're building the technology to lead it.",
 
     /* Home — Investments */
     "home.investments.label": "Our Investments",
     "home.investments.title":
-      "Investments help accelerate our growth. We acquire the projects which already exist and build those which do not from scratch.",
+      "We acquire market leaders and build what doesn't exist yet.",
     "home.investments.body":
-      "We invest in technological companies which help optimize processes and sales channels in the automotive segment. We look for synergistic effects across our portfolio and the ability to use each project's potential to it's fullest. We focus primarily on outbound channels.",
+      "Our portfolio companies optimize processes and sales channels across the automotive segment. We look for synergy across the group and maximize each project's potential.",
     "home.investments.allProjects": "All projects",
 
     /* Home — Team */
@@ -249,23 +249,23 @@ const translations: Record<Lang, Record<string, string>> = {
     /* Home — Mission */
     "home.mission.title": "Naše mise",
     "home.mission.lead":
-      "Chceme být lídrem v digitálních technologiích v automobilovém segmentu. Chceme vést disrupci způsobu, jakým se vozidla prodávají a spravují.",
+      "Vedeme digitální transformaci automobilového trhu napříč Evropou.",
     "home.mission.body":
-      "Budujeme a investujeme do růstových společností z automobilového segmentu z celé Evropy. Hledáme zavedené společnosti, které jsou lídry ve svých oborech. Zajímají nás projekty se silným technologickým zázemím nebo ty, které jsou na prahu disrupce trhu.",
+      "Budujeme a investujeme do růstových společností, které jsou lídry svých oborů — se silným technologickým zázemím a ambicí změnit způsob, jakým se vozidla prodávají a spravují.",
 
     /* Home — Strategy */
     "home.strategy.label": "Naše strategie",
     "home.strategy.title":
-      "Naším hlavním cílem je monetizovat vozidlo v celém jeho životním cyklu. Přinášíme efektivitu a vytváříme zcela nové příjmové kanály.",
+      "Monetizujeme vozidlo napříč celým životním cyklem — od prvního prodeje po poslední servis.",
     "home.strategy.body":
-      "Používáme pokročilou datovou analytiku, abychom přinesli nový pohled na prodej a správu vozidel. Víme, že jsme na prahu masivní změny a vítězem bude ten, kdo dokáže zavést nové technologie a prodejní kanály.",
+      "Využíváme pokročilou datovou analytiku a nové prodejní kanály k proměně způsobu, jakým se vozidla prodávají a spravují. Trh se mění — a my stavíme technologie, které ho povedou.",
 
     /* Home — Investments */
     "home.investments.label": "Naše investice",
     "home.investments.title":
-      "Investice pomáhají urychlit náš růst. Akvírujeme projekty, které již existují, a budujeme ty, které zatím neexistují.",
+      "Akvírujeme lídry trhu a budujeme to, co zatím neexistuje.",
     "home.investments.body":
-      "Investujeme do technologických společností, které pomáhají optimalizovat procesy a prodejní kanály v automobilovém segmentu. Hledáme synergické efekty v rámci našeho portfolia a schopnost využít potenciál každého projektu na maximum. Zaměřujeme se především na odchozí kanály.",
+      "Naše portfoliové společnosti optimalizují procesy a prodejní kanály v automobilovém segmentu. Hledáme synergii napříč skupinou a maximalizujeme potenciál každého projektu.",
     "home.investments.allProjects": "Všechny projekty",
 
     /* Home — Team */
