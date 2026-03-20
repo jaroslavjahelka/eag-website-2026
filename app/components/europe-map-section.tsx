@@ -127,7 +127,7 @@ function CharLine({
             <span
               key={ci}
               ref={charRef}
-              className="inline-block opacity-0 translate-y-[30px]"
+              className="inline-block"
             >
               {ch}
             </span>
@@ -197,6 +197,10 @@ export function EuropeMapSection() {
         gsap.registerPlugin(ScrollTrigger);
 
         ctx = gsap.context(() => {
+          /* Hide chars via GSAP so text stays visible if GSAP never loads */
+          gsap.set(chars1, { opacity: 0, y: 30 });
+          gsap.set(chars2, { opacity: 0, y: 30 });
+
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: section,

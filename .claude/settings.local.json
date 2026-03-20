@@ -92,7 +92,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://localhost:5173/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://localhost:5173/media)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/media)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/)",
+      "WebFetch(domain:eag-website-2026.vercel.app)"
     ]
   }
 }
