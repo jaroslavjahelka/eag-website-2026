@@ -319,7 +319,7 @@ function TimelineSection() {
         {enrichedTimeline.map((entry) => (
           <div key={entry.id} data-reveal>
             {entry.isFirstOfYear && (
-              <span className="mb-2 mt-4 block text-b3 font-bold tabular-nums text-gray-200">
+              <span className="block pt-10 pb-5 text-center text-c6 font-bold tabular-nums text-gray-200 first:pt-0">
                 {entry.year}
               </span>
             )}
