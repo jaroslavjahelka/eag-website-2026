@@ -93,7 +93,29 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://localhost:5173/media)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/media)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 60 http://localhost:5173/)",
-      "WebFetch(domain:eag-website-2026.vercel.app)"
+      "WebFetch(domain:eag-website-2026.vercel.app)",
+      "Bash(curl -sI http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' --max-time 10 http://localhost:5173/api/contact)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' --max-time 15 http://localhost:3111/)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' --max-time 10 http://localhost:3111/)",
+      "Bash(curl -s -m 3 http://localhost:5173/)",
+      "Bash(curl -s -m 10 -X POST http://localhost:5173/api/contact -H \"Content-Type: application/json\" -d '{\"\"name\"\":\"\"Jaroslav Test\"\",\"\"email\"\":\"\"jaroslav.jahelka@icloud.com\"\",\"\"message\"\":\"\"Tohle je testovací zpráva z kontaktního formuláře.\"\"}')",
+      "Bash(unzip -o \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Profile.zip\" -d /tmp/profile-extract)",
+      "Bash(brew list:*)",
+      "Bash(npx --yes sharp-cli --help)",
+      "Bash(lsof -ti:5173,5174,5175)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5175/)",
+      "Bash(curl -s http://localhost:5173/team)",
+      "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/team/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/team)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 10 http://localhost:5173/)",
+      "Bash(ls '/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/node_modules/isbot')",
+      "Bash(ls '/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/node_modules/@react-router/node')",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 35 http://localhost:5173/team)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 10 http://localhost:5173/team)",
+      "Bash(curl -v -o /dev/null -w \"\\\\nHTTP_CODE: %{http_code}\\\\nTIME: %{time_total}s\\\\n\" --max-time 120 http://localhost:5173/team)",
+      "Bash(kill 16956)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 5 http://localhost:5173/team)"
     ]
   }
 }

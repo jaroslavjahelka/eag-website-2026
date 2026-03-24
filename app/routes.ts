@@ -6,4 +6,5 @@ export default [
   route("team", "routes/team.tsx"),
   route("media", "routes/media.tsx"),
   route("projects", "routes/projects.tsx"),
+  route("api/contact", "routes/api.contact.ts"),
 ] satisfies RouteConfig;

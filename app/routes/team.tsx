@@ -30,32 +30,32 @@ const team: TeamMember[] = [
   {
     name: "Jakub Šulta",
     role: "CEO and Chairman of the Board",
-    photo: "/assets/team/jakub-sulta.png",
+    photo: "/assets/team/jakub-sulta.jpg",
   },
   {
     name: "Petr Kratochvíl",
     role: "CIO and Member of the Board",
-    photo: "/assets/team/petr-kratochvil.png",
+    photo: "/assets/team/petr-kratochvil.jpg",
   },
   {
     name: "Pavel Svoreň",
     role: "Member of the Board",
-    photo: "/assets/team/pavel-svoren.png",
+    photo: "/assets/team/pavel-svoren.jpg",
   },
   {
     name: "Ondřej Gálik",
     role: "CPO",
-    photo: "/assets/team/ondrej-galik.png",
+    photo: "/assets/team/ondrej-galik.jpg",
   },
   {
     name: "Ondřej Kofroň",
     role: "CTO",
-    photo: "/assets/team/ondrej-kofron.png",
+    photo: "/assets/team/ondrej-kofron.jpg",
   },
   {
     name: "Petr Dušek",
     role: "CMO",
-    photo: "/assets/team/petr-dusek.png",
+    photo: "/assets/team/petr-dusek.jpg",
   },
   {
     name: "Zbyněk Müller",
@@ -70,12 +70,12 @@ const team: TeamMember[] = [
   {
     name: "Martin Pajer",
     role: "CEO, Cebia",
-    photo: "/assets/team/martin-pajer.png",
+    photo: "/assets/team/martin-pajer.jpg",
   },
   {
     name: "Nicolas Rorive",
     role: "CEO, Fastback srl.",
-    photo: "/assets/team/nicolas-rorive.png",
+    photo: "/assets/team/nicolas-rorive.jpg",
   },
   {
     name: "Piotr Stański",

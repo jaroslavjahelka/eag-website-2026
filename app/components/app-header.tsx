@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { List, X } from "@phosphor-icons/react";
 import { Button as AriaButton } from "react-aria-components";
 import { useI18n } from "~/i18n";
+import { EagLogo } from "~/components/eag-logo";
 
 /**
  * Watches all `[data-theme]` sections and returns "dark" or "light"
@@ -82,11 +83,12 @@ export function AppHeader() {
         {/* Logo — left */}
         <Link
           to="/"
-          className={`text-b3 font-bold tracking-tight no-underline transition-colors duration-300 ${
+          className={`inline-flex items-center self-center no-underline transition-colors duration-300 ${
             isDark ? "text-eag-white" : "text-eag-gray-900"
           }`}
         >
-          EAG<span className="relative -top-2 text-a5">®</span>
+          <EagLogo className="h-6 w-auto" />
+          <span className="sr-only">EAG</span>
         </Link>
 
         {/* Desktop nav — centered */}
@@ -181,9 +183,10 @@ export function AppHeader() {
             <Link
               to="/"
               onClick={() => setMobileOpen(false)}
-              className="text-b3 font-bold tracking-tight text-white no-underline"
+              className="inline-flex items-center text-white no-underline"
             >
-              EAG<sup className="text-[0.45em] font-medium tracking-normal">®</sup>
+              <EagLogo className="h-6 w-auto" />
+              <span className="sr-only">EAG</span>
             </Link>
             <AriaButton
               onPress={() => setMobileOpen(false)}

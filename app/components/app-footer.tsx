@@ -1,5 +1,6 @@
 import { Envelope, MapPin } from "@phosphor-icons/react";
 import { useI18n } from "~/i18n";
+import { EagLogo } from "~/components/eag-logo";
 
 export function AppFooter() {
   const { t } = useI18n();
@@ -13,9 +14,7 @@ export function AppFooter() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           {/* Logo & contact */}
           <div className="flex flex-col gap-5">
-            <span className="text-b3 font-bold tracking-tight text-eag-white">
-              EAG<span className="relative -top-2 text-a5">®</span>
-            </span>
+            <EagLogo className="h-6 w-auto self-start text-eag-white" />
 
             <div className="flex flex-col gap-3 text-a4 text-eag-gray-400">
               <a

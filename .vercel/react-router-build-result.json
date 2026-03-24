@@ -14,7 +14,8 @@
       "routes/story": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/team": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/media": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/projects": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+      "routes/projects": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/api.contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
     },
     "routes": {
       "root": {
@@ -64,6 +65,15 @@
         "parentId": "root",
         "file": "app/routes/projects.tsx",
         "path": "projects",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/api.contact": {
+        "id": "routes/api.contact",
+        "parentId": "root",
+        "file": "app/routes/api.contact.ts",
+        "path": "api/contact",
         "config": {
           "runtime": "nodejs"
         }
@@ -117,6 +127,12 @@
         "parentId": "root",
         "file": "routes/projects.tsx",
         "path": "projects"
+      },
+      "routes/api.contact": {
+        "id": "routes/api.contact",
+        "parentId": "root",
+        "file": "routes/api.contact.ts",
+        "path": "api/contact"
       }
     },
     "routeDiscovery": {
@@ -152,6 +168,10 @@
           {
             "file": "routes/projects.tsx",
             "path": "projects"
+          },
+          {
+            "file": "routes/api.contact.ts",
+            "path": "api/contact"
           }
         ]
       }

@@ -1,0 +1,95 @@
+import type { Route } from "./+types/api.contact";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const CONTACT_TO = "jaroslav.jahelka@icloud.com";
+
+interface ContactFields {
+  name: string;
+  email: string;
+  message: string;
+}
+
+function validateFields(fields: ContactFields) {
+  const errors: Partial<Record<keyof ContactFields, string>> = {};
+
+  if (!fields.name || fields.name.trim().length < 2) {
+    errors.name = "name_required";
+  }
+
+  if (!fields.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
+    errors.email = "email_invalid";
+  }
+
+  if (!fields.message || fields.message.trim().length < 10) {
+    errors.message = "message_too_short";
+  }
+
+  return Object.keys(errors).length > 0 ? errors : null;
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  let fields: ContactFields;
+
+  const contentType = request.headers.get("content-type") ?? "";
+  if (contentType.includes("application/json")) {
+    fields = await request.json();
+  } else {
+    const formData = await request.formData();
+    fields = {
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      message: String(formData.get("message") ?? ""),
+    };
+  }
+
+  const errors = validateFields(fields);
+  if (errors) {
+    return Response.json({ ok: false, errors }, { status: 422 });
+  }
+
+  try {
+    const { error } = await resend.emails.send({
+      from: "Kontaktní formulář <onboarding@resend.dev>",
+      to: CONTACT_TO,
+      replyTo: fields.email,
+      subject: `Nová zpráva od ${fields.name}`,
+      html: `
+        <h2>Nová zpráva z kontaktního formuláře</h2>
+        <p><strong>Jméno:</strong> ${escapeHtml(fields.name)}</p>
+        <p><strong>E-mail:</strong> ${escapeHtml(fields.email)}</p>
+        <hr />
+        <p>${escapeHtml(fields.message).replace(/\n/g, "<br />")}</p>
+        <hr />
+        <p style="color: #888; font-size: 12px;">
+          Odesláno ${new Date().toLocaleString("cs-CZ", { timeZone: "Europe/Prague" })}
+        </p>
+      `,
+    });
+
+    if (error) {
+      console.error("[Contact form] Resend error:", error);
+      return Response.json(
+        { ok: false, error: "email_failed" },
+        { status: 500 },
+      );
+    }
+
+    return Response.json({ ok: true });
+  } catch (err) {
+    console.error("[Contact form] Unexpected error:", err);
+    return Response.json(
+      { ok: false, error: "email_failed" },
+      { status: 500 },
+    );
+  }
+}
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}

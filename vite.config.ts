@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   server: {
     host: true,
+    port: process.env.PORT ? Number(process.env.PORT) : undefined,
   },
   resolve: {
     dedupe: ["react", "react-dom"],
