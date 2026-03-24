@@ -1,5 +1,5 @@
-import { useState, useRef, useCallback } from "react";
-import { PaperPlaneTilt, CheckCircle, WarningCircle } from "@phosphor-icons/react";
+import { useState, useCallback } from "react";
+import { Check, X } from "@phosphor-icons/react";
 import {
   TextField,
   Input,
@@ -25,8 +25,9 @@ function validateFields(fields: {
 }): FieldErrors | null {
   const errors: FieldErrors = {};
   if (!fields.name || fields.name.trim().length < 2) errors.name = "name";
-  if (!fields.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
-    errors.email = "email";
+  if (!fields.email) errors.email = "email-empty";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
+    errors.email = "email-format";
   if (!fields.message || fields.message.trim().length < 10)
     errors.message = "message";
   return Object.keys(errors).length > 0 ? errors : null;
@@ -34,7 +35,6 @@ function validateFields(fields: {
 
 export function ContactSection() {
   const { t } = useI18n();
-  const containerRef = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors | null>(null);
   const [name, setName] = useState("");
@@ -43,20 +43,8 @@ export function ContactSection() {
 
   const isSubmitting = status === "submitting";
 
-  /** Dismiss banners when user starts typing again */
-  const dismissBanner = useCallback(() => {
-    if (status === "success" || status === "server-error") {
-      setStatus("idle");
-    }
-  }, [status]);
-
-  const handleNameChange = useCallback((v: string) => { setName(v); dismissBanner(); }, [dismissBanner]);
-  const handleEmailChange = useCallback((v: string) => { setEmail(v); dismissBanner(); }, [dismissBanner]);
-  const handleMessageChange = useCallback((v: string) => { setMessage(v); dismissBanner(); }, [dismissBanner]);
-
   const handleSubmit = useCallback(async () => {
     const fields = { name, email, message };
-
     const errors = validateFields(fields);
     if (errors) {
       setFieldErrors(errors);
@@ -86,12 +74,10 @@ export function ContactSection() {
           setFieldErrors(result.errors);
           setStatus("error");
         } else {
-          setFieldErrors(null);
           setStatus("server-error");
         }
       }
     } catch {
-      setFieldErrors(null);
       setStatus("server-error");
     }
   }, [name, email, message]);
@@ -101,13 +87,20 @@ export function ContactSection() {
     setFieldErrors(null);
   }, []);
 
+  const clearFieldError = useCallback(
+    (field: keyof FieldErrors) =>
+      setFieldErrors((prev) =>
+        prev ? { ...prev, [field]: undefined } : prev,
+      ),
+    [],
+  );
+
   return (
     <section
       id="contact"
       data-theme="dark"
       className="relative overflow-hidden bg-[var(--section-bg)]"
     >
-      {/* Background image */}
       <OptimizedImage
         src="/assets/office-dark.jpg"
         alt=""
@@ -131,117 +124,79 @@ export function ContactSection() {
 
           {/* Right — form card */}
           <div className="rounded-2xl border border-white/5 bg-[#121212]/90 px-6 py-10 shadow-[-32px_32px_64px_rgba(0,0,0,0.4)] backdrop-blur-md lg:px-12 lg:py-12">
-              <div
-                ref={containerRef}
-                className="flex flex-col gap-8"
-              >
-                {/* Success banner */}
-                {status === "success" && (
-                  <div
-                    role="status"
-                    className="flex items-start gap-3 rounded-lg bg-emerald-500/10 px-4 py-3"
-                  >
-                    <CheckCircle
-                      size={20}
-                      weight="fill"
-                      className="mt-0.5 shrink-0 text-emerald-400"
-                    />
-                    <p className="text-a4 text-emerald-300">
-                      {t("home.contact.success.title")}
-                    </p>
-                  </div>
-                )}
-
-                {/* Server error banner */}
-                {status === "server-error" && (
-                  <div
-                    role="alert"
-                    className="flex items-start gap-3 rounded-lg bg-red-500/10 px-4 py-3"
-                  >
-                    <WarningCircle
-                      size={20}
-                      weight="fill"
-                      className="mt-0.5 shrink-0 text-red-400"
-                    />
-                    <p className="text-a4 text-red-300">
-                      {t("home.contact.error.server")}
-                    </p>
-                  </div>
-                )}
-
-                {/* Validation error banner */}
-                {status === "error" && fieldErrors && (
-                  <div
-                    role="alert"
-                    className="flex items-start gap-3 rounded-lg bg-red-500/10 px-4 py-3"
-                  >
-                    <WarningCircle
-                      size={20}
-                      weight="fill"
-                      className="mt-0.5 shrink-0 text-red-400"
-                    />
-                    <p className="text-a4 text-red-300">
-                      {t("home.contact.error.general")}
-                    </p>
-                  </div>
-                )}
-
-                {/* Name field */}
+            {status === "success" ? (
+              <div className="flex min-h-[320px] flex-col items-center justify-center gap-6 text-center">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-eag-teal text-eag-teal">
+                  <Check size={28} weight="bold" />
+                </span>
+                <div className="flex flex-col gap-2">
+                  <p className="text-b3 text-eag-white">
+                    {t("home.contact.success.title")}
+                  </p>
+                  <p className="text-a3 text-eag-gray-400">
+                    {t("home.contact.success.body")}
+                  </p>
+                </div>
+                <AriaButton
+                  onPress={handleReset}
+                  aria-label="Close"
+                  className="mt-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-eag-teal text-eag-white outline-none transition-colors hover:bg-eag-teal-dark focus-visible:ring-2 focus-visible:ring-eag-teal focus-visible:ring-offset-2 focus-visible:ring-offset-[#121212]"
+                >
+                  <X size={18} weight="bold" />
+                </AriaButton>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-8">
+                {/* Name */}
                 <div className="group/name relative" data-filled={name ? "" : undefined}>
                   <TextField
                     name="name"
                     isRequired
                     value={name}
-                    onChange={handleNameChange}
+                    onChange={(v) => { setName(v); clearFieldError("name"); }}
                     isInvalid={!!fieldErrors?.name}
                     className="relative"
                   >
                     <Label className="pointer-events-none absolute left-0 top-3 origin-left text-a3 text-eag-gray-500 transition-all duration-200 group-focus-within/name:top-0 group-focus-within/name:-translate-y-full group-focus-within/name:text-[11px] group-focus-within/name:text-eag-teal group-data-[filled]/name:top-0 group-data-[filled]/name:-translate-y-full group-data-[filled]/name:text-[11px] group-data-[filled]/name:text-eag-gray-400">
                       {t("home.contact.name")}
                     </Label>
-                    <Input
-                      className="w-full border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400"
-                    />
+                    <Input className="w-full border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400" />
                   </TextField>
                   {fieldErrors?.name && (
-                    <p className="mt-1.5 text-a5 text-red-400">
-                      {t("home.contact.error.name")}
-                    </p>
+                    <p className="mt-1.5 text-a5 text-red-400">{t("home.contact.error.name")}</p>
                   )}
                 </div>
 
-                {/* Email field */}
+                {/* Email */}
                 <div className="group/email relative" data-filled={email ? "" : undefined}>
                   <TextField
                     name="email"
                     type="email"
                     isRequired
                     value={email}
-                    onChange={handleEmailChange}
+                    onChange={(v) => { setEmail(v); clearFieldError("email"); }}
                     isInvalid={!!fieldErrors?.email}
                     className="relative"
                   >
                     <Label className="pointer-events-none absolute left-0 top-3 origin-left text-a3 text-eag-gray-500 transition-all duration-200 group-focus-within/email:top-0 group-focus-within/email:-translate-y-full group-focus-within/email:text-[11px] group-focus-within/email:text-eag-teal group-data-[filled]/email:top-0 group-data-[filled]/email:-translate-y-full group-data-[filled]/email:text-[11px] group-data-[filled]/email:text-eag-gray-400">
                       {t("home.contact.email")}
                     </Label>
-                    <Input
-                      className="w-full border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400"
-                    />
+                    <Input className="w-full border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400" />
                   </TextField>
                   {fieldErrors?.email && (
                     <p className="mt-1.5 text-a5 text-red-400">
-                      {t("home.contact.error.email")}
+                      {t(fieldErrors.email === "email-empty" ? "home.contact.error.email.empty" : "home.contact.error.email.format")}
                     </p>
                   )}
                 </div>
 
-                {/* Message field */}
+                {/* Message */}
                 <div className="group/msg relative" data-filled={message ? "" : undefined}>
                   <TextField
                     name="message"
                     isRequired
                     value={message}
-                    onChange={handleMessageChange}
+                    onChange={(v) => { setMessage(v); clearFieldError("message"); }}
                     isInvalid={!!fieldErrors?.message}
                     className="relative"
                   >
@@ -249,19 +204,24 @@ export function ContactSection() {
                       {t("home.contact.message")}
                     </Label>
                     <TextArea
-                      rows={4}
+                      rows={1}
                       className="w-full resize-none border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400"
                     />
                   </TextField>
                   {fieldErrors?.message && (
-                    <p className="mt-1.5 text-a5 text-red-400">
-                      {t("home.contact.error.message")}
-                    </p>
+                    <p className="mt-1.5 text-a5 text-red-400">{t("home.contact.error.message")}</p>
                   )}
                 </div>
 
+                {/* Server error */}
+                {status === "server-error" && (
+                  <p role="alert" className="text-a5 text-red-400">
+                    {t("home.contact.error.server")}
+                  </p>
+                )}
+
                 {/* Submit */}
-                <div className="mt-2">
+                <div>
                   <AriaButton
                     onPress={handleSubmit}
                     isDisabled={isSubmitting}
@@ -273,14 +233,12 @@ export function ContactSection() {
                         {t("home.contact.sending")}
                       </>
                     ) : (
-                      <>
-                        <PaperPlaneTilt size={18} weight="bold" />
-                        {t("home.contact.send")}
-                      </>
+                      t("home.contact.send")
                     )}
                   </AriaButton>
                 </div>
               </div>
+            )}
           </div>
         </div>
       </div>
