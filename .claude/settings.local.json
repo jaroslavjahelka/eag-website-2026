@@ -119,7 +119,11 @@
       "Bash(NODE_ENV=production node build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js)",
       "Bash(NODE_ENV=production timeout 5 node build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js)",
       "Bash(echo \"exit: $?\")",
-      "Bash(NODE_ENV=production node -e \"import\\(''./build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js''\\).then\\(\\(\\) => { console.log\\(''OK - server module loaded without crash''\\); process.exit\\(0\\); }\\).catch\\(e => { console.error\\(''FAIL:'', e.message\\); process.exit\\(1\\); }\\)\")"
+      "Bash(NODE_ENV=production node -e \"import\\(''./build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js''\\).then\\(\\(\\) => { console.log\\(''OK - server module loaded without crash''\\); process.exit\\(0\\); }\\).catch\\(e => { console.error\\(''FAIL:'', e.message\\); process.exit\\(1\\); }\\)\")",
+      "Bash(curl -v --max-time 5 http://localhost:5173/)",
+      "Bash(curl -v --max-time 10 http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 http://localhost:5173/team)",
+      "Bash(lsof -i:5173)"
     ]
   }
 }

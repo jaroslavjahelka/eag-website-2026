@@ -302,7 +302,6 @@ function HeroSection() {
 function TimelineSection() {
   const { t } = useI18n();
   const revealRef = useScrollReveal();
-
   return (
     <section data-theme="light" className="bg-white">
       {/* Section heading */}

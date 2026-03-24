@@ -1,4 +1,3 @@
-import { Envelope, MapPin } from "@phosphor-icons/react";
 import { useI18n } from "~/i18n";
 import { EagLogo } from "~/components/eag-logo";
 
@@ -19,19 +18,11 @@ export function AppFooter() {
             <div className="flex flex-col gap-3 text-a4 text-eag-gray-400">
               <a
                 href="mailto:info@eag.group"
-                className="inline-flex items-center gap-2 text-eag-gray-400 no-underline transition-colors hover:text-eag-teal"
+                className="text-eag-gray-400 no-underline transition-colors hover:text-eag-teal"
               >
-                <Envelope size={16} weight="regular" />
                 info@eag.group
               </a>
-              <p className="inline-flex items-start gap-2">
-                <MapPin
-                  size={16}
-                  weight="regular"
-                  className="mt-0.5 shrink-0"
-                />
-                {t("footer.address")}
-              </p>
+              <p>{t("footer.address")}</p>
             </div>
           </div>
 

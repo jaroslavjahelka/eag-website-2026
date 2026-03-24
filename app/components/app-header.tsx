@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { List, X } from "@phosphor-icons/react";
 import { Button as AriaButton } from "react-aria-components";
 import { useI18n } from "~/i18n";
@@ -43,6 +43,16 @@ export function AppHeader() {
   const theme = useHeaderTheme();
   const isDark = theme === "dark";
   const { lang, setLang, t } = useI18n();
+  const { pathname, search } = useLocation();
+
+  function isActive(href: string) {
+    if (href === "/") return pathname === "/";
+    if (href.includes("?")) {
+      const [path, query] = href.split("?");
+      return pathname === path && search.includes(query);
+    }
+    return pathname.startsWith(href);
+  }
 
   useEffect(() => {
     function onScroll() {
@@ -93,19 +103,23 @@ export function AppHeader() {
 
         {/* Desktop nav — centered */}
         <div className="hidden items-center justify-center gap-8 lg:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className={`nav-link relative pb-1 text-a4 no-underline transition-colors duration-300 ${
-                isDark
-                  ? "text-eag-gray-300 hover:text-eag-white"
-                  : "text-eag-gray-600 hover:text-eag-gray-900"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                to={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`nav-link ${active ? "nav-link-active" : ""} relative pb-1 text-a4 no-underline transition-colors duration-300 ${
+                  active
+                    ? isDark ? "text-eag-white" : "text-eag-gray-900"
+                    : isDark ? "text-eag-gray-300 hover:text-eag-white" : "text-eag-gray-600 hover:text-eag-gray-900"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Right side — language + CTA */}
@@ -199,16 +213,22 @@ export function AppHeader() {
 
           {/* Nav links — centered vertically */}
           <div className="relative flex flex-1 flex-col justify-center gap-6 px-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-b2 text-white/70 no-underline transition-colors hover:text-white"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`text-b2 no-underline transition-colors hover:text-white ${
+                    active ? "text-white" : "text-white/70"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Bottom section — lang switch + CTA */}
