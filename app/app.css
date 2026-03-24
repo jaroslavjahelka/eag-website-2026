@@ -93,7 +93,7 @@
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background-color: var(--color-eag-teal);
     transition: width 0.3s ease;
   }
