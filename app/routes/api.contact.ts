@@ -1,7 +1,13 @@
 import type { Route } from "./+types/api.contact";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let _resend: Resend | null = null;
+function getResend() {
+  if (!_resend) {
+    _resend = new Resend(process.env.RESEND_API_KEY || "");
+  }
+  return _resend;
+}
 
 const CONTACT_TO = "jaroslav.jahelka@icloud.com";
 
@@ -50,7 +56,7 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   try {
-    const { error } = await resend.emails.send({
+    const { error } = await getResend().emails.send({
       from: "Kontaktní formulář <onboarding@resend.dev>",
       to: CONTACT_TO,
       replyTo: fields.email,
