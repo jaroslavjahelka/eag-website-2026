@@ -99,7 +99,7 @@ function mapPost(node: WPPostNode): Article | null {
   };
 }
 
-export async function clientLoader() {
+async function fetchArticles() {
   try {
     const res = await fetch("https://api.eag.group/graphql", {
       method: "POST",
@@ -119,6 +119,11 @@ export async function clientLoader() {
     return { articles: [] };
   }
 }
+
+export async function clientLoader() {
+  return fetchArticles();
+}
+clientLoader.hydrate = true as const;
 
 const ARTICLES_PER_PAGE = 9;
 
@@ -143,7 +148,7 @@ export default function MediaPage({ loaderData }: Route.ComponentProps) {
         <ContentSection
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          articles={loaderData.articles}
+          articles={loaderData?.articles ?? []}
         />
       </main>
       <ContactSection />
