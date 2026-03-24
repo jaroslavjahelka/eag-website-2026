@@ -47,10 +47,7 @@ export function AppHeader() {
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
-    if (href.includes("?")) {
-      const [path, query] = href.split("?");
-      return pathname === path && search.includes(query);
-    }
+    if (href.includes("?")) return false;
     return pathname.startsWith(href);
   }
 

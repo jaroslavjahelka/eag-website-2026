@@ -99,7 +99,7 @@ function mapPost(node: WPPostNode): Article | null {
   };
 }
 
-export async function loader() {
+export async function clientLoader() {
   try {
     const res = await fetch("https://api.eag.group/graphql", {
       method: "POST",
