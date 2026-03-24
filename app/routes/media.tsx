@@ -120,10 +120,9 @@ async function fetchArticles() {
   }
 }
 
-export async function clientLoader() {
+export async function loader() {
   return fetchArticles();
 }
-clientLoader.hydrate = true as const;
 
 const ARTICLES_PER_PAGE = 9;
 
