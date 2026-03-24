@@ -99,7 +99,7 @@ function mapPost(node: WPPostNode): Article | null {
   };
 }
 
-async function fetchArticles() {
+export async function loader() {
   try {
     const res = await fetch("https://api.eag.group/graphql", {
       method: "POST",
@@ -118,10 +118,6 @@ async function fetchArticles() {
     console.error("Failed to fetch articles from WordPress:", error);
     return { articles: [] };
   }
-}
-
-export async function loader() {
-  return fetchArticles();
 }
 
 const ARTICLES_PER_PAGE = 9;
