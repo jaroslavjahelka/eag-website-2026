@@ -37,6 +37,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.183.1",
+    "canvas": "^3.2.2",
     "oxfmt": "^0.39.0",
     "oxlint": "^1.54.0",
     "tailwindcss": "^4.1.13",

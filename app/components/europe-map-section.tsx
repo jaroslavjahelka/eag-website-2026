@@ -79,67 +79,15 @@ const VIEW_H = VIEW_BOTTOM - VIEW_TOP;
 const LINE1 = "12+ European markets.";
 const LINE2 = "One connected platform.";
 
-function splitToWords(text: string) {
+function splitWords(text: string) {
   return text.split(" ").map((word) => ({
     word,
     chars: word.split(""),
   }));
 }
 
-const LINE1_WORDS = splitToWords(LINE1);
-const LINE2_WORDS = splitToWords(LINE2);
-
-/* ── CharLine: renders pre-split characters as spans (no DOM mutation) ── */
-
-function CharLine({
-  words,
-  className,
-  charRefsCallback,
-}: {
-  words: { word: string; chars: string[] }[];
-  className: string;
-  charRefsCallback: (els: HTMLSpanElement[]) => void;
-}) {
-  const collectedRefs = useRef<HTMLSpanElement[]>([]);
-  const registered = useRef(false);
-
-  const charRef = useCallback((el: HTMLSpanElement | null) => {
-    if (el && !collectedRefs.current.includes(el)) {
-      collectedRefs.current.push(el);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!registered.current && collectedRefs.current.length > 0) {
-      registered.current = true;
-      charRefsCallback(collectedRefs.current);
-    }
-  });
-
-  return (
-    <h2 className={className} aria-label={words.map((w) => w.word).join(" ")}>
-      {words.map((w, wi) => (
-        <span
-          key={wi}
-          className="inline-flex shrink-0 whitespace-nowrap"
-        >
-          {w.chars.map((ch, ci) => (
-            <span
-              key={ci}
-              ref={charRef}
-              className="inline-block"
-            >
-              {ch}
-            </span>
-          ))}
-          {wi < words.length - 1 && (
-            <span className="inline-block w-[0.25em]">{"\u00A0"}</span>
-          )}
-        </span>
-      ))}
-    </h2>
-  );
-}
+const LINE1_WORDS = splitWords(LINE1);
+const LINE2_WORDS = splitWords(LINE2);
 
 /* ── Component ── */
 
@@ -154,6 +102,19 @@ export function EuropeMapSection() {
   const [countries, setCountries] = useState<CountryPath[]>([]);
   const chars1Ref = useRef<HTMLSpanElement[]>([]);
   const chars2Ref = useRef<HTMLSpanElement[]>([]);
+  const gsapReady = useRef(false);
+
+  const char1Ref = useCallback((el: HTMLSpanElement | null) => {
+    if (el && !chars1Ref.current.includes(el)) {
+      chars1Ref.current.push(el);
+    }
+  }, []);
+
+  const char2Ref = useCallback((el: HTMLSpanElement | null) => {
+    if (el && !chars2Ref.current.includes(el)) {
+      chars2Ref.current.push(el);
+    }
+  }, []);
 
   /* Load GeoJSON on mount */
   useEffect(() => {
@@ -179,7 +140,6 @@ export function EuropeMapSection() {
   }, []);
 
   /* GSAP: pin section, reveal chars on scrub */
-  const gsapReady = useRef(false);
   useEffect(() => {
     if (gsapReady.current) return;
     const section = sectionRef.current;
@@ -197,7 +157,6 @@ export function EuropeMapSection() {
         gsap.registerPlugin(ScrollTrigger);
 
         ctx = gsap.context(() => {
-          /* Hide chars via GSAP so text stays visible if GSAP never loads */
           gsap.set(chars1, { opacity: 0, y: 30 });
           gsap.set(chars2, { opacity: 0, y: 30 });
 
@@ -211,7 +170,6 @@ export function EuropeMapSection() {
             },
           });
 
-          /* Stagger chars in — fast reveal, minimal pre-delay */
           tl.to({}, { duration: 0.15 });
 
           tl.to(chars1, {
@@ -230,7 +188,6 @@ export function EuropeMapSection() {
             ease: "power2.out",
           }, 0.45);
 
-          /* Hold fully visible */
           tl.to({}, { duration: 0.6 });
         }, section);
       },
@@ -239,13 +196,13 @@ export function EuropeMapSection() {
     return () => {
       ctx?.revert();
     };
-  }); // runs every render until gsapReady flips
+  });
 
   return (
     <section
       ref={sectionRef}
       data-theme="dark"
-      className="relative flex h-svh items-center overflow-hidden bg-[#0a0a0a]"
+      className="relative flex h-svh items-center overflow-hidden bg-eag-black"
     >
       {/* ── SVG Map ── */}
       <svg
@@ -309,22 +266,40 @@ export function EuropeMapSection() {
       </svg>
 
       {/* Gradient overlays for depth */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-[#0a0a0a]/80" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]/60" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-eag-black via-eag-black/40 to-eag-black/80" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-eag-black/60 via-transparent to-eag-black/60" />
 
-      {/* Text — pre-split into spans for GSAP animation (no DOM mutation) */}
+      {/* Text */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="max-w-5xl">
-          <CharLine
-            words={LINE1_WORDS}
-            className="flex flex-wrap text-b1 font-bold leading-[1.1] text-white lg:text-c5"
-            charRefsCallback={(els) => { chars1Ref.current = els; }}
-          />
-          <CharLine
-            words={LINE2_WORDS}
-            className="mt-2 flex flex-wrap text-b1 font-bold leading-[1.1] text-white/40 lg:text-c5"
-            charRefsCallback={(els) => { chars2Ref.current = els; }}
-          />
+        <div className="max-w-5xl text-b1 font-bold leading-[1.1] text-white lg:text-c5">
+          <h2 className="flex flex-wrap" aria-label={LINE1}>
+            {LINE1_WORDS.map((w, wi) => (
+              <span key={wi} className="inline-flex shrink-0 whitespace-nowrap">
+                {w.chars.map((ch, ci) => (
+                  <span key={ci} ref={char1Ref} className="inline-block" aria-hidden="true">
+                    {ch}
+                  </span>
+                ))}
+                {wi < LINE1_WORDS.length - 1 && (
+                  <span ref={char1Ref} className="inline-block w-[0.25em]">{"\u00A0"}</span>
+                )}
+              </span>
+            ))}
+          </h2>
+          <p className="mt-2 flex flex-wrap" aria-label={LINE2}>
+            {LINE2_WORDS.map((w, wi) => (
+              <span key={wi} className="inline-flex shrink-0 whitespace-nowrap">
+                {w.chars.map((ch, ci) => (
+                  <span key={ci} ref={char2Ref} className="inline-block" aria-hidden="true">
+                    {ch}
+                  </span>
+                ))}
+                {wi < LINE2_WORDS.length - 1 && (
+                  <span ref={char2Ref} className="inline-block w-[0.25em]">{"\u00A0"}</span>
+                )}
+              </span>
+            ))}
+          </p>
         </div>
       </div>
     </section>
