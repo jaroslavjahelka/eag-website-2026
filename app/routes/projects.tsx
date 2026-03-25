@@ -23,184 +23,27 @@ export function meta({}: Route.MetaArgs) {
 
 interface Project {
   name: string;
-  tagline: string;
-  description: string;
+  key: string;
   image: string;
   logo: string;
-  stats: { label: string; value: string }[];
   href: string;
 }
 
 const projects: Project[] = [
-  {
-    name: "Carvago",
-    tagline: "European used car online marketplace",
-    description:
-      "800K+ vehicles with integrated services including inspections, logistics, financing, insurance, and servicing across Europe.",
-    image: "/assets/projects/carvago.jpg",
-    logo: "/assets/logos/carvago.svg",
-    stats: [
-      { label: "European markets", value: "9" },
-      { label: "Professional partners", value: "30K" },
-    ],
-    href: "https://carvago.com/",
-  },
-  {
-    name: "Omnetic",
-    tagline: "Dealership management system",
-    description:
-      "Leading DMS provider for authorized dealerships and automotive third parties in the CEE region.",
-    image: "/assets/projects/omnetic.jpg",
-    logo: "/assets/logos/omnetic.svg",
-    stats: [
-      { label: "Clients", value: "5,700" },
-      { label: "Countries", value: "12" },
-    ],
-    href: "https://omnetic.com/en",
-  },
-  {
-    name: "Cebia",
-    tagline: "Vehicle verification and security",
-    description:
-      "Vehicle verification and security services in Czechia, Slovakia, and Romania.",
-    image: "/assets/projects/cebia.jpg",
-    logo: "/assets/logos/cebia.svg",
-    stats: [
-      { label: "Verified cars", value: "30M+" },
-      { label: "Data source countries", value: "32+" },
-    ],
-    href: "https://en.cebia.com/",
-  },
-  {
-    name: "Fastback",
-    tagline: "Online B2B trading platform",
-    description:
-      "Online B2B trading platform for used vehicle stock management and trade-ins.",
-    image: "/assets/projects/fastback.jpg",
-    logo: "/assets/logos/fastback.svg",
-    stats: [
-      { label: "Cars sold in 2022", value: "75,000+" },
-      { label: "Dealerships", value: "2,300+" },
-    ],
-    href: "https://www.fastback.be/en/",
-  },
-  {
-    name: "Softvig",
-    tagline: "Systems for importers and dealers",
-    description:
-      "IT solutions for importers and dealerships in Poland since 2000.",
-    image: "/assets/projects/softvig.jpg",
-    logo: "/assets/logos/softvig.svg",
-    stats: [
-      { label: "Dealerships", value: "800+" },
-      { label: "Top 10 dealers in Poland", value: "8" },
-    ],
-    href: "https://softvig.pl/en",
-  },
-  {
-    name: "Teas",
-    tagline: "Dealership management system",
-    description:
-      "Largest DMS provider in the Czech Republic and Slovakia for dealerships and service centers.",
-    image: "/assets/projects/teas.jpg",
-    logo: "/assets/logos/teas.svg",
-    stats: [
-      { label: "CZK yearly revenue", value: "120B" },
-      { label: "Vehicles sold yearly", value: "250K" },
-    ],
-    href: "https://www.teas.cz/",
-  },
-  {
-    name: "CarAudit",
-    tagline: "Automatized and detailed car inspection",
-    description:
-      "Mobile app for digitalized vehicle inspection and fleet management.",
-    image: "/assets/projects/caraudit.jpg",
-    logo: "/assets/logos/caraudit.svg",
-    stats: [
-      { label: "Vehicles checked monthly", value: "10K" },
-      { label: "Car manufacturers", value: "13" },
-    ],
-    href: "https://carvago.com/cs/caraudit",
-  },
-  {
-    name: "CarsData",
-    tagline: "Market and dealership analytics tool",
-    description:
-      "Market and dealership analytics tool covering 16 European nations.",
-    image: "/assets/projects/carsdata.jpg",
-    logo: "/assets/logos/carsdata.svg",
-    stats: [
-      { label: "Ads analyzed daily", value: "6.5M" },
-      { label: "Data sources", value: "135" },
-    ],
-    href: "https://carsdata.com/",
-  },
-  {
-    name: "JBR",
-    tagline: "IT systems for the automotive industry",
-    description:
-      "Polish IT system developer optimizing workflow for automotive manufacturers.",
-    image: "/assets/projects/jbr.jpg",
-    logo: "/assets/logos/jbr.svg",
-    stats: [
-      { label: "Years of experience", value: "30+" },
-      { label: "Customer service", value: "24/7" },
-    ],
-    href: "https://www.jbr.pl/",
-  },
-  {
-    name: "Instamotion",
-    tagline: "Online car dealer",
-    description:
-      "Largest online dealer of used and nearly-new cars in the German market.",
-    image: "/assets/projects/instamotion.jpg",
-    logo: "/assets/logos/instamotion.svg",
-    stats: [
-      { label: "Partners in Germany", value: "400+" },
-      { label: "Offers", value: "30,000+" },
-    ],
-    href: "https://www.instamotion.com/",
-  },
-  {
-    name: "Autrado",
-    tagline: "Dealer Management Systems",
-    description:
-      "DMS software for dealerships with vehicle management and lead tools.",
-    image: "/assets/projects/autrado.jpg",
-    logo: "/assets/logos/autrado.svg",
-    stats: [
-      { label: "Partners in Europe", value: "320+" },
-      { label: "Years of experience", value: "20+" },
-    ],
-    href: "https://www.autrado.de/",
-  },
-  {
-    name: "CarObserver",
-    tagline: "Professional Margin Optimization",
-    description:
-      "Margin optimization for manufacturers and dealerships via pricing analytics.",
-    image: "/assets/projects/carobserver.jpg",
-    logo: "/assets/logos/carobserver.svg",
-    stats: [
-      { label: "Vehicle analyses", value: "50M" },
-      { label: "Dealership clients", value: "500+" },
-    ],
-    href: "https://www.carobserver.de/",
-  },
-  {
-    name: "Dotzilla",
-    tagline: "Digital Marketing Solutions",
-    description:
-      "Digital marketing solutions including SEO and DMS middleware since 2002.",
-    image: "/assets/projects/dotzilla.jpg",
-    logo: "/assets/logos/dotzilla.svg",
-    stats: [
-      { label: "Dealerships served", value: "1,000+" },
-      { label: "Years of experience", value: "20+" },
-    ],
-    href: "https://www.dotzilla.de/",
-  },
+  { name: "Carvago", key: "carvago", image: "/assets/projects/carvago.jpg", logo: "/assets/logos/carvago.svg", href: "https://carvago.com/" },
+  { name: "Omnetic", key: "omnetic", image: "/assets/projects/omnetic.jpg", logo: "/assets/logos/omnetic.svg", href: "https://omnetic.com/en" },
+  { name: "Cebia", key: "cebia", image: "/assets/projects/cebia.jpg", logo: "/assets/logos/cebia.svg", href: "https://en.cebia.com/" },
+  { name: "Fastback", key: "fastback", image: "/assets/projects/fastback.jpg", logo: "/assets/logos/fastback.svg", href: "https://www.fastback.be/en/" },
+  { name: "Softvig", key: "softvig", image: "/assets/projects/softvig.jpg", logo: "/assets/logos/softvig.svg", href: "https://softvig.pl/en" },
+  { name: "Teas", key: "teas", image: "/assets/projects/teas.jpg", logo: "/assets/logos/teas.svg", href: "https://www.teas.cz/" },
+  { name: "CarAudit", key: "caraudit", image: "/assets/projects/caraudit.jpg", logo: "/assets/logos/caraudit.svg", href: "https://carvago.com/cs/caraudit" },
+  { name: "CarsData", key: "carsdata", image: "/assets/projects/carsdata.jpg", logo: "/assets/logos/carsdata.svg", href: "https://carsdata.com/" },
+  { name: "JBR", key: "jbr", image: "/assets/projects/jbr.jpg", logo: "/assets/logos/jbr.svg", href: "https://www.jbr.pl/" },
+  { name: "Instamotion", key: "instamotion", image: "/assets/projects/instamotion.jpg", logo: "/assets/logos/instamotion.svg", href: "https://www.instamotion.com/" },
+  { name: "Autrado", key: "autrado", image: "/assets/projects/autrado.jpg", logo: "/assets/logos/autrado.svg", href: "https://www.autrado.de/" },
+  { name: "CarObserver", key: "carobserver", image: "/assets/projects/carobserver.jpg", logo: "/assets/logos/carobserver.svg", href: "https://www.carobserver.de/" },
+  { name: "Dotzilla", key: "dotzilla", image: "/assets/projects/dotzilla.jpg", logo: "/assets/logos/dotzilla.svg", href: "https://www.dotzilla.de/" },
+  { name: "Automotive Systems", key: "automotive-systems", image: "/assets/projects/automotive-systems.jpg", logo: "/assets/logos/automotive-systems.png", href: "https://automotivesystems.be/en/index.html" },
 ];
 
 /* ── Page ──────────────────────────────────────────── */
@@ -267,6 +110,7 @@ function ProjectsGrid() {
 
 function ProjectCard({ project }: { project: Project }) {
   const { t } = useI18n();
+  const k = project.key;
   return (
     <a
       id={project.name.toLowerCase().replace(/\s+/g, "")}
@@ -275,7 +119,7 @@ function ProjectCard({ project }: { project: Project }) {
       rel="noopener noreferrer"
       className="group block scroll-mt-24 overflow-hidden rounded-2xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100"
     >
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2 lg:min-h-[500px]">
         {/* Image */}
         <div className="aspect-video max-h-[500px] overflow-hidden lg:aspect-auto lg:h-full">
           <OptimizedImage
@@ -294,23 +138,27 @@ function ProjectCard({ project }: { project: Project }) {
           />
 
           <p className="mb-2 text-a4 font-medium uppercase tracking-wider text-eag-teal">
-            {project.tagline}
+            {t(`project.${k}.tagline`)}
           </p>
 
           <p className="mb-8 text-a2 text-gray-500">
-            {project.description}
+            {t(`project.${k}.desc`)}
           </p>
 
           {/* Stats */}
           <div className="mb-8 grid grid-cols-2 gap-6">
-            {project.stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-b3 text-eag-black lg:text-b2">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-a5 text-gray-500">{stat.label}</p>
-              </div>
-            ))}
+            <div>
+              <p className="text-b3 text-eag-black lg:text-b2">
+                {t(`project.${k}.stat1.value`)}
+              </p>
+              <p className="mt-1 text-a5 text-gray-500">{t(`project.${k}.stat1.label`)}</p>
+            </div>
+            <div>
+              <p className="text-b3 text-eag-black lg:text-b2">
+                {t(`project.${k}.stat2.value`)}
+              </p>
+              <p className="mt-1 text-a5 text-gray-500">{t(`project.${k}.stat2.label`)}</p>
+            </div>
           </div>
 
           <span className="inline-flex items-center gap-1 text-a4 font-medium text-eag-teal">

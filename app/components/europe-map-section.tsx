@@ -1,4 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import { useI18n } from "~/i18n";
 
 /**
  * Fullscreen dark pinned section — SVG Europe map with GSAP letter reveal.
@@ -76,8 +77,6 @@ const VIEW_W = VIEW_RIGHT - VIEW_LEFT;
 const VIEW_H = VIEW_BOTTOM - VIEW_TOP;
 
 /* ── Pre-split text lines into words+chars for React rendering ── */
-const LINE1 = "12+ European markets.";
-const LINE2 = "One connected platform.";
 
 function splitWords(text: string) {
   return text.split(" ").map((word) => ({
@@ -85,9 +84,6 @@ function splitWords(text: string) {
     chars: word.split(""),
   }));
 }
-
-const LINE1_WORDS = splitWords(LINE1);
-const LINE2_WORDS = splitWords(LINE2);
 
 /* ── Component ── */
 
@@ -98,11 +94,17 @@ interface CountryPath {
 }
 
 export function EuropeMapSection() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [countries, setCountries] = useState<CountryPath[]>([]);
   const chars1Ref = useRef<HTMLSpanElement[]>([]);
   const chars2Ref = useRef<HTMLSpanElement[]>([]);
   const gsapReady = useRef(false);
+
+  const line1 = t("home.map.line1");
+  const line2 = t("home.map.line2");
+  const line1Words = useMemo(() => splitWords(line1), [line1]);
+  const line2Words = useMemo(() => splitWords(line2), [line2]);
 
   const char1Ref = useCallback((el: HTMLSpanElement | null) => {
     if (el && !chars1Ref.current.includes(el)) {
@@ -272,29 +274,29 @@ export function EuropeMapSection() {
       {/* Text */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-5xl text-b1 font-bold leading-[1.1] text-white lg:text-c5">
-          <h2 className="flex flex-wrap" aria-label={LINE1}>
-            {LINE1_WORDS.map((w, wi) => (
+          <h2 className="flex flex-wrap" aria-label={line1}>
+            {line1Words.map((w, wi) => (
               <span key={wi} className="inline-flex shrink-0 whitespace-nowrap">
                 {w.chars.map((ch, ci) => (
                   <span key={ci} ref={char1Ref} className="inline-block" aria-hidden="true">
                     {ch}
                   </span>
                 ))}
-                {wi < LINE1_WORDS.length - 1 && (
+                {wi < line1Words.length - 1 && (
                   <span ref={char1Ref} className="inline-block w-[0.25em]">{"\u00A0"}</span>
                 )}
               </span>
             ))}
           </h2>
-          <p className="mt-2 flex flex-wrap" aria-label={LINE2}>
-            {LINE2_WORDS.map((w, wi) => (
+          <p className="mt-2 flex flex-wrap" aria-label={line2}>
+            {line2Words.map((w, wi) => (
               <span key={wi} className="inline-flex shrink-0 whitespace-nowrap">
                 {w.chars.map((ch, ci) => (
                   <span key={ci} ref={char2Ref} className="inline-block" aria-hidden="true">
                     {ch}
                   </span>
                 ))}
-                {wi < LINE2_WORDS.length - 1 && (
+                {wi < line2Words.length - 1 && (
                   <span ref={char2Ref} className="inline-block w-[0.25em]">{"\u00A0"}</span>
                 )}
               </span>

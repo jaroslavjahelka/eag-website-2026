@@ -127,7 +127,22 @@
       "Bash(node tmp-generate-map.mjs)",
       "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/europe-map-dark.png\")",
       "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/.claude/launch.json\")",
-      "Bash(cat \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/.claude/launch.json\")"
+      "Bash(cat \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/.claude/launch.json\")",
+      "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/logos-color/\")",
+      "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/news/\")",
+      "Bash(ls \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/timeline/\")",
+      "Read(//private/tmp/**)",
+      "Bash(cp ~/Desktop/logo-as-1.png public/assets/logos-color/automotive-systems-color.png)",
+      "Bash(cp ~/Desktop/Group_HR-4-600x450.webp public/assets/news/automotive-systems.webp)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/news/automotive-systems\"*)",
+      "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/timeline/\")",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/news/automotive-systems\"* \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/logos-color/automotive-systems-color.png\")",
+      "Bash(sips -s format png --setProperty formatOptions 100 -m \"/System/Library/ColorSync/Profiles/Generic Gray Gamma 2.2 Profile.icc\" \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/logos-color/automotive-systems-color.png\" --out \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/logos-color/automotive-systems-bw.png\")",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80\" -o \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/projects/automotive-systems.jpg\")",
+      "Bash(ls -la \"/Users/jaroslav/Dropbox/My Mac \\(Jaroslav-MacBook-Pro.local\\)/Desktop/Project 01/public/assets/projects/automotive-systems.jpg\")",
+      "Bash(sips -g pixelWidth -g pixelHeight ~/Desktop/automotive_systems_belgium_cover.jpeg)"
     ]
   }
 }

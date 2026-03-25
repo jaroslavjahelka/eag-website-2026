@@ -22,64 +22,64 @@ export function meta({}: Route.MetaArgs) {
 
 interface TeamMember {
   name: string;
-  role: string;
+  roleKey: string;
   photo: string;
 }
 
 const team: TeamMember[] = [
   {
     name: "Jakub Šulta",
-    role: "CEO and Chairman of the Board",
+    roleKey: "team.role.sulta",
     photo: "/assets/team/jakub-sulta.jpg",
   },
   {
     name: "Petr Kratochvíl",
-    role: "CIO and Member of the Board",
+    roleKey: "team.role.kratochvil",
     photo: "/assets/team/petr-kratochvil.jpg",
   },
   {
     name: "Pavel Svoreň",
-    role: "Member of the Board",
+    roleKey: "team.role.svoren",
     photo: "/assets/team/pavel-svoren.jpg",
   },
   {
     name: "Ondřej Gálik",
-    role: "CPO",
+    roleKey: "team.role.galik",
     photo: "/assets/team/ondrej-galik.jpg",
   },
   {
     name: "Ondřej Kofroň",
-    role: "CTO",
+    roleKey: "team.role.kofron",
     photo: "/assets/team/ondrej-kofron.jpg",
   },
   {
     name: "Petr Dušek",
-    role: "CMO",
+    roleKey: "team.role.dusek",
     photo: "/assets/team/petr-dusek.jpg",
   },
   {
     name: "Zbyněk Müller",
-    role: "CBO",
+    roleKey: "team.role.muller",
     photo: "/assets/team/zbynek-muller.jpg",
   },
   {
     name: "Viktor Navrátil",
-    role: "CSO, Omnetic",
+    roleKey: "team.role.navratil",
     photo: "/assets/team/viktor-navratil.jpg",
   },
   {
     name: "Martin Pajer",
-    role: "CEO, Cebia",
+    roleKey: "team.role.pajer",
     photo: "/assets/team/martin-pajer.jpg",
   },
   {
     name: "Nicolas Rorive",
-    role: "CEO, Fastback srl.",
+    roleKey: "team.role.rorive",
     photo: "/assets/team/nicolas-rorive.jpg",
   },
   {
     name: "Piotr Stański",
-    role: "CEO, SoftVig",
+    roleKey: "team.role.stanski",
     photo: "/assets/team/piotr-stanski.png",
   },
 ];
@@ -105,10 +105,10 @@ export default function TeamPage() {
           <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
             <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20">
               <h1 className="text-b1 text-[var(--section-text)] lg:text-c6">
-                The people behind our vision
+                {t("team.hero.title")}
               </h1>
               <p className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3">
-                Our leadership team brings together decades of experience in technology, automotive, and investment to drive the digital transformation of how vehicles are sold and managed across Europe.
+                {t("team.hero.subtitle")}
               </p>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function TeamPage() {
                     {member.name}
                   </h3>
                   <p className="mt-0.5 text-a5 text-gray-400">
-                    {member.role}
+                    {t(member.roleKey)}
                   </p>
                 </div>
               ))}

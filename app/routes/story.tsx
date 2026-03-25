@@ -36,6 +36,13 @@ interface TimelineEntry {
 
 const timeline: TimelineEntry[] = [
   {
+    year: 2026,
+    titleKey: "timeline.2026.automotive-systems.title",
+    descKey: "timeline.2026.automotive-systems.desc",
+    logo: "/assets/logos-color/automotive-systems-color.png",
+    image: "/assets/news/automotive-systems.jpg",
+  },
+  {
     year: 2025,
     titleKey: "timeline.2025.dotzilla.title",
     descKey: "timeline.2025.dotzilla.desc",

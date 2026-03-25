@@ -46,13 +46,14 @@ const companies = [
   { name: "Autrado", key: "company.autrado", logo: "/assets/logos/autrado.svg", slug: "autrado" },
   { name: "Carobserver", key: "company.carobserver", logo: "/assets/logos/carobserver.svg", slug: "carobserver" },
   { name: "Dotzilla", key: "company.dotzilla", logo: "/assets/logos/dotzilla.svg", slug: "dotzilla" },
+  { name: "Automotive Systems", key: "company.automotive-systems", logo: "/assets/logos/automotive-systems.png", slug: "automotivesystems" },
 ];
 
 const stats = [
-  { value: "13", label: "Portfolio companies" },
-  { value: "12+", label: "European markets" },
-  { value: "5,700+", label: "Clients across platforms" },
-  { value: "30M+", label: "Vehicles verified" },
+  { value: "14", labelKey: "home.stats.portfolio" },
+  { value: "12+", labelKey: "home.stats.markets" },
+  { value: "5,700+", labelKey: "home.stats.clients" },
+  { value: "30M+", labelKey: "home.stats.vehicles" },
 ];
 
 const latestNews = [
@@ -155,19 +156,20 @@ function LogoMarquee() {
 /* ── Stats ─────────────────────────────────────────── */
 
 function StatsSection() {
+  const { t } = useI18n();
   return (
     <section data-theme="dark" className="bg-eag-black">
       <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <div
-            key={stat.label}
+            key={stat.labelKey}
             data-reveal
             className={`flex flex-col items-center gap-2 px-6 py-14 lg:py-20 ${
               i < stats.length - 1 ? "border-r border-white/10" : ""
             } ${i < 2 ? "reveal-delay-1" : "reveal-delay-2"}`}
           >
             <span className="text-b1 text-eag-teal lg:text-c6">{stat.value}</span>
-            <span className="text-a4 text-white/50">{stat.label}</span>
+            <span className="text-a4 text-white/50">{t(stat.labelKey)}</span>
           </div>
         ))}
       </div>
@@ -317,7 +319,7 @@ function NewsSection() {
               {t("media.tab.news")}
             </p>
             <h2 data-reveal className="text-b2 text-[var(--section-text)] lg:text-b1 reveal-delay-1">
-              Latest from EAG
+              {t("home.news.title")}
             </h2>
           </div>
           <Link
@@ -325,7 +327,7 @@ function NewsSection() {
             to="/media"
             className="group/link hidden items-center gap-2 rounded-full border border-[var(--section-border)] px-5 py-2.5 text-a4 font-medium text-[var(--section-text)] no-underline transition-all duration-300 hover:border-eag-black hover:bg-eag-black hover:text-white sm:inline-flex reveal-delay-1"
           >
-            View all
+            {t("home.news.viewAll")}
             <ArrowRight size={14} weight="bold" className="transition-transform group-hover/link:translate-x-0.5" />
           </Link>
         </div>

@@ -131,6 +131,8 @@ const translations: Record<Lang, Record<string, string>> = {
       "From a small Czech software company to an international automotive technology group.",
 
     /* Timeline entries */
+    "timeline.2026.automotive-systems.title": "Acquisition of Automotive Systems",
+    "timeline.2026.automotive-systems.desc": "The EAG group successfully acquired Automotive Systems.",
     "timeline.2025.dotzilla.title": "Acquisition of Dotzilla",
     "timeline.2025.dotzilla.desc": "The EAG group successfully acquired Dotzilla.",
     "timeline.2025.carobserver.title": "Acquisition of CarObserver",
@@ -217,6 +219,136 @@ const translations: Record<Lang, Record<string, string>> = {
       "We only invest in leading companies in the automotive industry which focus on bringing new technologies into the industry to optimize their processes and sales. Our main goal is to utilize the potential of data analysis and introduce a brand new approach to the entire industry.",
     "projects.visitWebsite": "Visit website",
 
+    /* Home — Stats */
+    "home.stats.portfolio": "Portfolio companies",
+    "home.stats.markets": "European markets",
+    "home.stats.clients": "Clients across platforms",
+    "home.stats.vehicles": "Vehicles verified",
+
+    /* Home — News */
+    "home.news.title": "Latest from EAG",
+    "home.news.viewAll": "View all",
+
+    /* Home — Europe Map */
+    "home.map.line1": "12+ European markets.",
+    "home.map.line2": "One connected platform.",
+
+    /* Team page — Hero */
+    "team.hero.title": "The people behind our vision",
+    "team.hero.subtitle": "Our leadership team brings together decades of experience in technology, automotive, and investment to drive the digital transformation of how vehicles are sold and managed across Europe.",
+
+    /* Team roles */
+    "team.role.sulta": "CEO and Chairman of the Board",
+    "team.role.kratochvil": "CIO and Member of the Board",
+    "team.role.svoren": "Member of the Board",
+    "team.role.galik": "CPO",
+    "team.role.kofron": "CTO",
+    "team.role.dusek": "CMO",
+    "team.role.muller": "CBO",
+    "team.role.navratil": "CSO, Omnetic",
+    "team.role.pajer": "CEO, Cebia",
+    "team.role.rorive": "CEO, Fastback srl.",
+    "team.role.stanski": "CEO, SoftVig",
+
+    /* Project details */
+    "project.carvago.tagline": "European used car online marketplace",
+    "project.carvago.desc": "800K+ vehicles with integrated services including inspections, logistics, financing, insurance, and servicing across Europe.",
+    "project.carvago.stat1.label": "European markets",
+    "project.carvago.stat1.value": "9",
+    "project.carvago.stat2.label": "Professional partners",
+    "project.carvago.stat2.value": "30K",
+
+    "project.omnetic.tagline": "Dealership management system",
+    "project.omnetic.desc": "Leading DMS provider for authorized dealerships and automotive third parties in the CEE region.",
+    "project.omnetic.stat1.label": "Clients",
+    "project.omnetic.stat1.value": "5,700",
+    "project.omnetic.stat2.label": "Countries",
+    "project.omnetic.stat2.value": "12",
+
+    "project.cebia.tagline": "Vehicle verification and security",
+    "project.cebia.desc": "Vehicle verification and security services in Czechia, Slovakia, and Romania.",
+    "project.cebia.stat1.label": "Verified cars",
+    "project.cebia.stat1.value": "30M+",
+    "project.cebia.stat2.label": "Data source countries",
+    "project.cebia.stat2.value": "32+",
+
+    "project.fastback.tagline": "Online B2B trading platform",
+    "project.fastback.desc": "Online B2B trading platform for used vehicle stock management and trade-ins.",
+    "project.fastback.stat1.label": "Cars sold in 2022",
+    "project.fastback.stat1.value": "75,000+",
+    "project.fastback.stat2.label": "Dealerships",
+    "project.fastback.stat2.value": "2,300+",
+
+    "project.softvig.tagline": "Systems for importers and dealers",
+    "project.softvig.desc": "IT solutions for importers and dealerships in Poland since 2000.",
+    "project.softvig.stat1.label": "Dealerships",
+    "project.softvig.stat1.value": "800+",
+    "project.softvig.stat2.label": "Top 10 dealers in Poland",
+    "project.softvig.stat2.value": "8",
+
+    "project.teas.tagline": "Dealership management system",
+    "project.teas.desc": "Largest DMS provider in the Czech Republic and Slovakia for dealerships and service centers.",
+    "project.teas.stat1.label": "CZK yearly revenue",
+    "project.teas.stat1.value": "120B",
+    "project.teas.stat2.label": "Vehicles sold yearly",
+    "project.teas.stat2.value": "250K",
+
+    "project.caraudit.tagline": "Automatized and detailed car inspection",
+    "project.caraudit.desc": "Mobile app for digitalized vehicle inspection and fleet management.",
+    "project.caraudit.stat1.label": "Vehicles checked monthly",
+    "project.caraudit.stat1.value": "10K",
+    "project.caraudit.stat2.label": "Car manufacturers",
+    "project.caraudit.stat2.value": "13",
+
+    "project.carsdata.tagline": "Market and dealership analytics tool",
+    "project.carsdata.desc": "Market and dealership analytics tool covering 16 European nations.",
+    "project.carsdata.stat1.label": "Ads analyzed daily",
+    "project.carsdata.stat1.value": "6.5M",
+    "project.carsdata.stat2.label": "Data sources",
+    "project.carsdata.stat2.value": "135",
+
+    "project.jbr.tagline": "IT systems for the automotive industry",
+    "project.jbr.desc": "Polish IT system developer optimizing workflow for automotive manufacturers.",
+    "project.jbr.stat1.label": "Years of experience",
+    "project.jbr.stat1.value": "30+",
+    "project.jbr.stat2.label": "Customer service",
+    "project.jbr.stat2.value": "24/7",
+
+    "project.instamotion.tagline": "Online car dealer",
+    "project.instamotion.desc": "Largest online dealer of used and nearly-new cars in the German market.",
+    "project.instamotion.stat1.label": "Partners in Germany",
+    "project.instamotion.stat1.value": "400+",
+    "project.instamotion.stat2.label": "Offers",
+    "project.instamotion.stat2.value": "30,000+",
+
+    "project.autrado.tagline": "Dealer Management Systems",
+    "project.autrado.desc": "DMS software for dealerships with vehicle management and lead tools.",
+    "project.autrado.stat1.label": "Partners in Europe",
+    "project.autrado.stat1.value": "320+",
+    "project.autrado.stat2.label": "Years of experience",
+    "project.autrado.stat2.value": "20+",
+
+    "project.carobserver.tagline": "Professional Margin Optimization",
+    "project.carobserver.desc": "Margin optimization for manufacturers and dealerships via pricing analytics.",
+    "project.carobserver.stat1.label": "Vehicle analyses",
+    "project.carobserver.stat1.value": "50M",
+    "project.carobserver.stat2.label": "Dealership clients",
+    "project.carobserver.stat2.value": "500+",
+
+    "project.dotzilla.tagline": "Digital Marketing Solutions",
+    "project.dotzilla.desc": "Digital marketing solutions including SEO and DMS middleware since 2002.",
+    "project.dotzilla.stat1.label": "Dealerships served",
+    "project.dotzilla.stat1.value": "1,000+",
+    "project.dotzilla.stat2.label": "Years of experience",
+    "project.dotzilla.stat2.value": "20+",
+
+    "project.automotive-systems.tagline": "Dealer Management System",
+    "project.automotive-systems.desc": "IT solutions and dealer management system for car dealerships across Belgium, Luxembourg and Switzerland.",
+    "project.automotive-systems.stat1.label": "Active sites",
+    "project.automotive-systems.stat1.value": "300+",
+    "project.automotive-systems.stat2.label": "Users",
+    "project.automotive-systems.stat2.value": "2,300+",
+
     /* Company descriptions */
     "company.carvago": "European used car online marketplace",
     "company.omnetic": "Dealership management system",
@@ -231,6 +363,7 @@ const translations: Record<Lang, Record<string, string>> = {
     "company.autrado": "Dealer Management Systems",
     "company.carobserver": "Professional Margin Optimization",
     "company.dotzilla": "Digital Marketing Solutions",
+    "company.automotive-systems": "Dealer Management System",
   },
 
   cs: {
@@ -326,6 +459,8 @@ const translations: Record<Lang, Record<string, string>> = {
       "Od malé české softwarové společnosti k mezinárodní automobilové technologické skupině.",
 
     /* Timeline entries */
+    "timeline.2026.automotive-systems.title": "Akvizice Automotive Systems",
+    "timeline.2026.automotive-systems.desc": "Skupina EAG úspěšně akvírovala společnost Automotive Systems.",
     "timeline.2025.dotzilla.title": "Akvizice Dotzilla",
     "timeline.2025.dotzilla.desc": "Skupina EAG úspěšně akvírovala společnost Dotzilla.",
     "timeline.2025.carobserver.title": "Akvizice CarObserver",
@@ -412,6 +547,108 @@ const translations: Record<Lang, Record<string, string>> = {
       "Investujeme pouze do předních společností v automobilovém průmyslu, které se zaměřují na zavádění nových technologií do odvětví za účelem optimalizace procesů a prodeje. Naším hlavním cílem je využít potenciál analýzy dat a přinést zcela nový přístup do celého odvětví.",
     "projects.visitWebsite": "Navštívit web",
 
+    /* Home — Stats */
+    "home.stats.portfolio": "Portfoliové společnosti",
+    "home.stats.markets": "Evropské trhy",
+    "home.stats.clients": "Klienti napříč platformami",
+    "home.stats.vehicles": "Ověřených vozidel",
+
+    /* Home — News */
+    "home.news.title": "Novinky z EAG",
+    "home.news.viewAll": "Zobrazit vše",
+
+    /* Home — Europe Map */
+    "home.map.line1": "12+ evropských trhů.",
+    "home.map.line2": "Jedna propojená platforma.",
+
+    /* Team page — Hero */
+    "team.hero.title": "Lidé za naší vizí",
+    "team.hero.subtitle": "Náš vedoucí tým spojuje desetiletí zkušeností v technologiích, automobilovém průmyslu a investicích, aby vedl digitální transformaci způsobu, jakým se vozidla prodávají a spravují napříč Evropou.",
+
+    /* Team roles */
+    "team.role.sulta": "CEO a předseda představenstva",
+    "team.role.kratochvil": "CIO a člen představenstva",
+    "team.role.svoren": "Člen představenstva",
+    "team.role.galik": "CPO",
+    "team.role.kofron": "CTO",
+    "team.role.dusek": "CMO",
+    "team.role.muller": "CBO",
+    "team.role.navratil": "CSO, Omnetic",
+    "team.role.pajer": "CEO, Cebia",
+    "team.role.rorive": "CEO, Fastback srl.",
+    "team.role.stanski": "CEO, SoftVig",
+
+    /* Project details */
+    "project.carvago.tagline": "Evropský online marketplace ojetých vozidel",
+    "project.carvago.desc": "800 000+ vozidel s integrovanými službami včetně inspekcí, logistiky, financování, pojištění a servisu napříč Evropou.",
+    "project.carvago.stat1.label": "Evropské trhy",
+    "project.carvago.stat2.label": "Profesionální partneři",
+
+    "project.omnetic.tagline": "Systém řízení dealerství",
+    "project.omnetic.desc": "Přední poskytovatel DMS pro autorizované dealerství a automobilové třetí strany v regionu střední a východní Evropy.",
+    "project.omnetic.stat1.label": "Klienti",
+    "project.omnetic.stat2.label": "Země",
+
+    "project.cebia.tagline": "Ověřování a zabezpečení vozidel",
+    "project.cebia.desc": "Služby ověřování a zabezpečení vozidel v Česku, na Slovensku a v Rumunsku.",
+    "project.cebia.stat1.label": "Ověřených vozidel",
+    "project.cebia.stat2.label": "Země zdrojových dat",
+
+    "project.fastback.tagline": "Online B2B obchodní platforma",
+    "project.fastback.desc": "Online B2B obchodní platforma pro správu skladu ojetých vozidel a výkup.",
+    "project.fastback.stat1.label": "Prodaných vozidel v 2022",
+    "project.fastback.stat2.label": "Dealerství",
+
+    "project.softvig.tagline": "Systémy pro importéry a dealery",
+    "project.softvig.desc": "IT řešení pro importéry a dealerství v Polsku od roku 2000.",
+    "project.softvig.stat1.label": "Dealerství",
+    "project.softvig.stat2.label": "Top 10 dealerů v Polsku",
+
+    "project.teas.tagline": "Systém řízení dealerství",
+    "project.teas.desc": "Největší poskytovatel DMS v České republice a na Slovensku pro dealerství a servisní centra.",
+    "project.teas.stat1.label": "Roční obrat v CZK",
+    "project.teas.stat2.label": "Prodaných vozidel ročně",
+
+    "project.caraudit.tagline": "Automatizovaná a detailní inspekce vozidel",
+    "project.caraudit.desc": "Mobilní aplikace pro digitalizovanou inspekci vozidel a správu flotily.",
+    "project.caraudit.stat1.label": "Zkontrolovaných vozidel měsíčně",
+    "project.caraudit.stat2.label": "Výrobci automobilů",
+
+    "project.carsdata.tagline": "Analytický nástroj pro trh a dealerství",
+    "project.carsdata.desc": "Analytický nástroj pro trh a dealerství pokrývající 16 evropských zemí.",
+    "project.carsdata.stat1.label": "Analyzovaných inzerátů denně",
+    "project.carsdata.stat2.label": "Datové zdroje",
+
+    "project.jbr.tagline": "IT systémy pro automobilový průmysl",
+    "project.jbr.desc": "Polský vývojář IT systémů optimalizující procesy pro automobilové výrobce.",
+    "project.jbr.stat1.label": "Let zkušeností",
+    "project.jbr.stat2.label": "Zákaznický servis",
+
+    "project.instamotion.tagline": "Online prodejce vozidel",
+    "project.instamotion.desc": "Největší online prodejce ojetých a téměř nových vozidel na německém trhu.",
+    "project.instamotion.stat1.label": "Partnerů v Německu",
+    "project.instamotion.stat2.label": "Nabídek",
+
+    "project.autrado.tagline": "Systémy řízení dealerství",
+    "project.autrado.desc": "DMS software pro dealerství se správou vozidel a nástroji pro leady.",
+    "project.autrado.stat1.label": "Partnerů v Evropě",
+    "project.autrado.stat2.label": "Let zkušeností",
+
+    "project.carobserver.tagline": "Profesionální optimalizace marží",
+    "project.carobserver.desc": "Optimalizace marží pro výrobce a dealerství prostřednictvím cenové analytiky.",
+    "project.carobserver.stat1.label": "Analýz vozidel",
+    "project.carobserver.stat2.label": "Dealerských klientů",
+
+    "project.dotzilla.tagline": "Řešení digitálního marketingu",
+    "project.dotzilla.desc": "Řešení digitálního marketingu včetně SEO a DMS middleware od roku 2002.",
+    "project.dotzilla.stat1.label": "Obsluhovaných dealerství",
+    "project.dotzilla.stat2.label": "Let zkušeností",
+
+    "project.automotive-systems.tagline": "Systém řízení dealerství",
+    "project.automotive-systems.desc": "IT řešení a systém řízení dealerství pro autosalony v Belgii, Lucembursku a Švýcarsku.",
+    "project.automotive-systems.stat1.label": "Aktivních poboček",
+    "project.automotive-systems.stat2.label": "Uživatelů",
+
     /* Company descriptions */
     "company.carvago": "Evropský online marketplace ojetých vozidel",
     "company.omnetic": "Systém řízení autorizovaných dealerství",
@@ -426,5 +663,6 @@ const translations: Record<Lang, Record<string, string>> = {
     "company.autrado": "Systémy řízení dealerství",
     "company.carobserver": "Profesionální optimalizace marží",
     "company.dotzilla": "Řešení digitálního marketingu",
+    "company.automotive-systems": "Systém řízení dealerství",
   },
 };
