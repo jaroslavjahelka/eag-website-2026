@@ -10,7 +10,10 @@
       "Bash(/Users/jaroslavsmacbook/.bun/bin/bun remove:*)",
       "WebSearch",
       "Bash(npx react-router:*)",
-      "Bash(jobs -l)"
+      "Bash(jobs -l)",
+      "Bash(bun add:*)",
+      "Bash(export PATH=\"$HOME/.bun/bin:$PATH\")",
+      "Bash(export PATH=$HOME/.bun/bin:$PATH)"
     ]
   }
 }

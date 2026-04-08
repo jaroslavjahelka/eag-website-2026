@@ -93,7 +93,7 @@ const translations: Record<Lang, Record<string, string>> = {
     "home.team.link": "Our people",
 
     /* Home — Contact */
-    "home.contact.title1": "Are we on the same wavelength?",
+    "home.contact.title1": "Build automotive infrastructure with us.",
     "home.contact.title2": "Get in touch.",
     "home.contact.name": "Full name",
     "home.contact.name.placeholder": "John Doe",
@@ -193,8 +193,10 @@ const translations: Record<Lang, Record<string, string>> = {
     /* Team page */
     "team.label": "Our team",
     "team.colleagues": "Our colleagues",
-    "team.join": "Become a member of our team!",
-    "team.joinCta": "Contact us via e-mail at",
+    "team.join": "Shape the future",
+    "team.joinSub": "of automotive with us",
+    "team.joinBody": "We're always looking for talented people who want to make an impact. If that sounds like you, let's talk.",
+    "team.joinCta": "Get in touch",
 
     /* Media page */
     "media.label": "Media",
@@ -421,8 +423,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "home.team.link": "Naši lidé",
 
     /* Home — Contact */
-    "home.contact.title1": "Jsme na stejné vlně?",
-    "home.contact.title2": "Ozvěte se nám.",
+    "home.contact.title1": "Budujte automotive infrastrukturu s námi.",
+    "home.contact.title2": "Ozvěte se.",
     "home.contact.name": "Celé jméno",
     "home.contact.name.placeholder": "Jan Novák",
     "home.contact.email": "E-mail",
@@ -521,8 +523,10 @@ const translations: Record<Lang, Record<string, string>> = {
     /* Team page */
     "team.label": "Náš tým",
     "team.colleagues": "Naši kolegové",
-    "team.join": "Staňte se členem našeho týmu!",
-    "team.joinCta": "Kontaktujte nás e-mailem na",
+    "team.join": "Utvářejte budoucnost",
+    "team.joinSub": "automotive s námi",
+    "team.joinBody": "Hledáme talentované lidi, kteří chtějí měnit věci k lepšímu. Pokud je to o vás, ozvěte se.",
+    "team.joinCta": "Napište nám",
 
     /* Media page */
     "media.label": "Média",

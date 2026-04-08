@@ -113,13 +113,9 @@ export function ContactSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left — heading */}
           <div>
-            <h2 className="max-w-xl text-b1 leading-tight lg:text-c6">
-              <span className="text-[var(--section-text-muted)]">
-                {t("home.contact.title1")}
-              </span>{" "}
-              <span className="font-bold text-[var(--section-text)]">
-                {t("home.contact.title2")}
-              </span>
+            <h2 className="max-w-xl text-b1 font-bold leading-tight text-white lg:text-c6">
+              {t("home.contact.title1")}{" "}
+              {t("home.contact.title2")}
             </h2>
           </div>
 

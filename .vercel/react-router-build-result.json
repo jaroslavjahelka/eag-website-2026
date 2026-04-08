@@ -15,7 +15,10 @@
       "routes/team": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/media": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/projects": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/api.contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+      "routes/api.contact": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/robots[.]txt": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/sitemap[.]xml": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/llms[.]txt": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
     },
     "routes": {
       "root": {
@@ -77,13 +80,40 @@
         "config": {
           "runtime": "nodejs"
         }
+      },
+      "routes/robots[.]txt": {
+        "id": "routes/robots[.]txt",
+        "parentId": "root",
+        "file": "app/routes/robots[.]txt.ts",
+        "path": "robots.txt",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "app/routes/sitemap[.]xml.ts",
+        "path": "sitemap.xml",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/llms[.]txt": {
+        "id": "routes/llms[.]txt",
+        "parentId": "root",
+        "file": "app/routes/llms[.]txt.ts",
+        "path": "llms.txt",
+        "config": {
+          "runtime": "nodejs"
+        }
       }
     }
   },
   "reactRouterConfig": {
-    "appDirectory": "/Users/jaroslav/Dropbox/My Mac (Jaroslav-MacBook-Pro.local)/Desktop/Project 01/app",
+    "appDirectory": "/Users/jaroslavsmacbook/Desktop/Repositories/eag-website-2026/app",
     "basename": "/",
-    "buildDirectory": "/Users/jaroslav/Dropbox/My Mac (Jaroslav-MacBook-Pro.local)/Desktop/Project 01/build",
+    "buildDirectory": "/Users/jaroslavsmacbook/Desktop/Repositories/eag-website-2026/build",
     "future": {
       "unstable_optimizeDeps": false,
       "unstable_subResourceIntegrity": false,
@@ -133,6 +163,24 @@
         "parentId": "root",
         "file": "routes/api.contact.ts",
         "path": "api/contact"
+      },
+      "routes/robots[.]txt": {
+        "id": "routes/robots[.]txt",
+        "parentId": "root",
+        "file": "routes/robots[.]txt.ts",
+        "path": "robots.txt"
+      },
+      "routes/sitemap[.]xml": {
+        "id": "routes/sitemap[.]xml",
+        "parentId": "root",
+        "file": "routes/sitemap[.]xml.ts",
+        "path": "sitemap.xml"
+      },
+      "routes/llms[.]txt": {
+        "id": "routes/llms[.]txt",
+        "parentId": "root",
+        "file": "routes/llms[.]txt.ts",
+        "path": "llms.txt"
       }
     },
     "routeDiscovery": {
@@ -172,6 +220,18 @@
           {
             "file": "routes/api.contact.ts",
             "path": "api/contact"
+          },
+          {
+            "file": "routes/robots[.]txt.ts",
+            "path": "robots.txt"
+          },
+          {
+            "file": "routes/sitemap[.]xml.ts",
+            "path": "sitemap.xml"
+          },
+          {
+            "file": "routes/llms[.]txt.ts",
+            "path": "llms.txt"
           }
         ]
       }

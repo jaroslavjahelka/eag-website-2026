@@ -314,9 +314,12 @@ function TimelineSection() {
     <section data-theme="light" className="bg-white">
       {/* Section heading */}
       <div className="mx-auto w-full max-w-7xl px-6 pt-20 lg:px-10 lg:pt-32">
-        <span className="text-a3 font-medium uppercase tracking-wider text-eag-teal">
-          {t("story.journey")}
-        </span>
+        <div className="inline-flex items-center gap-2">
+          <span className="h-px w-8 bg-eag-teal" />
+          <span className="text-a4 font-medium uppercase tracking-widest text-eag-teal">
+            {t("story.journey")}
+          </span>
+        </div>
         <h2 className="mt-4 max-w-3xl text-b3 text-eag-black md:text-b1 lg:mt-6 lg:text-c6">
           {t("story.journeySubtitle")}
         </h2>

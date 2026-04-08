@@ -7,6 +7,7 @@ import { OptimizedImage } from "~/components/optimized-image";
 import { generateMeta } from "~/utils/seo";
 import { BreadcrumbSchema } from "~/components/structured-data";
 import { ObfuscatedEmail } from "~/components/obfuscated-email";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
 /* ── Meta ──────────────────────────────────────────── */
@@ -199,22 +200,6 @@ export default function TeamPage() {
           </div>
         </section>
 
-        {/* ── CTA — Join us ── */}
-        <section data-theme="dark" className="bg-eag-gray-800 py-16 lg:py-20">
-          <div className="mx-auto w-full max-w-7xl px-6 text-center lg:px-10">
-            <h2 data-reveal className="mb-4 text-b2 text-white lg:text-b1">
-              {t("team.join")}
-            </h2>
-            <p data-reveal className="text-a2 text-white/60 reveal-delay-1">
-              {t("team.joinCta")}{" "}
-              <ObfuscatedEmail
-                user="info"
-                domain="eag.group"
-                className="font-medium text-eag-teal underline decoration-eag-teal/30 underline-offset-2 hover:decoration-eag-teal"
-              />
-            </p>
-          </div>
-        </section>
       </main>
       <ContactSection />
       <AppFooter />

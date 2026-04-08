@@ -191,9 +191,12 @@ function MissionSection() {
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Text */}
           <div>
-            <p data-reveal className="mb-4 text-a4 font-medium uppercase tracking-widest text-eag-teal">
-              {t("home.mission.title")}
-            </p>
+            <div data-reveal className="mb-4 inline-flex items-center gap-2">
+              <span className="h-px w-8 bg-eag-teal" />
+              <span className="text-a4 font-medium uppercase tracking-widest text-eag-teal">
+                {t("home.mission.title")}
+              </span>
+            </div>
             <h2 data-reveal className="mb-8 text-b2 text-[var(--section-text)] lg:text-b1 reveal-delay-1">
               {t("home.mission.lead")}
             </h2>
@@ -235,9 +238,12 @@ function StrategySection() {
 
           {/* Text */}
           <div className="order-1 lg:order-2">
-            <p data-reveal className="mb-4 text-a4 font-medium uppercase tracking-widest text-eag-teal">
-              {t("home.strategy.label")}
-            </p>
+            <div data-reveal className="mb-4 inline-flex items-center gap-2">
+              <span className="h-px w-8 bg-eag-teal" />
+              <span className="text-a4 font-medium uppercase tracking-widest text-eag-teal">
+                {t("home.strategy.label")}
+              </span>
+            </div>
             <h2 data-reveal className="mb-8 text-b2 text-[var(--section-text)] lg:text-b1 reveal-delay-1">
               {t("home.strategy.title")}
             </h2>
@@ -259,9 +265,12 @@ function InvestmentsSection() {
     <section id="investments" data-theme="light" className="cv-auto bg-gray-50 py-28 lg:py-40">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="mb-16 max-w-2xl">
-          <p data-reveal className="mb-4 text-a4 font-medium uppercase tracking-widest text-eag-teal">
-            {t("home.investments.label")}
-          </p>
+          <div data-reveal className="mb-4 inline-flex items-center gap-2">
+            <span className="h-px w-8 bg-eag-teal" />
+            <span className="text-a4 font-medium uppercase tracking-widest text-eag-teal">
+              {t("home.investments.label")}
+            </span>
+          </div>
           <h2 data-reveal className="mb-6 text-b2 text-[var(--section-text)] lg:text-b1 reveal-delay-1">
             {t("home.investments.title")}
           </h2>
@@ -310,9 +319,12 @@ function NewsSection() {
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="mb-14 flex items-end justify-between">
           <div>
-            <p data-reveal className="mb-4 text-a4 font-medium uppercase tracking-widest text-eag-teal">
-              {t("media.tab.news")}
-            </p>
+            <div data-reveal className="mb-4 inline-flex items-center gap-2">
+              <span className="h-px w-8 bg-eag-teal" />
+              <span className="text-a4 font-medium uppercase tracking-widest text-eag-teal">
+                {t("media.tab.news")}
+              </span>
+            </div>
             <h2 data-reveal className="text-b2 text-[var(--section-text)] lg:text-b1 reveal-delay-1">
               {t("home.news.title")}
             </h2>
@@ -372,9 +384,12 @@ function TeamSection() {
 
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-2xl">
-          <p data-reveal className="mb-4 text-a4 font-medium uppercase tracking-widest text-eag-teal">
-            {t("home.team.label")}
-          </p>
+          <div data-reveal className="mb-4 inline-flex items-center gap-2">
+            <span className="h-px w-8 bg-eag-teal" />
+            <span className="text-a4 font-medium uppercase tracking-widest text-eag-teal">
+              {t("home.team.label")}
+            </span>
+          </div>
           <h2 data-reveal className="mb-8 text-b2 text-[var(--section-text)] lg:text-b1 reveal-delay-1">
             {t("home.team.title")}
           </h2>
