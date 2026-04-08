@@ -41,6 +41,11 @@ export default function handleRequest(
           const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
+          responseHeaders.set("X-Frame-Options", "DENY");
+          responseHeaders.set("X-Content-Type-Options", "nosniff");
+          responseHeaders.set("Referrer-Policy", "strict-origin-when-cross-origin");
+          responseHeaders.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+          responseHeaders.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
           pipe(body);
 
           resolve(

@@ -17,6 +17,9 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
+  /* Favicon */
+  { rel: "icon", type: "image/png", href: "/favicon.png" },
+  { rel: "apple-touch-icon", href: "/favicon.png" },
   /* Primary font — narrowed to actually used weights */
   {
     rel: "stylesheet",
@@ -39,6 +42,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="alternate" hrefLang="en" href="https://www.eag.cz" />
+        <link rel="alternate" hrefLang="cs" href="https://www.eag.cz" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.eag.cz" />
         <Meta />
         <Links />
       </head>

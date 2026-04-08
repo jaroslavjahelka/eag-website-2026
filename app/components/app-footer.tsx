@@ -1,5 +1,6 @@
 import { useI18n } from "~/i18n";
 import { EagLogo } from "~/components/eag-logo";
+import { ObfuscatedEmail } from "~/components/obfuscated-email";
 
 export function AppFooter() {
   const { t } = useI18n();
@@ -16,12 +17,11 @@ export function AppFooter() {
             <EagLogo className="h-6 w-auto self-start text-eag-white" />
 
             <div className="flex flex-col gap-3 text-a4 text-eag-gray-400">
-              <a
-                href="mailto:info@eag.group"
+              <ObfuscatedEmail
+                user="info"
+                domain="eag.group"
                 className="text-eag-gray-400 no-underline transition-colors hover:text-eag-teal"
-              >
-                info@eag.group
-              </a>
+              />
               <p>{t("footer.address")}</p>
             </div>
           </div>

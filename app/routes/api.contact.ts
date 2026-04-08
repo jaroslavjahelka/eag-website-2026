@@ -28,10 +28,41 @@ function getResend() {
 
 const CONTACT_TO = "info@eag.group";
 
+/* ── Rate limiter (in-memory, per-IP) ─────────────── */
+
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  entry.count += 1;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+// Clean up stale entries every 10 minutes to prevent memory leaks
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetAt) rateLimitMap.delete(ip);
+  }
+}, 10 * 60 * 1000).unref?.();
+
+/* ── Validation ───────────────────────────────────── */
+
 interface ContactFields {
   name: string;
   email: string;
   message: string;
+  website?: string; // honeypot — must be empty
 }
 
 function validateFields(fields: ContactFields) {
@@ -53,6 +84,20 @@ function validateFields(fields: ContactFields) {
 }
 
 export async function action({ request }: Route.ActionArgs) {
+  /* ── Rate limit check ── */
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    "unknown";
+
+  if (isRateLimited(ip)) {
+    return Response.json(
+      { ok: false, error: "rate_limited" },
+      { status: 429 },
+    );
+  }
+
+  /* ── Parse fields ── */
   let fields: ContactFields;
 
   const contentType = request.headers.get("content-type") ?? "";
@@ -64,7 +109,14 @@ export async function action({ request }: Route.ActionArgs) {
       name: String(formData.get("name") ?? ""),
       email: String(formData.get("email") ?? ""),
       message: String(formData.get("message") ?? ""),
+      website: String(formData.get("website") ?? ""),
     };
+  }
+
+  /* ── Honeypot check — bots fill hidden fields ── */
+  if (fields.website) {
+    // Silently accept so bots don't know they were caught
+    return Response.json({ ok: true });
   }
 
   const errors = validateFields(fields);

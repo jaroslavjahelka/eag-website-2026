@@ -6,6 +6,8 @@ import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 import { OptimizedImage } from "~/components/optimized-image";
+import { generateMeta } from "~/utils/seo";
+import { BreadcrumbSchema } from "~/components/structured-data";
 
 const HorizontalScroll = lazy(() =>
   import("~/components/horizontal-scroll").then((m) => ({ default: m.HorizontalScroll })),
@@ -14,14 +16,11 @@ const HorizontalScroll = lazy(() =>
 /* ── Meta ──────────────────────────────────────────── */
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Our Story \u2014 EAG" },
-    {
-      name: "description",
-      content:
-        "Our roots and our vision. The history of EAG group from 1991 to today.",
-    },
-  ];
+  return generateMeta({
+    title: "Our Story — EAG",
+    description: "Our roots and our vision. The history of EAG group from 1991 to today.",
+    path: "/story",
+  });
 }
 
 /* ── Timeline data ─────────────────────────────────── */
@@ -267,6 +266,7 @@ const enrichedTimeline = enrichTimeline(timeline);
 export default function StoryPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Our Story", path: "/story" }]} />
       <AppHeader />
       <main>
         <HeroSection />

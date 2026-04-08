@@ -7,4 +7,7 @@ export default [
   route("media", "routes/media.tsx"),
   route("projects", "routes/projects.tsx"),
   route("api/contact", "routes/api.contact.ts"),
+  route("robots.txt", "routes/robots[.]txt.ts"),
+  route("sitemap.xml", "routes/sitemap[.]xml.ts"),
+  route("llms.txt", "routes/llms[.]txt.ts"),
 ] satisfies RouteConfig;

@@ -4,18 +4,18 @@ import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
 import { OptimizedImage } from "~/components/optimized-image";
+import { generateMeta } from "~/utils/seo";
+import { BreadcrumbSchema } from "~/components/structured-data";
+import { ObfuscatedEmail } from "~/components/obfuscated-email";
 
 /* ── Meta ──────────────────────────────────────────── */
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Our Team — EAG" },
-    {
-      name: "description",
-      content:
-        "Meet the EAG leadership team driving the digital transformation of the automotive market.",
-    },
-  ];
+  return generateMeta({
+    title: "Our Team — EAG",
+    description: "Meet the EAG leadership team driving the digital transformation of the automotive market.",
+    path: "/team",
+  });
 }
 
 /* ── Team data ─────────────────────────────────────── */
@@ -91,6 +91,7 @@ export default function TeamPage() {
 
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Our Team", path: "/team" }]} />
       <AppHeader />
       <main>
         {/* ── Dark hero header ── */}
@@ -204,12 +205,11 @@ export default function TeamPage() {
             </h2>
             <p className="text-a2 text-white/60">
               {t("team.joinCta")}{" "}
-              <a
-                href="mailto:info@eag.group"
+              <ObfuscatedEmail
+                user="info"
+                domain="eag.group"
                 className="font-medium text-eag-teal underline decoration-eag-teal/30 underline-offset-2 hover:decoration-eag-teal"
-              >
-                info@eag.group
-              </a>
+              />
             </p>
           </div>
         </section>

@@ -13,18 +13,18 @@ const HeroSection = lazy(() =>
 );
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
+import { generateMeta } from "~/utils/seo";
+import { OrganizationSchema, WebSiteSchema } from "~/components/structured-data";
 
 /* ── Meta ──────────────────────────────────────────── */
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "EAG \u2014 Digital Transformation of the Automotive Market" },
-    {
-      name: "description",
-      content:
-        "We are an international investment group focused on the digital transformation of the automotive market.",
-    },
-  ];
+  return generateMeta({
+    title: "EAG — Digital Transformation of the Automotive Market",
+    description:
+      "We are an international investment group focused on the digital transformation of the automotive market.",
+    path: "/",
+  });
 }
 
 /* ── Data ──────────────────────────────────────────── */
@@ -80,6 +80,8 @@ export default function HomePage() {
   const revealRef = useScrollReveal();
   return (
     <div ref={revealRef} className="flex min-h-svh flex-col">
+      <OrganizationSchema />
+      <WebSiteSchema />
       <AppHeader />
       <main className="flex-1">
         <Suspense fallback={null}>

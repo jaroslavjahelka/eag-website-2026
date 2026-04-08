@@ -56,10 +56,11 @@ export function ContactSection() {
     setStatus("submitting");
 
     try {
+      const honeypot = (document.getElementById("website") as HTMLInputElement)?.value ?? "";
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(fields),
+        body: JSON.stringify({ ...fields, website: honeypot }),
       });
 
       if (res.ok) {
@@ -147,6 +148,16 @@ export function ContactSection() {
               </div>
             ) : (
               <div className="flex flex-col gap-8">
+                {/* Honeypot — hidden from humans, bots fill it */}
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 {/* Name */}
                 <div className="group/name relative" data-filled={name ? "" : undefined}>
                   <TextField

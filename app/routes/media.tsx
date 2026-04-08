@@ -7,17 +7,17 @@ import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
 import { OptimizedImage } from "~/components/optimized-image";
+import { generateMeta } from "~/utils/seo";
+import { BreadcrumbSchema } from "~/components/structured-data";
 
 /* ── Meta ──────────────────────────────────────────── */
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Media — EAG" },
-    {
-      name: "description",
-      content: "News and press coverage about the EAG group.",
-    },
-  ];
+  return generateMeta({
+    title: "Media — EAG",
+    description: "News and press coverage about the EAG group.",
+    path: "/media",
+  });
 }
 
 /* ── Sub-navigation tabs ───────────────────────────── */
@@ -137,6 +137,7 @@ export default function MediaPage({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Media", path: "/media" }]} />
       <AppHeader />
       <main>
         <HeroSection />

@@ -5,18 +5,17 @@ import { AppFooter } from "~/components/app-footer";
 import { ContactSection } from "~/components/contact-section";
 import { useI18n } from "~/i18n";
 import { OptimizedImage } from "~/components/optimized-image";
+import { generateMeta } from "~/utils/seo";
+import { BreadcrumbSchema } from "~/components/structured-data";
 
 /* ── Meta ──────────────────────────────────────────── */
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Projects — EAG" },
-    {
-      name: "description",
-      content:
-        "Amazing projects and even better companies. Explore the EAG portfolio.",
-    },
-  ];
+  return generateMeta({
+    title: "Projects — EAG",
+    description: "Amazing projects and even better companies. Explore the EAG portfolio.",
+    path: "/projects",
+  });
 }
 
 /* ── Project data ──────────────────────────────────── */
@@ -51,6 +50,7 @@ const projects: Project[] = [
 export default function ProjectsPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Projects", path: "/projects" }]} />
       <AppHeader />
       <main>
         <HeroSection />

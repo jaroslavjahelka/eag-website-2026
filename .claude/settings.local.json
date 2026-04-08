@@ -4,7 +4,11 @@
       "Bash(bun create:*)",
       "Skill(update-config)",
       "Skill(update-config:*)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(gh auth:*)",
+      "Bash(/Users/jaroslavsmacbook/.bun/bin/bun run:*)",
+      "Bash(/Users/jaroslavsmacbook/.bun/bin/bun remove:*)",
+      "WebSearch"
     ]
   }
 }
