@@ -1,67 +1,86 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "permissions": {
-    "defaultMode": "default",
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./secrets/**)",
-      "Bash(git push *)",
-      "Bash(git tag *)",
-      "Bash(rm -rf *)",
-      "Bash(curl * | sh)",
-      "Bash(wget * | sh)",
-      "Bash(powershell -enc *)"
+  "agent": "manager",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/orchestration-reminder.sh",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/deny-dangerous-bash.sh\"",
-            "timeout": 10,
-            "statusMessage": "Policy check: shell safety"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-protected-paths.sh\"",
-            "timeout": 10,
-            "statusMessage": "Policy check: protected paths"
-          }
-        ]
-      }
+  "permissions": {
+    "allow": [
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git branch *)",
+      "Bash(git rev-parse *)",
+      "Bash(git commit *)",
+      "Bash(git add *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git merge *)",
+      "Bash(pwd)",
+      "Bash(ls *)",
+      "Bash(la *)",
+      "Bash(ll *)",
+      "Bash(tree *)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Bash(bun run lint *)",
+      "Bash(bun test *)",
+      "Bash(bun run test *)",
+      "Bash(npm run lint *)",
+      "Bash(npm test *)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm test *)",
+      "Bash(pytest *)",
+      "Bash(ruff check *)",
+      "Bash(tsc *)",
+      "Bash(bun run:*)",
+      "Bash(bunx tsc:*)",
+      "Bash(bunx syncpack lint *)",
+      "Bash(bun install *)",
+      "Bash(bun remove *)",
+      "Bash(gh api:*)",
+      "Skill(team-pipeline)",
+      "Bash(ls:*)",
+      "Bash(git worktree:*)",
+      "Bash(git branch:*)",
+      "Bash(curl -s http://localhost:3000/vehicles)",
+      "Bash(bunx biome:*)",
+      "Bash(git:*)",
+      "Bash(bunx drizzle-kit:*)",
+      "mcp__chrome-devtools__list_console_messages",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__stitch__list_projects",
+      "mcp__stitch__get_screen",
+      "Bash(mkdir -p /tmp/stitch_screens)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL -o login_branded.png \"https://lh3.googleusercontent.com/aida/ADBb0ui3PBx11T4Kk34Vv3L5B9ToB4SwZajvw0f6h8Ih4X5b3NzVPMw3A7szEepOeGWidi_X03tZkcR15N4eQDRB9PdV8gr1c3ZvlMiVPvgKb9g9wggf0uI61c22q_I9pm2d66xnP3kkD_iBnwBRjksmvWCd9P6u-Owng4LhK6kFVx4VcdNoHhFEhDGldQk_2KLqI38elONVeiW1Iivxug78yMhj5WUfhM8-iwqUmFlVN71lrSAuRtQhgjtGmXI\")"
     ],
-    "ConfigChange": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/validate-governance-integrity.sh\"",
-            "timeout": 20,
-            "statusMessage": "Auditing governance changes"
-          }
-        ]
-      }
+    "deny": [
+      "Bash(rm *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      "Bash(kubectl *)",
+      "Bash(terraform *)",
+      "Bash(git push *)",
+      "Bash(git reset *)",
+      "Bash(git clean *)",
+      "WebFetch"
     ],
-    "TaskCompleted": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/validate-ui-output.sh\"",
-            "timeout": 30,
-            "statusMessage": "Validating UI output"
-          }
-        ]
-      }
-    ]
+    "ask": ["Bash(bun run build *)", "Bash(docker *)"],
+    "defaultMode": "default"
   }
 }

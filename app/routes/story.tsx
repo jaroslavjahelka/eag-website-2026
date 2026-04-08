@@ -32,6 +32,7 @@ interface TimelineEntry {
   descKey: string;
   logo: string;
   image: string;
+  imagePosition?: string;
 }
 
 const timeline: TimelineEntry[] = [
@@ -40,203 +41,203 @@ const timeline: TimelineEntry[] = [
     titleKey: "timeline.2026.automotive-systems.title",
     descKey: "timeline.2026.automotive-systems.desc",
     logo: "/assets/logos-color/automotive-systems-color.png",
-    image: "/assets/news/automotive-systems.jpg",
+    image: "/assets/projects/automotive-systems.jpg",
   },
   {
     year: 2025,
     titleKey: "timeline.2025.dotzilla.title",
     descKey: "timeline.2025.dotzilla.desc",
     logo: "/assets/logos-color/dotzilla-color.svg",
-    image: "/assets/news/eag-germany.jpg",
+    image: "/assets/projects/dotzilla.jpg",
   },
   {
     year: 2025,
     titleKey: "timeline.2025.carobserver.title",
     descKey: "timeline.2025.carobserver.desc",
     logo: "/assets/logos-color/carobserver-color.svg",
-    image: "/assets/news/svoren-kratochvil.jpg",
+    image: "/assets/projects/carobserver.jpg",
   },
   {
     year: 2024,
     titleKey: "timeline.2024.autrado.title",
     descKey: "timeline.2024.autrado.desc",
     logo: "/assets/logos-color/autrado-color.svg",
-    image: "/assets/news/kratochvil-interview.jpg",
+    image: "/assets/timeline/autrado.jpg",
   },
   {
     year: 2024,
     titleKey: "timeline.2024.instamotion.title",
     descKey: "timeline.2024.instamotion.desc",
     logo: "/assets/logos-color/instamotion-color.svg",
-    image: "/assets/towedcars-light.jpg",
+    image: "/assets/projects/instamotion.jpg",
   },
   {
     year: 2024,
     titleKey: "timeline.2024.jbr.title",
     descKey: "timeline.2024.jbr.desc",
     logo: "/assets/logos-color/jbr-color.svg",
-    image: "/assets/techyard-light.jpg",
+    image: "/assets/projects/jbr.jpg",
   },
   {
     year: 2022,
     titleKey: "timeline.2022.softvig.title",
     descKey: "timeline.2022.softvig.desc",
     logo: "/assets/logos-color/softvig-color.svg",
-    image: "/assets/news/svoren-kratochvil.jpg",
+    image: "/assets/projects/softvig.jpg",
   },
   {
     year: 2022,
     titleKey: "timeline.2022.fastback.title",
     descKey: "timeline.2022.fastback.desc",
     logo: "/assets/logos-color/fastback-color.svg",
-    image: "/assets/news/eag-germany.jpg",
+    image: "/assets/projects/fastback.jpg",
   },
   {
     year: 2021,
     titleKey: "timeline.2021.cebia.title",
     descKey: "timeline.2021.cebia.desc",
     logo: "/assets/logos-color/cebia-color.svg",
-    image: "/assets/towedcars-light.jpg",
+    image: "/assets/projects/cebia.jpg",
   },
   {
     year: 2020,
     titleKey: "timeline.2020.carvago.title",
     descKey: "timeline.2020.carvago.desc",
     logo: "/assets/logos-color/carvago-color.svg",
-    image: "/assets/news/kratochvil-interview.jpg",
+    image: "/assets/projects/carvago.jpg",
   },
   {
     year: 2020,
     titleKey: "timeline.2020.caraudit.title",
     descKey: "timeline.2020.caraudit.desc",
     logo: "/assets/logos-color/caraudit-color.svg",
-    image: "/assets/techyard-light.jpg",
+    image: "/assets/projects/caraudit.jpg",
   },
   {
     year: 2019,
     titleKey: "timeline.2019.carsdata.title",
     descKey: "timeline.2019.carsdata.desc",
     logo: "/assets/logos-color/carsdata-color.svg",
-    image: "/assets/news/svoren-kratochvil.jpg",
+    image: "/assets/projects/carsdata.jpg",
   },
   {
     year: 2019,
     titleKey: "timeline.2019.carvago.title",
     descKey: "timeline.2019.carvago.desc",
     logo: "/assets/logos-color/carvago-color.svg",
-    image: "/assets/news/eag-germany.jpg",
+    image: "/assets/news/carvago-forbes.png",
   },
   {
     year: 2019,
     titleKey: "timeline.2019.autosoft.title",
     descKey: "timeline.2019.autosoft.desc",
     logo: "/assets/logos-color/autosoft-color.svg",
-    image: "/assets/towedcars-light.jpg",
+    image: "/assets/projects/omnetic.jpg",
   },
   {
     year: 2019,
     titleKey: "timeline.2019.teas.title",
     descKey: "timeline.2019.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/techyard-light.jpg",
+    image: "/assets/timeline/acquisition.jpg",
   },
   {
     year: 2019,
     titleKey: "timeline.2019.portiva.title",
     descKey: "timeline.2019.portiva.desc",
     logo: "/assets/logos-color/eag-color.svg",
-    image: "/assets/news/kratochvil-interview.jpg",
+    image: "/assets/news/svoren-e15.jpg",
   },
   {
     year: 2018,
     titleKey: "timeline.2018.eag.title",
     descKey: "timeline.2018.eag.desc",
     logo: "/assets/logos-color/eag-color.svg",
-    image: "/assets/techyard-light.jpg",
+    image: "/assets/news/eag-germany.jpg",
   },
   {
     year: 2012,
     titleKey: "timeline.2012.teas.title",
     descKey: "timeline.2012.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/svoren-kratochvil.jpg",
+    image: "/assets/timeline/tech-office.jpg",
   },
   {
     year: 2010,
     titleKey: "timeline.2010.teas.title",
     descKey: "timeline.2010.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/eag-germany.jpg",
+    image: "/assets/timeline/ford.jpg",
   },
   {
     year: 2006,
     titleKey: "timeline.2006.elit.title",
     descKey: "timeline.2006.elit.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/towedcars-light.jpg",
+    image: "/assets/timeline/elit-repair.jpg",
   },
   {
     year: 2005,
     titleKey: "timeline.2005.autosoft.title",
     descKey: "timeline.2005.autosoft.desc",
     logo: "/assets/logos-color/autosoft-color.svg",
-    image: "/assets/techyard-light.jpg",
+    image: "/assets/timeline/team-milestone.jpg",
   },
   {
     year: 2004,
     titleKey: "timeline.2004.caris.title",
     descKey: "timeline.2004.caris.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/kratochvil-interview.jpg",
+    image: "/assets/timeline/software-dashboard.jpg",
   },
   {
     year: 2002,
     titleKey: "timeline.2002.mercedes.title",
     descKey: "timeline.2002.mercedes.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/svoren-kratochvil.jpg",
+    image: "/assets/timeline/mercedes.jpg",
   },
   {
     year: 2001,
     titleKey: "timeline.2001.hyundai.title",
     descKey: "timeline.2001.hyundai.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/eag-germany.jpg",
+    image: "/assets/timeline/hyundai.jpg",
   },
   {
     year: 2000,
     titleKey: "timeline.2000.renault.title",
     descKey: "timeline.2000.renault.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/towedcars-light.jpg",
+    image: "/assets/timeline/renault.jpg",
   },
   {
     year: 1998,
     titleKey: "timeline.1998.bosch.title",
     descKey: "timeline.1998.bosch.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/techyard-light.jpg",
+    image: "/assets/timeline/vehicle-inspection.jpg",
   },
   {
     year: 1997,
     titleKey: "timeline.1997.mazda.title",
     descKey: "timeline.1997.mazda.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/kratochvil-interview.jpg",
+    image: "/assets/timeline/car-brands.jpg",
   },
   {
     year: 1993,
     titleKey: "timeline.1993.teas.title",
     descKey: "timeline.1993.teas.desc",
     logo: "/assets/logos-color/teas-color.svg",
-    image: "/assets/news/svoren-kratochvil.jpg",
+    image: "/assets/projects/teas.jpg",
   },
   {
     year: 1991,
     titleKey: "timeline.1991.autosoft.title",
     descKey: "timeline.1991.autosoft.desc",
     logo: "/assets/logos-color/autosoft-color.svg",
-    image: "/assets/news/eag-germany.jpg",
+    image: "/assets/timeline/autosoft-founding.jpg",
   },
 ];
 
@@ -332,7 +333,7 @@ function TimelineSection() {
             )}
             <div className="overflow-hidden rounded-xl bg-gray-50">
               <div className="aspect-[16/10] overflow-hidden">
-                <OptimizedImage src={entry.image} alt="" className="h-full w-full object-cover" />
+                <OptimizedImage src={entry.image} alt="" className="h-full w-full object-cover saturate-[.85]" style={entry.imagePosition ? { objectPosition: entry.imagePosition } : undefined} />
               </div>
               <div className="p-4">
                 <div className="mb-2 flex items-center gap-2">
@@ -387,7 +388,8 @@ function TimelineSection() {
                         <OptimizedImage
                           src={entry.image}
                           alt=""
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-cover saturate-[.85]"
+                          style={entry.imagePosition ? { objectPosition: entry.imagePosition } : undefined}
                         />
                       </div>
                       <div className="p-4 lg:p-5">

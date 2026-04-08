@@ -157,7 +157,7 @@ export function ContactSection() {
                     isInvalid={!!fieldErrors?.name}
                     className="relative"
                   >
-                    <Label className="pointer-events-none absolute left-0 top-3 origin-left text-a3 text-eag-gray-500 transition-all duration-200 group-focus-within/name:top-0 group-focus-within/name:-translate-y-full group-focus-within/name:text-[11px] group-focus-within/name:text-eag-teal group-data-[filled]/name:top-0 group-data-[filled]/name:-translate-y-full group-data-[filled]/name:text-[11px] group-data-[filled]/name:text-eag-gray-400">
+                    <Label className="pointer-events-none absolute left-0 top-3 origin-top-left text-a3 text-eag-gray-500 transition-[color,translate,scale] duration-300 ease-out group-focus-within/name:-translate-y-[calc(100%+4px)] group-focus-within/name:scale-75 group-focus-within/name:text-eag-teal group-data-[filled]/name:-translate-y-[calc(100%+4px)] group-data-[filled]/name:scale-75 group-data-[filled]/name:text-eag-gray-400">
                       {t("home.contact.name")}
                     </Label>
                     <Input className="w-full border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400" />
@@ -178,7 +178,7 @@ export function ContactSection() {
                     isInvalid={!!fieldErrors?.email}
                     className="relative"
                   >
-                    <Label className="pointer-events-none absolute left-0 top-3 origin-left text-a3 text-eag-gray-500 transition-all duration-200 group-focus-within/email:top-0 group-focus-within/email:-translate-y-full group-focus-within/email:text-[11px] group-focus-within/email:text-eag-teal group-data-[filled]/email:top-0 group-data-[filled]/email:-translate-y-full group-data-[filled]/email:text-[11px] group-data-[filled]/email:text-eag-gray-400">
+                    <Label className="pointer-events-none absolute left-0 top-3 origin-top-left text-a3 text-eag-gray-500 transition-[color,translate,scale] duration-300 ease-out group-focus-within/email:-translate-y-[calc(100%+4px)] group-focus-within/email:scale-75 group-focus-within/email:text-eag-teal group-data-[filled]/email:-translate-y-[calc(100%+4px)] group-data-[filled]/email:scale-75 group-data-[filled]/email:text-eag-gray-400">
                       {t("home.contact.email")}
                     </Label>
                     <Input className="w-full border-b border-eag-gray-600 bg-transparent py-3 text-a3 text-eag-white outline-none transition-colors focus:border-eag-teal data-[invalid]:border-red-400" />
@@ -200,7 +200,7 @@ export function ContactSection() {
                     isInvalid={!!fieldErrors?.message}
                     className="relative"
                   >
-                    <Label className="pointer-events-none absolute left-0 top-3 origin-left text-a3 text-eag-gray-500 transition-all duration-200 group-focus-within/msg:top-0 group-focus-within/msg:-translate-y-full group-focus-within/msg:text-[11px] group-focus-within/msg:text-eag-teal group-data-[filled]/msg:top-0 group-data-[filled]/msg:-translate-y-full group-data-[filled]/msg:text-[11px] group-data-[filled]/msg:text-eag-gray-400">
+                    <Label className="pointer-events-none absolute left-0 top-3 origin-top-left text-a3 text-eag-gray-500 transition-[color,translate,scale] duration-300 ease-out group-focus-within/msg:-translate-y-[calc(100%+4px)] group-focus-within/msg:scale-75 group-focus-within/msg:text-eag-teal group-data-[filled]/msg:-translate-y-[calc(100%+4px)] group-data-[filled]/msg:scale-75 group-data-[filled]/msg:text-eag-gray-400">
                       {t("home.contact.message")}
                     </Label>
                     <TextArea
