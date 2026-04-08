@@ -1,0 +1,46 @@
+{
+  "governance": [
+    ".claude/governance/authority-order.md",
+    ".claude/governance/communication-order.md",
+    ".claude/governance/design-principles.md",
+    ".claude/governance/engineering-principles.md",
+    ".claude/governance/files-and-folders.md",
+    ".claude/governance/technical-stack.md",
+    ".claude/governance/INDEX.md"
+  ],
+  "config": [".claude/settings.json", ".claude/repository-map.json"],
+  "docs": [".claude/docs/INDEX.md"],
+  "agents": [
+    ".claude/agents/architect.md",
+    ".claude/agents/copywriter.md",
+    ".claude/agents/developer.md",
+    ".claude/agents/manager.md",
+    ".claude/agents/reviewer.md",
+    ".claude/agents/assets/template-agent.md"
+  ],
+  "commands": [
+    ".claude/commands/INDEX.md",
+    ".claude/commands/code-review.md",
+    ".claude/commands/copy-review.md",
+    ".claude/commands/design-process.md",
+    ".claude/commands/design-review.md",
+    ".claude/commands/references/workflow-types.md",
+    ".claude/commands/lib.sh",
+    ".claude/commands/run-task.sh",
+    ".claude/commands/phase-manager.sh",
+    ".claude/commands/phase-execute.sh",
+    ".claude/commands/phase-review.sh"
+  ],
+  "skills": [
+    ".claude/skills/create-component/SKILL.md",
+    ".claude/skills/create-component/assets/template-component.md",
+    ".claude/skills/create-repository/SKILL.md",
+    ".claude/skills/create-repository/assets/template-css.md",
+    ".claude/skills/create-repository/assets/template-lenis.md",
+    ".claude/skills/create-repository/assets/template-oxfmtrc.md",
+    ".claude/skills/create-repository/assets/template-oxlintrc.md",
+    ".claude/skills/create-route/SKILL.md",
+    ".claude/skills/create-route/assets/template-route.md",
+    ".claude/skills/write-docs/SKILL.md"
+  ]
+}
