@@ -134,15 +134,23 @@ function LogoMarquee() {
         <div className="flex-1 backdrop-blur-3xl bg-black/60" />
       </div>
 
-      <div className="animate-marquee flex h-full items-center whitespace-nowrap" style={{ willChange: "transform", contain: "layout style" }}>
-        {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-          <img
-            key={`${logo.name}-${i}`}
-            src={`/assets/logos-inverse/${logo.name}-inverse.svg`}
-            alt={i < logos.length ? logo.name : ""}
-            aria-hidden={i >= logos.length ? "true" : undefined}
-            className={`mx-7 h-7 w-auto max-w-[120px] shrink-0 object-contain opacity-40 lg:h-8 ${logo.cls}`}
-          />
+      <div className="flex h-full items-center">
+        {[0, 1].map((copy) => (
+          <div
+            key={copy}
+            className="animate-marquee flex shrink-0 items-center"
+            style={{ willChange: "transform", backfaceVisibility: "hidden" }}
+            aria-hidden={copy === 1 ? "true" : undefined}
+          >
+            {logos.map((logo) => (
+              <img
+                key={`${logo.name}-${copy}`}
+                src={`/assets/logos-inverse/${logo.name}-inverse.svg`}
+                alt={copy === 0 ? logo.name : ""}
+                className={`mx-4 h-7 w-auto max-w-[120px] shrink-0 object-contain opacity-40 lg:mx-7 lg:h-8 ${logo.cls}`}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </section>

@@ -293,10 +293,10 @@ function HeroSection() {
 
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <h1 className="text-b1 text-[var(--section-text)] lg:text-c6">
+          <h1 data-reveal className="text-b1 text-[var(--section-text)] lg:text-c6">
             {t("story.title1")} {t("story.title2")}
           </h1>
-          <p className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3">
+          <p data-reveal className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3 reveal-delay-1">
             {t("story.subtitle")}
           </p>
         </div>

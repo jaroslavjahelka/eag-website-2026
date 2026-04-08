@@ -7,6 +7,7 @@ import { OptimizedImage } from "~/components/optimized-image";
 import { generateMeta } from "~/utils/seo";
 import { BreadcrumbSchema } from "~/components/structured-data";
 import { ObfuscatedEmail } from "~/components/obfuscated-email";
+import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
 /* ── Meta ──────────────────────────────────────────── */
 
@@ -88,9 +89,10 @@ const team: TeamMember[] = [
 
 export default function TeamPage() {
   const { t } = useI18n();
+  const revealRef = useScrollReveal();
 
   return (
-    <>
+    <div ref={revealRef}>
       <BreadcrumbSchema items={[{ name: "Our Team", path: "/team" }]} />
       <AppHeader />
       <main>
@@ -105,10 +107,10 @@ export default function TeamPage() {
 
           <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
             <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20">
-              <h1 className="text-b1 text-[var(--section-text)] lg:text-c6">
+              <h1 data-reveal className="text-b1 text-[var(--section-text)] lg:text-c6">
                 {t("team.hero.title")}
               </h1>
-              <p className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3">
+              <p data-reveal className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3 reveal-delay-1">
                 {t("team.hero.subtitle")}
               </p>
             </div>
@@ -119,8 +121,8 @@ export default function TeamPage() {
         <section data-theme="light" className="bg-white py-16 lg:py-24">
           <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
             <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-              {team.map((member) => (
-                <div key={member.name} className="group text-center">
+              {team.map((member, i) => (
+                <div key={member.name} data-reveal className={`group text-center ${i < 6 ? "reveal-delay-1" : "reveal-delay-2"}`}>
                   {/* Photo */}
                   <div className="mx-auto mb-4 aspect-[3/4] w-full max-w-[180px] overflow-hidden rounded-lg bg-gray-100">
                     <OptimizedImage
@@ -145,11 +147,11 @@ export default function TeamPage() {
         {/* ── Our colleagues — masonry grid ── */}
         <section data-theme="light" className="bg-white pb-20 lg:pb-32">
           <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-            <h2 className="mb-12 text-b1 text-[var(--section-text)] lg:mb-16 lg:text-c5">
+            <h2 data-reveal className="mb-12 text-b1 text-[var(--section-text)] lg:mb-16 lg:text-c5">
               {t("team.colleagues")}
             </h2>
 
-            <div className="grid grid-cols-2 gap-4 lg:gap-6">
+            <div data-reveal className="grid grid-cols-2 gap-4 lg:gap-6 reveal-delay-1">
               {/* Right column — starts higher */}
               <div className="col-start-2 row-start-1 row-span-2 flex flex-col gap-4 lg:-mt-16 lg:gap-6">
                 <div className="overflow-hidden rounded-xl">
@@ -200,10 +202,10 @@ export default function TeamPage() {
         {/* ── CTA — Join us ── */}
         <section data-theme="dark" className="bg-eag-gray-800 py-16 lg:py-20">
           <div className="mx-auto w-full max-w-7xl px-6 text-center lg:px-10">
-            <h2 className="mb-4 text-b2 text-white lg:text-b1">
+            <h2 data-reveal className="mb-4 text-b2 text-white lg:text-b1">
               {t("team.join")}
             </h2>
-            <p className="text-a2 text-white/60">
+            <p data-reveal className="text-a2 text-white/60 reveal-delay-1">
               {t("team.joinCta")}{" "}
               <ObfuscatedEmail
                 user="info"
@@ -216,6 +218,6 @@ export default function TeamPage() {
       </main>
       <ContactSection />
       <AppFooter />
-    </>
+    </div>
   );
 }

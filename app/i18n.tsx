@@ -68,7 +68,7 @@ const translations: Record<Lang, Record<string, string>> = {
     "home.mission.lead":
       "Leading digital transformation of the automotive market across Europe.",
     "home.mission.body":
-      "We build and invest in growth companies that are leaders of their fields — with strong technology foundations and the ambition to reshape how vehicles are sold and managed.",
+      "We build and invest in growth companies that are leaders of their fields — with strong technology foundations and the ambition to cover the entire vehicle lifecycle, from selection and financing through purchase, insurance, and servicing to resale.",
 
     /* Home — Strategy */
     "home.strategy.label": "Our Strategy",
@@ -198,10 +198,10 @@ const translations: Record<Lang, Record<string, string>> = {
 
     /* Media page */
     "media.label": "Media",
-    "media.title1": "Our roots and",
-    "media.title2": "our vision",
+    "media.title1": "News and",
+    "media.title2": "press coverage",
     "media.subtitle":
-      "The EAG group was founded with the main goal of consolidating and monetizing the outbound channel in the automotive segment in Europe.",
+      "Stay up to date with the latest news, press releases, and media coverage from across the EAG group.",
     "media.tab.news": "News",
     "media.tab.press": "Press Releases",
     "media.tab.downloads": "Downloads",
@@ -396,7 +396,7 @@ const translations: Record<Lang, Record<string, string>> = {
     "home.mission.lead":
       "Vedeme digitální transformaci automobilového trhu napříč Evropou.",
     "home.mission.body":
-      "Budujeme a investujeme do růstových společností, které jsou lídry svých oborů — se silným technologickým zázemím a ambicí změnit způsob, jakým se vozidla prodávají a spravují.",
+      "Budujeme a investujeme do růstových společností, které jsou lídry svých oborů — se silným technologickým zázemím a ambicí pokrýt celý životní cyklus vozidla od výběru a financování přes nákup, pojištění a servis až po další prodej.",
 
     /* Home — Strategy */
     "home.strategy.label": "Naše strategie",
@@ -526,10 +526,10 @@ const translations: Record<Lang, Record<string, string>> = {
 
     /* Media page */
     "media.label": "Média",
-    "media.title1": "Naše kořeny a",
-    "media.title2": "naše vize",
+    "media.title1": "Novinky a",
+    "media.title2": "mediální pokrytí",
     "media.subtitle":
-      "Skupina EAG byla založena s hlavním cílem konsolidovat a monetizovat odchozí kanál v automobilovém segmentu v Evropě.",
+      "Sledujte nejnovější zprávy, tiskové zprávy a mediální pokrytí z celé skupiny EAG.",
     "media.tab.news": "Novinky",
     "media.tab.press": "Tiskové zprávy",
     "media.tab.downloads": "Ke stažení",

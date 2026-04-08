@@ -7,6 +7,7 @@ import { useI18n } from "~/i18n";
 import { OptimizedImage } from "~/components/optimized-image";
 import { generateMeta } from "~/utils/seo";
 import { BreadcrumbSchema } from "~/components/structured-data";
+import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
 /* ── Meta ──────────────────────────────────────────── */
 
@@ -48,8 +49,9 @@ const projects: Project[] = [
 /* ── Page ──────────────────────────────────────────── */
 
 export default function ProjectsPage() {
+  const revealRef = useScrollReveal();
   return (
-    <>
+    <div ref={revealRef}>
       <BreadcrumbSchema items={[{ name: "Projects", path: "/projects" }]} />
       <AppHeader />
       <main>
@@ -58,7 +60,7 @@ export default function ProjectsPage() {
       </main>
       <ContactSection />
       <AppFooter />
-    </>
+    </div>
   );
 }
 
@@ -78,10 +80,10 @@ function HeroSection() {
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         {/* Heading + description — 2-col */}
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <h1 className="text-b1 text-[var(--section-text)] lg:text-c6">
+          <h1 data-reveal className="text-b1 text-[var(--section-text)] lg:text-c6">
             {t("projects.title1")} {t("projects.title2")}
           </h1>
-          <p className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3">
+          <p data-reveal className="text-a2 leading-relaxed text-[var(--section-text-muted)] lg:pt-3 reveal-delay-1">
             {t("projects.subtitle")}
           </p>
         </div>
@@ -117,6 +119,7 @@ function ProjectCard({ project }: { project: Project }) {
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
+      data-reveal
       className="group block scroll-mt-24 overflow-hidden rounded-2xl bg-gray-50 transition-colors duration-300 hover:bg-gray-100"
     >
       <div className="grid lg:grid-cols-2 lg:min-h-[500px]">

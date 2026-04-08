@@ -45,13 +45,12 @@
   --color-surface-100: #eef0f6;
   --color-border-200: #e2e5ef;
 
-  /* Marquee animation */
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 27s linear infinite;
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-100%, 0, 0); }
 }
 
 /* ── Base layer: global rendering optimisation ────── */
