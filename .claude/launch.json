@@ -4,8 +4,8 @@
     {
       "name": "dev",
       "runtimeExecutable": "/Users/jaroslavsmacbook/.bun/bin/bun",
-      "runtimeArgs": ["run", "dev"],
-      "port": 5173
+      "runtimeArgs": ["run", "dev", "--port", "5174"],
+      "port": 5174
     },
     {
       "name": "build-and-start",

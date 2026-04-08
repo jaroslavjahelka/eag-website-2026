@@ -3,7 +3,8 @@
     "allow": [
       "Bash(bun create:*)",
       "Skill(update-config)",
-      "Skill(update-config:*)"
+      "Skill(update-config:*)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

@@ -11,9 +11,6 @@ import { Suspense, lazy } from "react";
 const HeroSection = lazy(() =>
   import("~/components/globe-hero/hero-section").then((m) => ({ default: m.HeroSection })),
 );
-const EuropeMapSection = lazy(() =>
-  import("~/components/europe-map-section").then((m) => ({ default: m.EuropeMapSection })),
-);
 import { useI18n } from "~/i18n";
 import { useScrollReveal } from "~/hooks/use-scroll-reveal";
 
@@ -90,10 +87,7 @@ export default function HomePage() {
         </Suspense>
         <LogoMarquee />
         <MissionSection />
-        <Suspense fallback={null}>
-          <EuropeMapSection />
-        </Suspense>
-        <StrategySection />
+<StrategySection />
         <InvestmentsSection />
         <NewsSection />
         <TeamSection />
@@ -164,7 +158,7 @@ function StatsSection() {
           <div
             key={stat.labelKey}
             data-reveal
-            className={`flex flex-col items-center gap-2 px-6 py-14 lg:py-20 ${
+            className={`flex flex-col items-center gap-2 px-6 py-28 lg:py-40 ${
               i < stats.length - 1 ? "border-r border-white/10" : ""
             } ${i < 2 ? "reveal-delay-1" : "reveal-delay-2"}`}
           >
@@ -182,7 +176,7 @@ function StatsSection() {
 function MissionSection() {
   const { t } = useI18n();
   return (
-    <section id="mission" data-theme="light" className="bg-[var(--section-bg)] py-28 lg:py-40">
+    <section id="mission" data-theme="light" className="bg-[var(--section-bg)] pt-28 pb-14 lg:pt-40 lg:pb-20">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Text */}
@@ -196,15 +190,6 @@ function MissionSection() {
             <p data-reveal className="text-a2 leading-relaxed text-[var(--section-text-muted)] reveal-delay-2">
               {t("home.mission.body")}
             </p>
-            <div data-reveal className="mt-10 reveal-delay-3">
-              <Link
-                to="/story"
-                className="group/link inline-flex items-center gap-2 text-a3 font-medium text-eag-teal no-underline transition-colors hover:text-eag-teal-dark"
-              >
-                {t("home.team.link")}
-                <ArrowRight size={16} weight="bold" className="transition-transform group-hover/link:translate-x-1" />
-              </Link>
-            </div>
           </div>
 
           {/* Image */}
@@ -226,7 +211,7 @@ function MissionSection() {
 function StrategySection() {
   const { t } = useI18n();
   return (
-    <section id="strategy" data-theme="light" className="cv-auto bg-[var(--section-bg)] py-28 lg:py-40">
+    <section id="strategy" data-theme="light" className="cv-auto bg-[var(--section-bg)] pt-14 pb-28 lg:pt-20 lg:pb-40">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Image */}
