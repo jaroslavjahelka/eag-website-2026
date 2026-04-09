@@ -35,7 +35,7 @@ export function OptimizedImage({
   }
 
   return (
-    <picture>
+    <picture className="contents">
       <source srcSet={webpSrc} type="image/webp" />
       <img
         src={src}

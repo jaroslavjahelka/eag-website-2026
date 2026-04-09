@@ -238,7 +238,7 @@ function NewsGrid({ articles }: { articles: Article[] }) {
   }
 
   return (
-    <div id="news-grid">
+    <div id="news-grid" className="scroll-mt-24">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {pageArticles.map((article) => (
           <ArticleCard key={article.href} article={article} />
