@@ -209,7 +209,7 @@ function MissionSection() {
           <div data-reveal className="overflow-hidden rounded-2xl reveal-delay-2">
             <OptimizedImage
               src="/assets/projects/carvago.jpg"
-              alt=""
+              alt="Carvago — online marketplace for verified used cars"
               className="aspect-[4/3] w-full object-cover"
             />
           </div>
@@ -231,7 +231,7 @@ function StrategySection() {
           <div data-reveal className="order-2 overflow-hidden rounded-2xl lg:order-1">
             <OptimizedImage
               src="/assets/projects/cebia.jpg"
-              alt=""
+              alt="Cebia — vehicle history and verification services"
               className="aspect-[4/3] w-full object-cover"
             />
           </div>
@@ -348,7 +348,7 @@ function NewsSection() {
               className="group flex flex-col overflow-hidden rounded-2xl bg-gray-50 transition-all duration-300 hover:bg-gray-100 reveal-delay-1"
             >
               <div className="aspect-[16/10] overflow-hidden">
-                <OptimizedImage src={article.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <OptimizedImage src={article.image} alt={article.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="mb-3 flex items-center gap-3">
@@ -379,7 +379,7 @@ function TeamSection() {
       data-theme="dark"
       className="cv-auto relative overflow-hidden bg-[var(--section-bg)] py-28 lg:py-40"
     >
-      <OptimizedImage src="/assets/team-dark.jpg" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50" />
+      <OptimizedImage src="/assets/team-dark.jpg" alt="EAG team collaboration" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">

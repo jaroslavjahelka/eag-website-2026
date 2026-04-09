@@ -72,7 +72,7 @@ function HeroSection() {
     <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
       <OptimizedImage
         src="/assets/techyard-light.jpg"
-        alt=""
+        alt="EAG portfolio companies overview"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />

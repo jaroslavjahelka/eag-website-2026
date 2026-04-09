@@ -104,7 +104,7 @@ export function ContactSection() {
     >
       <OptimizedImage
         src="/assets/office-dark.jpg"
-        alt=""
+        alt="EAG office interior"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/50" />

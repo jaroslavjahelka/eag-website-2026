@@ -89,7 +89,7 @@ export function HeroSection() {
           <source srcSet="/assets/hero-bg.webp" type="image/webp" />
           <img
             src="/assets/hero-bg.jpg"
-            alt=""
+            alt="EAG group headquarters"
             className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
           />
         </picture>

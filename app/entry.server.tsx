@@ -46,6 +46,23 @@ export default function handleRequest(
           responseHeaders.set("Referrer-Policy", "strict-origin-when-cross-origin");
           responseHeaders.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
           responseHeaders.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+          responseHeaders.set(
+            "Content-Security-Policy-Report-Only",
+            [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "img-src 'self' data: https: blob:",
+              "font-src 'self' https://fonts.gstatic.com",
+              "connect-src 'self' https://api.eag.group https://www.google-analytics.com https://analytics.google.com",
+              "worker-src 'self' blob:",
+              "child-src 'self' blob:",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join("; "),
+          );
+          responseHeaders.set("X-Permitted-Cross-Domain-Policies", "none");
           pipe(body);
 
           resolve(

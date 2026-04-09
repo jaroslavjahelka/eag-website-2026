@@ -161,7 +161,7 @@ function HeroSection() {
     <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
       <OptimizedImage
         src="/assets/towedcars-light.jpg"
-        alt=""
+        alt="EAG media and press coverage"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
@@ -272,7 +272,7 @@ function ArticleCard({ article }: { article: Article }) {
       <div className="aspect-[16/10] overflow-hidden rounded-t-xl">
         <OptimizedImage
           src={article.image}
-          alt=""
+          alt={article.title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>

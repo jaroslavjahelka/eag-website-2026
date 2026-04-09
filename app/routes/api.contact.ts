@@ -1,21 +1,8 @@
 import type { Route } from "./+types/api.contact";
 import { Resend } from "resend";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 
 function loadApiKey(): string {
-  // First check process.env (works in production / Vercel)
-  if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== "re_YOUR_API_KEY_HERE") {
-    return process.env.RESEND_API_KEY;
-  }
-  // Fallback: read .env file directly (dev SSR workaround)
-  try {
-    const envPath = resolve(process.cwd(), ".env");
-    const content = readFileSync(envPath, "utf-8");
-    const match = content.match(/^RESEND_API_KEY=(.+)$/m);
-    if (match) return match[1].trim();
-  } catch { /* ignore */ }
-  return "";
+  return process.env.RESEND_API_KEY ?? "";
 }
 
 let _resend: Resend | null = null;

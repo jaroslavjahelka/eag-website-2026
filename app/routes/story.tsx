@@ -286,7 +286,7 @@ function HeroSection() {
     <section data-theme="dark" className="relative overflow-hidden bg-[var(--section-bg)] pt-32 pb-20 lg:pt-40 lg:pb-24">
       <OptimizedImage
         src="/assets/towedcars-light.jpg"
-        alt=""
+        alt="EAG group history and milestones"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
@@ -336,11 +336,11 @@ function TimelineSection() {
             )}
             <div className="overflow-hidden rounded-xl bg-gray-50">
               <div className="aspect-[16/10] overflow-hidden">
-                <OptimizedImage src={entry.image} alt="" className="h-full w-full object-cover saturate-[.85]" style={entry.imagePosition ? { objectPosition: entry.imagePosition } : undefined} />
+                <OptimizedImage src={entry.image} alt={t(entry.titleKey)} className="h-full w-full object-cover saturate-[.85]" style={entry.imagePosition ? { objectPosition: entry.imagePosition } : undefined} />
               </div>
               <div className="p-4">
                 <div className="mb-2 flex items-center gap-2">
-                  <img src={entry.logo} alt="" className="h-5 w-auto object-contain" />
+                  <img src={entry.logo} alt={t(entry.titleKey)} className="h-5 w-auto object-contain" />
                   <span className="ml-auto text-a5 font-medium tabular-nums text-gray-300">{entry.year}</span>
                 </div>
                 <h3 className="mb-1 text-b6 text-eag-black">{t(entry.titleKey)}</h3>
@@ -390,7 +390,7 @@ function TimelineSection() {
                       <div className="aspect-[16/10] overflow-hidden">
                         <OptimizedImage
                           src={entry.image}
-                          alt=""
+                          alt={t(entry.titleKey)}
                           className="h-full w-full object-cover saturate-[.85]"
                           style={entry.imagePosition ? { objectPosition: entry.imagePosition } : undefined}
                         />
@@ -399,7 +399,7 @@ function TimelineSection() {
                         <div className="mb-2 flex items-center gap-2">
                           <img
                             src={entry.logo}
-                            alt=""
+                            alt={t(entry.titleKey)}
                             className="h-5 w-auto object-contain"
                           />
                           <span className="ml-auto text-a5 font-medium tabular-nums text-gray-300">{entry.year}</span>

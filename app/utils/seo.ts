@@ -52,7 +52,8 @@ export function generateMeta({
     { property: "og:image", content: absoluteOgImage },
     { property: "og:type", content: ogType },
     { property: "og:site_name", content: SITE_NAME },
-    { property: "og:locale", content: "en_US" },
+    { property: "og:locale", content: "cs_CZ" },
+    { property: "og:locale:alternate", content: "en_US" },
 
     /* ── Twitter Card ─────────────────────── */
     { name: "twitter:card", content: "summary_large_image" },
