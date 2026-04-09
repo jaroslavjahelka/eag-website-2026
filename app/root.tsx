@@ -11,6 +11,8 @@ import { I18nProvider } from "./i18n";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "preconnect", href: "https://api.eag.group" },
+  { rel: "dns-prefetch", href: "https://api.eag.group" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

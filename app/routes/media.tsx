@@ -42,11 +42,23 @@ interface Article {
   href: string;
 }
 
+interface WPImageSize {
+  name: string;
+  sourceUrl: string;
+  width: string;
+  height: string;
+}
+
 interface WPPostNode {
   databaseId: number;
   title: string;
   date: string;
-  featuredImage: { node: { sourceUrl: string } } | null;
+  featuredImage: {
+    node: {
+      sourceUrl: string;
+      mediaDetails: { sizes: WPImageSize[] } | null;
+    };
+  } | null;
   info: { link: string } | null;
 }
 
@@ -59,6 +71,14 @@ const GRAPHQL_QUERY = `{
       featuredImage {
         node {
           sourceUrl
+          mediaDetails {
+            sizes {
+              name
+              sourceUrl
+              width
+              height
+            }
+          }
         }
       }
       info {
@@ -86,6 +106,22 @@ function formatDate(isoDate: string): string {
   });
 }
 
+/** Pick the best WP image size for card display (~400px CSS, ~800px retina).
+ *  Preferred order: medium_large (768px) → large (1024px) → full sourceUrl.
+ *  Skips sizes below 600px (too small for retina). */
+function pickOptimalImage(node: WPPostNode): string {
+  const sizes = node.featuredImage?.node?.mediaDetails?.sizes;
+  if (!sizes?.length) return node.featuredImage?.node?.sourceUrl ?? "/assets/towedcars-light.jpg";
+
+  const preferred = ["medium_large", "large"];
+  for (const name of preferred) {
+    const match = sizes.find((s) => s.name === name && Number(s.width) >= 600);
+    if (match) return match.sourceUrl;
+  }
+
+  return node.featuredImage?.node?.sourceUrl ?? "/assets/towedcars-light.jpg";
+}
+
 function mapPost(node: WPPostNode): Article | null {
   const link = node.info?.link;
   if (!link) return null;
@@ -94,9 +130,23 @@ function mapPost(node: WPPostNode): Article | null {
     title: node.title,
     date: formatDate(node.date),
     source: extractSource(link),
-    image: node.featuredImage?.node?.sourceUrl ?? "/assets/towedcars-light.jpg",
+    image: pickOptimalImage(node),
     href: link,
   };
+}
+
+/** Preload first page of article images so they start downloading
+ *  immediately after the GraphQL response, before React renders cards. */
+function preloadImages(articles: Article[]) {
+  for (const article of articles.slice(0, ARTICLES_PER_PAGE)) {
+    if (article.image.startsWith("http")) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = article.image;
+      document.head.appendChild(link);
+    }
+  }
 }
 
 export async function clientLoader() {
@@ -112,6 +162,8 @@ export async function clientLoader() {
     const json = await res.json();
     const nodes: WPPostNode[] = json?.data?.posts?.nodes ?? [];
     const articles = nodes.map(mapPost).filter((a): a is Article => a !== null);
+
+    preloadImages(articles);
 
     return { articles };
   } catch (error) {
@@ -250,8 +302,8 @@ function NewsGrid({ articles }: { articles: Article[] }) {
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={(page) => {
+            document.getElementById("news-grid")?.scrollIntoView({ behavior: "instant" });
             setCurrentPage(page);
-            document.getElementById("news-grid")?.scrollIntoView({ behavior: "smooth" });
           }}
         />
       )}
