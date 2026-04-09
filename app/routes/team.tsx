@@ -103,6 +103,7 @@ export default function TeamPage() {
             src="/assets/towedcars-light.jpg"
             alt="EAG team at work"
             className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+            priority
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
 

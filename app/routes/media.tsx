@@ -163,6 +163,7 @@ function HeroSection() {
         src="/assets/towedcars-light.jpg"
         alt="EAG media and press coverage"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+        priority
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black via-black/70 to-transparent" />
 
@@ -273,6 +274,7 @@ function ArticleCard({ article }: { article: Article }) {
         <OptimizedImage
           src={article.image}
           alt={article.title}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
